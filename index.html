@@ -483,6 +483,25 @@
 
   #memberNav .nav-btn { font-size: 12px; padding: 10px 12px; }
 
+  /* ── Synergy freq bar ── */
+  .freq-row { display:flex; align-items:center; gap:10px; margin-bottom:9px; }
+  .freq-label { font-size:12px; color:var(--gray1); min-width:148px; }
+  .freq-track { flex:1; height:5px; background:var(--gray5); border-radius:3px; overflow:hidden; }
+  .freq-fill { height:100%; border-radius:3px; }
+  .freq-num { font-size:12px; font-weight:700; min-width:28px; text-align:right; }
+
+  /* ── Synergy topic cards ── */
+  .syn-card { background:var(--white); border:1px solid var(--gray5); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; }
+  .syn-header { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+  .syn-rank { font-size:11px; font-weight:700; color:var(--gray3); min-width:22px; }
+  .syn-title { font-size:15px; font-weight:700; color:var(--gray1); flex:1; }
+  .syn-badge { font-size:11px; font-weight:700; padding:2px 9px; border-radius:20px; white-space:nowrap; }
+  .syn-members { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:12px; }
+  .syn-chip { font-size:12px; font-weight:600; padding:3px 10px; border-radius:20px; }
+  .syn-proposal { border-left:2px solid var(--gray5); padding-left:10px; margin-bottom:10px; font-size:13px; color:var(--gray2); line-height:1.65; }
+  .syn-proposal:last-child { margin-bottom:0; }
+  .syn-pair { font-size:12px; font-weight:700; color:var(--gray1); margin-bottom:3px; }
+
   /* saved actions display */
   #actions-summary { display: none; }
   .saved-action {
@@ -1088,99 +1107,231 @@
      VIEW 4: SYNERGY THEMES
 ══════════════════════════════════ -->
 <div class="view" id="view-synergy">
-  <div class="card" style="background:var(--blue-light); border:none; margin-bottom:16px;">
+
+  <div class="card" style="background:var(--blue-light); border:none; margin-bottom:4px;">
     <div class="card-body" style="color:var(--blue-dark); font-size:13px;">
-      토론 중 막히면 이 주제들 꺼내보세요. 스냅샷 듣고 자연스럽게 나오면 더 좋습니다.
+      전체 OKR 분석 기반 — 주제 등장 빈도 순으로 정렬했습니다. 겹치는 사람이 많을수록 리소스 없이 시너지 낼 수 있는 영역이에요.
     </div>
   </div>
 
-  <div class="theme-card t1">
-    <div class="theme-header">
-      <div class="theme-icon">🤖</div>
-      <div class="theme-title">AI & Automation</div>
-    </div>
-    <div class="theme-who">핵심 멤버: Sangwoo · Dabin · Jun · Hankhil</div>
-    <ul class="theme-qlist">
-      <li>Sangwoo의 SDR Bot이 Jun/Ye Eun 아웃바운드에 바로 쓰일 수 있지 않을까?</li>
-      <li>Dabin의 AI 스킬 공유 — 팀 전체가 쓸 수 있는 것은?</li>
-      <li>Market Intel Tool 결과를 GM 클라이언트 미팅에 활용하면?</li>
-    </ul>
+  <!-- 빈도 바 차트 -->
+  <div class="section-label" style="margin-top:20px;">주제 등장 빈도 (전체 OKR 기준)</div>
+  <div class="card" style="padding:16px 16px 12px;">
+    <div class="freq-row"><span class="freq-label">🤖 AI / 자동화</span><div class="freq-track"><div class="freq-fill" style="width:100%;background:#1A73E8;"></div></div><span class="freq-num" style="color:#1557B0;">8명</span></div>
+    <div class="freq-row"><span class="freq-label">🎮 IAA / RE 확장</span><div class="freq-track"><div class="freq-fill" style="width:87%;background:#1A73E8;"></div></div><span class="freq-num" style="color:#1557B0;">7명</span></div>
+    <div class="freq-row"><span class="freq-label">📺 CTV / Horizon 3</span><div class="freq-track"><div class="freq-fill" style="width:75%;background:#1E8E3E;"></div></div><span class="freq-num" style="color:#1E8E3E;">6명</span></div>
+    <div class="freq-row"><span class="freq-label">📣 APAC Echoes</span><div class="freq-track"><div class="freq-fill" style="width:75%;background:#1E8E3E;"></div></div><span class="freq-num" style="color:#1E8E3E;">6명</span></div>
+    <div class="freq-row"><span class="freq-label">💳 Finance / Consumer</span><div class="freq-track"><div class="freq-fill" style="width:62%;background:#F9AB00;"></div></div><span class="freq-num" style="color:#B06000;">5명</span></div>
+    <div class="freq-row"><span class="freq-label">📦 MM Ops / 핸드오버</span><div class="freq-track"><div class="freq-fill" style="width:62%;background:#F9AB00;"></div></div><span class="freq-num" style="color:#B06000;">5명</span></div>
+    <div class="freq-row"><span class="freq-label">🏪 Agency Program</span><div class="freq-track"><div class="freq-fill" style="width:50%;background:#D93025;"></div></div><span class="freq-num" style="color:#D93025;">4명</span></div>
+    <div class="freq-row" style="margin-bottom:0;"><span class="freq-label">🔬 GDS 테스트·분석</span><div class="freq-track"><div class="freq-fill" style="width:50%;background:#D93025;"></div></div><span class="freq-num" style="color:#D93025;">4명</span></div>
   </div>
 
-  <div class="theme-card t2">
-    <div class="theme-header">
-      <div class="theme-icon">🎮</div>
-      <div class="theme-title">Gaming IAA / RE 확장</div>
+  <!-- 주제별 그룹 카드 -->
+  <div class="section-label" style="margin-top:24px;">주제별 그룹 & 협업 제안</div>
+
+  <!-- #1 AI -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#1</div>
+      <div class="syn-title">AI / 자동화</div>
+      <div class="syn-badge" style="background:#E8F0FE;color:#1557B0;">8명</div>
     </div>
-    <div class="theme-who">핵심 멤버: Dabin · KuYoung · Sangin · Ye Eun</div>
-    <ul class="theme-qlist">
-      <li>IAA Forum 어떻게 구성? 누가 어떤 역할로 기여할 수 있나?</li>
-      <li>DCA alpha — 111PERCENT 이후 어떤 MM 클라이언트로 확장?</li>
-      <li>Dabin의 RE 케이스 → APAC Echo 포스팅, Hankhil 연계 가능?</li>
-    </ul>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Sangwoo</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Jun</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Dabin</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Hankhil</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">JeongYong</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Sangin</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Sangeun</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Ye Eun</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Sangwoo + Jun</div>
+      SDR Bot 완성 시점에 Jun 아웃바운드 워크플로우에 바로 붙이는 거 같이 설계해보면 어때요? Sangwoo가 만들고 Jun이 실전 피드백 주는 구조.
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Dabin + Sangwoo + 팀 전체</div>
+      Dabin OKR에 "AI 스킬 2개 팀 공유"가 있고 Sangwoo도 Slack 지식 공유 KR 있어요. 두 사람 데모를 묶어서 한 번의 팀 세션으로 하면 KR 동시 달성.
+    </div>
   </div>
 
-  <div class="theme-card t3">
-    <div class="theme-header">
-      <div class="theme-icon">📺</div>
-      <div class="theme-title">CTV / Horizon 3</div>
+  <!-- #2 IAA/RE -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#2</div>
+      <div class="syn-title">IAA / RE 캠페인 확장</div>
+      <div class="syn-badge" style="background:#E8F0FE;color:#1557B0;">7명</div>
     </div>
-    <div class="theme-who">핵심 멤버: KuYoung · Sangeun · DongKwon · Jun</div>
-    <ul class="theme-qlist">
-      <li>TVING 케이스 — 누가 어느 클라이언트로 먼저 완성?</li>
-      <li>CTV Big Bet (Jun) × Gaming CTV (KuYoung) 케이스 공유 방식?</li>
-      <li>MSM × MA × MCM 시너지 — Sangeun이 설계하면 DongKwon이 실행?</li>
-    </ul>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Dabin</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">KuYoung</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Sangin</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Ye Eun</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Hankhil</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Jun</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">DongKwon</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Dabin + Sangin</div>
+      IAA Forum 론칭이 Dabin OKR인데, 111PERCENT DCA alpha 이후 MM 계정 중 IAA 확장 타깃 리스트업을 Sangin이 같이 해주면 Forum 콘텐츠도 풍부해지고 Sangin 계정 성장에도 직결돼요.
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Dabin + Hankhil</div>
+      Dabin RE 케이스 APAC Echo 포스팅할 때 Hankhil의 Pub Demographic 개선 내용 같이 담으면 두 사람 KR 한 번에 처리 가능.
+    </div>
   </div>
 
-  <div class="theme-card t4">
-    <div class="theme-header">
-      <div class="theme-icon">🏪</div>
-      <div class="theme-title">Agency Program 스케일</div>
+  <!-- #3 CTV -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#3</div>
+      <div class="syn-title">CTV / Horizon 3</div>
+      <div class="syn-badge" style="background:#E6F4EA;color:#1E8E3E;">6명</div>
     </div>
-    <div class="theme-who">핵심 멤버: JeongYong · Sangwoo · Jun · Ye Eun</div>
-    <ul class="theme-qlist">
-      <li>Agency FAQ Chatbot (Sangwoo) → JeongYong Agency 팀 반복 문의 50% 감소?</li>
-      <li>Finance Day 4/30 — DongKwon + JeongYong + Jun 3명이 각각 뭘 가져오나?</li>
-      <li>NBS + Agency 합동 Partner Day — 구체적으로 어떻게 구성?</li>
-    </ul>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">KuYoung</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Sangeun</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">DongKwon</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Jun</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Dabin</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">JeongYong</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Sangeun + DongKwon</div>
+      Sangeun은 McDonald's TVING 케이스, DongKwon은 MCM 오프사이트 케이스 각자 만들고 있는데, MSM × MA × MCM 내러티브로 묶어서 하나의 Horizon 3 케이스 스터디로 완성해보면 어떨까요?
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Jun + KuYoung</div>
+      Jun의 CTV Big Bet 딜과 KuYoung의 Gaming CTV 케이스(NEXON), 클라이언트 피칭 전 인사이트 미리 공유하면 서로 딜 클로징에 도움 돼요.
+    </div>
   </div>
 
-  <div class="theme-card t5">
-    <div class="theme-header">
-      <div class="theme-icon">📊</div>
-      <div class="theme-title">Mid-Market Ops 효율화</div>
+  <!-- #4 APAC -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#4</div>
+      <div class="syn-title">APAC Echoes 공유</div>
+      <div class="syn-badge" style="background:#E6F4EA;color:#1E8E3E;">6명</div>
     </div>
-    <div class="theme-who">핵심 멤버: Sangin · Hankhil · JeongYong · Sangwoo</div>
-    <ul class="theme-qlist">
-      <li>NBS→IM→GM 핸드오버 — Hankhil 문서 + Sangin MM 시스템 합치면?</li>
-      <li>Darwin Ops OKR 정의 — Sangin 혼자 하나, 누군가 같이 정의하면 더 빠를까?</li>
-      <li>Sangwoo SDR 자동화 → MM 아웃리치에도 적용 가능?</li>
-    </ul>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Sangwoo</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Dabin</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Jun</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">JeongYong</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Sangeun</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">KuYoung</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Sangwoo + Jun + JeongYong</div>
+      3명 모두 APAC Echoes 케이스 3개 공유가 OKR에 있어요. 각자 따로 올리는 것보다 코리아 인프라 패키지 (SDR Bot + Market Intel + FAQ Chatbot)로 묶어서 시리즈로 올리면 임팩트가 훨씬 커요.
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Dabin + Sangeun</div>
+      두 분 모두 APAC Echoes 포스팅 KR 있는데 주제 미리 조율해서 겹치지 않게 하면 좋을 것 같아요.
+    </div>
   </div>
 
-  <div class="theme-card t6">
-    <div class="theme-header">
-      <div class="theme-icon">💳</div>
-      <div class="theme-title">Consumer / Finance Vertical</div>
+  <!-- #5 Finance -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#5</div>
+      <div class="syn-title">Finance / Consumer Vertical</div>
+      <div class="syn-badge" style="background:#FEF7E0;color:#B06000;">5명</div>
     </div>
-    <div class="theme-who">핵심 멤버: DongKwon · Sangeun · JeongYong · Jun</div>
-    <ul class="theme-qlist">
-      <li>Finance Day 4/30 — 이미 준비 중인 사람 누구? 각자 뭘 맡으면 중복 없이 진행?</li>
-      <li>iOS RE LAT — DongKwon과 Sangeun 케이스 공유 방식 정리?</li>
-      <li>MCM 오프사이트 (SSG, Musinsa) — DongKwon + Sangeun 공동 케이스 가능?</li>
-    </ul>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">DongKwon</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">JeongYong</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Jun</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Sangeun</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Ye Eun</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">DongKwon + JeongYong + Jun</div>
+      Finance Day (4/30) 3명 모두 OKR에 있어요. 역할 분담 미리 해두면 중복 없이 각자 KR 달성 가능. DongKwon은 퍼포먼스 케이스, Jun은 컨설팅 피치, JeongYong은 에이전시 네트워크 — 이렇게 나눠보면 어떨까요?
+    </div>
   </div>
 
-  <div class="divider"></div>
-  <div class="card" style="background:var(--yellow-light);">
-    <div class="card-title">💡 토론 중 막힐 때</div>
+  <!-- #6 MM Ops -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#6</div>
+      <div class="syn-title">MM Ops / NBS→GM 핸드오버</div>
+      <div class="syn-badge" style="background:#FEF7E0;color:#B06000;">5명</div>
+    </div>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Sangin</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Hankhil</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Jun</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">JeongYong</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Sangwoo</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Sangin + Hankhil</div>
+      Sangin은 MM Tier 시스템, Hankhil은 NBS→IM→GM 핸드오버 문서화를 각자 만들고 있는데 사실 같은 문서예요. 같이 만들면 절반의 시간에 두 배의 완성도.
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Jun + Hankhil</div>
+      Jun OKR에 Sr.IM/Jr.IM 핸드오버북 Hankhil과 공동 발간이 이미 명시돼 있어요. 세션에서 킥오프 타임라인만 정하면 됩니다.
+    </div>
+  </div>
+
+  <!-- #7 Agency -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#7</div>
+      <div class="syn-title">Agency Program 스케일</div>
+      <div class="syn-badge" style="background:#FCE8E6;color:#A50E0E;">4명</div>
+    </div>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">JeongYong</span>
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Sangwoo</span>
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Jun</span>
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Ye Eun</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">JeongYong + Sangwoo</div>
+      Agency FAQ Chatbot이 Sangwoo OKR인데, 실제 반복 문의 데이터는 JeongYong이 다 갖고 있어요. JeongYong이 카테고리 정리, Sangwoo가 RAG 구조 구축 — 분업하면 둘 다 KR 달성.
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Jun + Ye Eun + JeongYong</div>
+      New Partner Day 통합이 JeongYong OKR인데, Jun·Ye Eun도 에이전시 소싱 KR 있어요. 파트너 데이 설계 단계부터 NBS 관점 함께 넣으면 좋을 것 같아요.
+    </div>
+  </div>
+
+  <!-- #8 GDS -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#8</div>
+      <div class="syn-title">GDS 테스트 & 분석 공유</div>
+      <div class="syn-badge" style="background:#FCE8E6;color:#A50E0E;">4명</div>
+    </div>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Dabin</span>
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">KuYoung</span>
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Sangeun</span>
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">DongKwon</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Dabin + Sangeun</div>
+      Dabin은 게임(RE), Sangeun은 Consumer(Commerce 분석) GDS 협업 KR 각각 있어요. GDS팀에 요청할 때 같이 묶어서 넣으면 우선순위 높이는 데 유리해요.
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">KuYoung + DongKwon</div>
+      KuYoung은 Gaming 인크리멘탈리티, DongKwon은 iOS RE LAT 테스트 각각 진행 중. 결과 나오면 서로 공유하는 간단한 양방향 업데이트 채널 만들어두면 좋을 것 같아요.
+    </div>
+  </div>
+
+  <div class="card" style="background:var(--yellow-light); margin-top:8px;">
+    <div class="card-title" style="font-size:13px;">💡 토론 중 막힐 때</div>
     <div class="card-body" style="font-size:13px; color:#7A5200; line-height:1.8;">
       "내 output이 누군가의 input이 될 수 있나요?"<br>
       "리소스 없이 이번 주에 시작할 수 있는 게 있을까요?"<br>
       "같이 하면 혼자 할 때보다 빠른 게 뭔가요?"
     </div>
   </div>
+
 </div>
 
 
