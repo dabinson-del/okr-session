@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q2 2026 OKR Alignment — Korea Team</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #040078;
+    --blue1:   #0280FB;
+    --blue2:   #0266C8;
+    --blue3:   #67B3FC;
+    --purple1: #C368F9;
+    --purple2: #9C53C7;
+    --purple3: #876AFF;
+    --purple4: #6C55CC;
+    --purple5: #B7A6FF;
+    --teal1:   #60E2B7;
+    --teal2:   #4DB592;
+    --teal3:   #A0EED4;
+    --cyan1:   #16D2FF;
+    --cyan2:   #12A8CC;
+    --cyan3:   #73E4FF;
+    --lavender:#DBA4FB;
+    --gray1:   #f5f5f8;
+    --gray2:   #e8e8f0;
+    --gray3:   #aaa;
+  }
+
+  body {
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+    background: #fff;
+    color: #111;
+    min-height: 100vh;
+  }
+
+  /* ── TOP TAB NAV ── */
+  .top-tab-nav {
+    position: sticky; top: 0; z-index: 200;
+    background: var(--navy);
+    display: flex; gap: 0;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .tab-btn {
+    padding: 13px 20px;
+    font-size: 12px; font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    border: none; background: none;
+    font-family: inherit;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: all .2s;
+    letter-spacing: .03em;
+  }
+  .tab-btn.active {
+    color: var(--cyan1);
+    border-bottom-color: var(--cyan1);
+    background: rgba(22,210,255,0.06);
+  }
+  .tab-view { display: none; }
+  .tab-view.active { display: block; }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: var(--navy);
+    padding: 24px 48px 20px;
+    display: flex; align-items: flex-end;
+    justify-content: space-between; gap: 16px;
+  }
+  .page-header .title-block h1 {
+    color: #fff; font-size: 20px; font-weight: 700;
+    letter-spacing: -0.3px; line-height: 1.2;
+  }
+  .page-header .title-block p {
+    color: var(--blue3); font-size: 12px; font-weight: 400; margin-top: 4px;
+  }
+  .meta-pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px; padding: 6px 12px;
+    text-align: center; color: #fff; font-size: 10px; font-weight: 500;
+  }
+  .meta-pill strong {
+    display: block; font-size: 16px; font-weight: 700;
+    color: var(--cyan1); line-height: 1.1;
+  }
+
+  /* ── LAYER WRAPPER ── */
+  .layer-wrapper { padding: 0 36px; max-width: 1480px; margin: 0 auto; }
+  .layer-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: #888;
+    margin-bottom: 10px; margin-top: 20px;
+  }
+  .layer-label::before {
+    content: ''; display: inline-block;
+    width: 12px; height: 3px; border-radius: 2px; background: currentColor;
+  }
+
+  /* ── GLOBAL LAYER ── */
+  .global-layer {
+    background: linear-gradient(135deg, #040078 0%, #0a0096 60%, #0266C8 100%);
+    padding: 18px 36px 22px;
+  }
+  .global-layer .layer-label { color: rgba(255,255,255,0.5); }
+  .global-grid {
+    display: grid; grid-template-columns: 1fr auto 1fr 1fr;
+    gap: 12px; align-items: stretch; max-width: 1480px; margin: 0 auto;
+  }
+  .global-goal {
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(255,255,255,0.25);
+    border-radius: 12px; padding: 14px 18px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+  }
+  .global-goal .goal-num { font-size: 30px; font-weight: 800; color: var(--cyan1); line-height: 1; letter-spacing: -1px; }
+  .global-goal .goal-sub { font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 4px; font-weight: 500; }
+  .global-goal .goal-tag {
+    margin-top: 7px; font-size: 10px;
+    background: rgba(22,210,255,0.15); color: var(--cyan1);
+    border: 1px solid rgba(22,210,255,0.35);
+    border-radius: 4px; padding: 2px 8px; font-weight: 600;
+  }
+  .global-pillar-group {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 12px 14px;
+  }
+  .global-pillar-group h3 {
+    font-size: 10px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 7px;
+  }
+  .global-pill-row { display: flex; flex-wrap: wrap; gap: 5px; }
+  .gpill { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; color: #fff; }
+  .gpill.g-vert { background: rgba(2,128,251,0.45); border: 1px solid rgba(2,128,251,0.6); }
+  .gpill.g-bet  { background: rgba(195,104,249,0.4); border: 1px solid rgba(195,104,249,0.6); }
+  .gpill.g-acc  { background: rgba(96,226,183,0.35); border: 1px solid rgba(96,226,183,0.55); color: var(--teal1); }
+  .gpill.g-ai   { background: rgba(135,106,255,0.35); border: 1px solid rgba(135,106,255,0.6); }
+
+  .layer-arrow {
+    display: flex; justify-content: center; align-items: center;
+    padding: 5px 0 1px; color: #bbb; font-size: 11px; font-weight: 500;
+    gap: 8px; letter-spacing: .05em;
+  }
+  .layer-arrow::before, .layer-arrow::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, #ddd, transparent);
+  }
+
+  /* ── KOREA LAYER ── */
+  .korea-layer {
+    background: #f7f8ff;
+    border-top: 2px solid var(--navy); border-bottom: 1px solid #e0e4f0;
+    padding: 14px 36px 18px;
+  }
+  .korea-header-row {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1480px; margin: 0 auto 10px;
+  }
+  .korea-target-badges { display: flex; gap: 10px; }
+  .k-badge {
+    background: var(--navy); color: #fff; border-radius: 6px;
+    padding: 4px 10px; font-size: 12px; font-weight: 700;
+  }
+  .k-badge span { font-size: 10px; font-weight: 400; opacity: .7; }
+  .korea-pillars-wrapper { max-width: 1480px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+  .korea-section { display: flex; flex-direction: column; gap: 5px; }
+  .korea-section-header {
+    font-size: 10px; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; padding: 3px 0; color: #666;
+  }
+  .korea-section-header.drivers { color: var(--blue2); border-bottom: 2px solid var(--blue1); padding-bottom: 3px; }
+  .korea-section-header.products { color: var(--teal2); border-bottom: 2px solid var(--teal1); padding-bottom: 3px; }
+  .korea-section-header.bets { color: var(--purple2); border-bottom: 2px solid var(--purple1); padding-bottom: 3px; }
+  .korea-pillars-inner { display: flex; flex-wrap: wrap; gap: 6px; }
+  .k-pillar {
+    display: flex; align-items: center; gap: 8px;
+    border: 1.5px solid; border-radius: 8px; padding: 6px 10px;
+    cursor: pointer; transition: all .18s; user-select: none;
+  }
+  .k-pillar:hover { transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+  .k-pillar.active { box-shadow: 0 0 0 2px currentColor; }
+  .k-pillar.p1,.k-pillar.p2,.k-pillar.p3,.k-pillar.p4 { color: var(--blue2); border-color: rgba(2,102,200,0.3); background: rgba(2,128,251,0.06); }
+  .k-pillar.p5,.k-pillar.p6,.k-pillar.p7,.k-pillar.p8,.k-pillar.p9 { color: var(--teal2); border-color: rgba(77,181,146,0.35); background: rgba(96,226,183,0.07); }
+  .k-pillar.p10,.k-pillar.p11,.k-pillar.p12 { color: var(--purple2); border-color: rgba(156,83,199,0.3); background: rgba(195,104,249,0.06); }
+  .k-pillar-num { font-size: 13px; font-weight: 800; width: 22px; text-align: center; }
+  .k-pillar-name { font-size: 11px; font-weight: 700; line-height: 1.2; }
+  .k-pillar-sub { font-size: 10px; opacity: .7; line-height: 1.3; margin-top: 1px; }
+  .active-pillar-info {
+    margin-top: 8px; padding: 7px 12px;
+    background: var(--navy); color: var(--cyan1);
+    border-radius: 6px; font-size: 12px; font-weight: 600;
+    display: none;
+  }
+  .active-pillar-info.visible { display: block; }
+  .reset-btn {
+    margin-top: 6px; padding: 5px 12px;
+    background: transparent; border: 1.5px solid var(--navy);
+    color: var(--navy); border-radius: 6px;
+    font-size: 11px; font-weight: 600; cursor: pointer;
+    display: none; font-family: inherit;
+  }
+  .reset-btn.visible { display: inline-block; }
+
+  /* ── INDIVIDUAL LAYER ── */
+  .individual-layer { padding: 14px 36px 36px; }
+  .individual-layer .layer-label { color: #777; }
+  .hint-text { font-size: 11px; color: #999; margin-bottom: 14px; line-height: 1.5; }
+  .person-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px; max-width: 1480px; margin: 0 auto;
+  }
+  .person-card {
+    border: 1.5px solid; border-radius: 12px;
+    padding: 14px; display: flex; flex-direction: column; gap: 6px;
+    transition: all .2s; position: relative;
+  }
+  .person-card.faded { opacity: 0.2; filter: grayscale(0.5); }
+  .person-card.highlighted { box-shadow: 0 0 0 2.5px currentColor, 0 4px 16px rgba(0,0,0,0.12); transform: translateY(-2px); }
+  .team-lead    { color: var(--navy);    border-color: rgba(4,0,120,0.3);    background: rgba(4,0,120,0.03); }
+  .team-gaming  { color: var(--blue2);   border-color: rgba(2,102,200,0.3);  background: rgba(2,128,251,0.04); }
+  .team-consumer{ color: var(--teal2);   border-color: rgba(77,181,146,0.35);background: rgba(96,226,183,0.05); }
+  .team-mm      { color: var(--cyan2);   border-color: rgba(18,168,204,0.35);background: rgba(22,210,255,0.05); }
+  .team-agency  { color: var(--purple1); border-color: rgba(195,104,249,0.3);background: rgba(195,104,249,0.04); }
+  .team-nbs     { color: var(--purple3); border-color: rgba(135,106,255,0.3);background: rgba(135,106,255,0.04); }
+  .team-new     { color: var(--purple4); border-color: rgba(108,85,204,0.3); background: rgba(183,166,255,0.07); }
+  .person-top { display: flex; align-items: center; gap: 8px; }
+  .person-avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: currentColor; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; flex-shrink: 0;
+    opacity: .85;
+  }
+  .person-avatar span { color: #fff; }
+  .person-name { font-size: 13px; font-weight: 700; }
+  .person-role { font-size: 10px; opacity: .65; margin-top: 1px; line-height: 1.3; }
+  .person-revenue { font-size: 18px; font-weight: 800; line-height: 1; margin-top: 2px; }
+  .person-revenue-label { font-size: 9px; opacity: .6; letter-spacing: .03em; }
+  .person-mission { font-size: 10px; font-style: italic; opacity: .75; line-height: 1.4; }
+  .person-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+  .focus-tag {
+    font-size: 10px; font-weight: 600; padding: 2px 7px;
+    border-radius: 10px; border: 1px solid currentColor; opacity: .8;
+  }
+  .tag-navy    { color: var(--navy); }
+  .tag-blue    { color: var(--blue2); }
+  .tag-teal    { color: var(--teal2); }
+  .tag-cyan    { color: var(--cyan2); }
+  .tag-purple  { color: var(--purple1); }
+  .tag-violet  { color: var(--purple3); }
+  .tag-lavend  { color: var(--purple4); }
+  .pillar-dots { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+  .pillar-dot {
+    width: 20px; height: 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700; background: currentColor; cursor: default;
+  }
+  .pillar-dot span { color: #fff; }
+
+  /* pillar dot colors */
+  .pd1,.pd2,.pd3,.pd4 { color: var(--blue2); }
+  .pd5,.pd6,.pd7,.pd8,.pd9 { color: var(--teal2); }
+  .pd10,.pd11,.pd12 { color: var(--purple2); }
+
+  /* ── LEGEND ── */
+  .legend-bar {
+    position: sticky; bottom: 0; z-index: 100;
+    display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
+    padding: 8px 36px; background: #fff;
+    border-top: 1px solid #e0e0e8;
+    font-size: 10px;
+  }
+  .legend-title { font-weight: 700; color: #666; }
+  .legend-item { display: flex; align-items: center; gap: 5px; color: #555; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── TAB 2: OKR 상세 ── */
+  .detail-nav {
+    display: flex; overflow-x: auto; gap: 0;
+    background: #f5f5f8; border-bottom: 1px solid #e0e0e8;
+    scrollbar-width: none; padding: 0 24px;
+  }
+  .detail-nav::-webkit-scrollbar { display: none; }
+  .detail-nb {
+    flex-shrink: 0; padding: 10px 14px;
+    font-size: 11px; font-weight: 600; color: #999;
+    cursor: pointer; border-bottom: 2px solid transparent;
+    white-space: nowrap; font-family: inherit;
+    background: none; border-top: none; border-left: none; border-right: none;
+    transition: all .2s;
+  }
+  .detail-nb.on { color: var(--navy); border-bottom-color: var(--navy); }
+
+  .detail-view { display: none; padding: 20px 24px 40px; }
+  .detail-view.on { display: block; }
+
+  .member-block { margin-bottom: 20px; }
+  .okr-member-header {
+    border-radius: 12px 12px 0 0; padding: 14px 16px 12px;
+    border-left: 5px solid transparent;
+  }
+  .okr-member-role   { font-size: 10px; font-weight: 700; color: #aaa; letter-spacing: .5px; margin-bottom: 2px; }
+  .okr-member-name   { font-size: 18px; font-weight: 900; color: #111; margin-bottom: 4px; }
+  .okr-member-mission{ font-size: 12px; color: #555; font-style: italic; line-height: 1.4; }
+  .okr-cats { border: 1px solid #e8e8f0; border-top: none; border-radius: 0 0 12px 12px; overflow: hidden; }
+  .okr-cat-card { padding: 12px 16px; border-bottom: 1px solid #e8e8f0; }
+  .okr-cat-card:last-child { border-bottom: none; }
+  .okr-cat-label {
+    font-size: 10px; font-weight: 700; letter-spacing: .5px;
+    margin-bottom: 7px; display: inline-flex; align-items: center; gap: 4px;
+    border-radius: 6px; padding: 2px 8px;
+  }
+  .cat-country  { background: #FEF3C7; color: #92400E; }
+  .cat-xfn      { background: #D1FAE5; color: #065F46; }
+  .cat-people   { background: #FEF3C7; color: #92400E; }
+  .cat-personal { background: #EDE9FE; color: #5B21B6; }
+  .okr-krs { font-size: 12px; color: #555; line-height: 1.7; padding-left: 14px; }
+
+  /* ── TAB 3: 도움 요청 ── */
+  .help-section { padding: 24px; max-width: 900px; margin: 0 auto; }
+  .help-intro {
+    background: var(--navy); color: #fff;
+    border-radius: 12px; padding: 20px 22px; margin-bottom: 20px;
+  }
+  .help-intro h2 { font-size: 17px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+  .help-intro p  { font-size: 13px; opacity: .8; line-height: 1.6; }
+  .help-template {
+    background: #f0f4ff; border: 2px dashed var(--blue1);
+    border-radius: 12px; padding: 18px 20px; margin-bottom: 20px;
+    font-size: 14px; color: var(--navy); line-height: 1.9; font-weight: 500;
+  }
+  .help-template .blank {
+    display: inline-block;
+    border-bottom: 2px solid var(--blue1);
+    min-width: 80px; color: var(--blue1);
+    font-weight: 700; padding: 0 4px; margin: 0 2px;
+  }
+  .help-cards { display: flex; flex-direction: column; gap: 12px; }
+  .help-card {
+    background: #fff; border: 1.5px solid #e0e4f0;
+    border-radius: 12px; padding: 16px;
+    transition: box-shadow .2s;
+  }
+  .help-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .help-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .help-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0;
+  }
+  .help-name { font-size: 14px; font-weight: 700; }
+  .help-role { font-size: 11px; color: #999; }
+  .help-sentence {
+    font-size: 13px; color: #333; line-height: 1.8;
+    background: #f7f8ff; border-radius: 8px; padding: 12px 14px;
+    border-left: 3px solid var(--blue1);
+  }
+  .help-sentence .doing  { color: var(--blue2); font-weight: 700; }
+  .help-sentence .stuck  { color: #c0392b; font-weight: 700; }
+  .help-sentence .needed { color: var(--teal2); font-weight: 700; }
+
+  .your-turn {
+    background: #f0f4ff; border: 2px dashed #aac4ff;
+    border-radius: 12px; padding: 16px; margin-top: 8px;
+  }
+  .your-turn p { font-size: 13px; color: #666; margin-bottom: 12px; }
+  .your-turn textarea {
+    width: 100%; min-height: 80px;
+    border: 1.5px solid #c0d0ff; border-radius: 8px;
+    padding: 10px 12px; font-size: 13px;
+    font-family: inherit; color: #111; background: #fff;
+    resize: none; outline: none;
+  }
+  .your-turn textarea:focus { border-color: var(--blue1); }
+
+  .section-label-sm {
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: #999; margin: 20px 0 8px;
+  }
+
+  /* ══ MOBILE RESPONSIVE ══ */
+  @media (max-width: 768px) {
+
+    /* Tab nav - scrollable */
+    .top-tab-nav { overflow-x: auto; scrollbar-width: none; }
+    .top-tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn { padding: 12px 14px; font-size: 11px; }
+
+    /* Header */
+    .page-header { padding: 16px; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .page-header .title-block h1 { font-size: 16px; }
+    .page-header .meta { flex-wrap: wrap; gap: 8px; }
+    .meta-pill strong { font-size: 14px; }
+
+    /* Layer wrapper */
+    .layer-wrapper { padding: 0 14px; }
+
+    /* Global layer */
+    .global-layer { padding: 14px 14px 18px; }
+    .global-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .global-goal .goal-num { font-size: 24px; }
+    .global-pillar-group { padding: 10px 12px; }
+
+    /* Korea layer */
+    .korea-layer { padding: 12px 14px 16px; }
+    .korea-header-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .korea-target-badges { flex-wrap: wrap; }
+    .k-pillar { padding: 6px 8px; }
+    .k-pillar-name { font-size: 10px; }
+    .k-pillar-sub { display: none; }
+
+    /* Individual layer */
+    .individual-layer { padding: 12px 14px 24px; }
+    .person-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .person-revenue { font-size: 15px; }
+    .person-tags { display: none; }
+
+    /* Legend */
+    .legend-bar { padding: 8px 14px; gap: 8px; }
+    .legend-bar > span:last-child { display: none; }
+
+    /* Detail tab */
+    .detail-nav { padding: 0 14px; }
+    .detail-nav + div { padding: 12px 14px 32px; }
+
+    /* OKR cat cards */
+    .okr-cat-card { padding: 10px 12px; }
+    .okr-krs { font-size: 11.5px; }
+
+    /* Help section */
+    .help-section { padding: 16px 14px 40px; }
+    .help-intro { padding: 16px; }
+    .help-intro h2 { font-size: 15px; }
+    .help-template { font-size: 13px; padding: 14px; }
+    .help-card { padding: 12px; }
+    .help-sentence { font-size: 12px; padding: 10px 12px; }
+
+    /* Sentence builder inputs */
+    #f1, #f2, #f3 { min-width: 120px !important; font-size: 13px; }
+  }
+
+  @media (max-width: 480px) {
+    .person-grid { grid-template-columns: 1fr; }
+    .global-grid { grid-template-columns: 1fr; }
+    .person-name { font-size: 12px; }
+    .pillar-dots { display: none; }
+    .tab-btn { padding: 11px 11px; font-size: 10px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- TOP TAB NAV -->
+<nav class="top-tab-nav">
+  <button class="tab-btn active" onclick="switchTab('overview')">📊 OKR 구조 전체보기</button>
+  <button class="tab-btn" onclick="switchTab('detail')">👤 개인 OKR 상세</button>
+  <button class="tab-btn" onclick="switchTab('help')">🤝 도움 요청 액티비티</button>
+</nav>
+
+<!-- ═══════════════════════════════════
+     TAB 1: OKR 구조 전체보기
+═══════════════════════════════════ -->
+<div class="tab-view active" id="tab-overview">
+
+  <header class="page-header">
+    <div class="title-block">
+      <h1>Q2 2026 OKR Alignment</h1>
+      <p>Global → Korea Strategy → Individual OKRs · Korea Growth Team</p>
+    </div>
+    <div style="display:flex;gap:12px;align-items:flex-end;">
+      <div class="meta-pill"><strong>$29.5M</strong>Q2 Korea Target</div>
+      <div class="meta-pill"><strong>13</strong>Contributors</div>
+      <div class="meta-pill"><strong>12</strong>Strategy Pillars</div>
+    </div>
+  </header>
+
+  <!-- GLOBAL LAYER -->
+  <section class="global-layer">
+    <div class="layer-wrapper">
+      <div class="layer-label">Layer 1 — Global 2026 Strategy</div>
+      <div class="global-grid">
+        <div class="global-goal">
+          <div class="goal-num">$220M</div>
+          <div class="goal-sub">KOR+JPN 2026 목표</div>
+          <div class="goal-tag">65% YoY</div>
+        </div>
+        <div class="global-goal">
+          <div class="goal-num" style="font-size:22px;">3대 방향</div>
+          <div class="goal-sub" style="text-align:left;margin-top:8px;line-height:1.7;">
+            🎯 Core Growth 강화<br>
+            🚀 Next Growth 개척<br>
+            🌱 Long-term Bets
+          </div>
+        </div>
+        <div class="global-pillar-group">
+          <h3>Verticals & Products</h3>
+          <div class="global-pill-row">
+            <span class="gpill g-vert">Gaming UA</span>
+            <span class="gpill g-vert">IAA</span>
+            <span class="gpill g-vert">RE (iOS포함)</span>
+            <span class="gpill g-vert">Commerce</span>
+            <span class="gpill g-vert">Finance</span>
+            <span class="gpill g-acc">CTV / MSM</span>
+            <span class="gpill g-acc">Web / NEXT</span>
+            <span class="gpill g-acc">MCM</span>
+          </div>
+        </div>
+        <div class="global-pillar-group">
+          <h3>Bets & Accelerators</h3>
+          <div class="global-pill-row">
+            <span class="gpill g-bet">Enterprise</span>
+            <span class="gpill g-bet">Agency Program</span>
+            <span class="gpill g-bet">Supply (Kakao·Naver)</span>
+            <span class="gpill g-ai">AI / Automation</span>
+            <span class="gpill g-ai">DPA</span>
+            <span class="gpill g-ai">Brandformance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="layer-arrow">Korea 팀은 글로벌 전략을 이렇게 로컬라이즈합니다</div>
+
+  <!-- KOREA LAYER -->
+  <section class="korea-layer">
+    <div class="layer-wrapper">
+      <div class="korea-header-row">
+        <div class="layer-label" style="margin:0;">Layer 2 — Korea Q2 Strategy (12 Pillars)</div>
+        <div class="korea-target-badges">
+          <div class="k-badge">Korea <span>Q2</span> $29.5M</div>
+          <div class="k-badge" style="background:var(--teal2);">Japan <span>Q2</span> $16.0M</div>
+        </div>
+      </div>
+      <div class="korea-pillars-wrapper">
+        <div class="korea-section">
+          <div class="korea-section-header drivers">4 Sales Drivers — 매출 성장 레버</div>
+          <div class="korea-pillars-inner">
+            <div class="k-pillar p1" data-pillar="1" onclick="filterByPillar(1,'Top 고객 집중','PLTN→Super-PLTN 심화, Gold 육성, TA 프레임워크')">
+              <div class="k-pillar-num">1</div>
+              <div><div class="k-pillar-name">Top 고객 집중</div><div class="k-pillar-sub">PLTN→Super-PLTN · Gold 육성</div></div>
+            </div>
+            <div class="k-pillar p2" data-pillar="2" onclick="filterByPillar(2,'Mid-Market 확장','Darwin Ops 연동, Tier 시스템, NBS→IM→GM 핸드오버')">
+              <div class="k-pillar-num">2</div>
+              <div><div class="k-pillar-name">Mid-Market 확장</div><div class="k-pillar-sub">Darwin Ops · Tier 시스템</div></div>
+            </div>
+            <div class="k-pillar p3" data-pillar="3" onclick="filterByPillar(3,'Agency 공식 프로그램','Gate Agency 5개, Partner Day 통합, MVP 육성')">
+              <div class="k-pillar-num">3</div>
+              <div><div class="k-pillar-name">Agency 프로그램</div><div class="k-pillar-sub">Gate 5개 · Partner Day 통합</div></div>
+            </div>
+            <div class="k-pillar p4" data-pillar="4" onclick="filterByPillar(4,'신규 Acquisition','NBS 컨설팅 Framework, AI-SDR, Finance VIP 세미나')">
+              <div class="k-pillar-num">4</div>
+              <div><div class="k-pillar-name">신규 Acquisition</div><div class="k-pillar-sub">NBS Framework · AI-SDR</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="korea-section">
+          <div class="korea-section-header products">5 Product Focuses — 제품 성과 영역</div>
+          <div class="korea-pillars-inner">
+            <div class="k-pillar p5" data-pillar="5" onclick="filterByPillar(5,'IAA 성공 사례','Supercent · Actionfit · Treeplla · IAA Forum')">
+              <div class="k-pillar-num">5</div>
+              <div><div class="k-pillar-name">IAA 성공 사례</div><div class="k-pillar-sub">Supercent · Actionfit · Forum</div></div>
+            </div>
+            <div class="k-pillar p6" data-pillar="6" onclick="filterByPillar(6,'Android 성과 개선','5개 갭 해소, Kakao bizboard 80%')">
+              <div class="k-pillar-num">6</div>
+              <div><div class="k-pillar-name">Android 성과 개선</div><div class="k-pillar-sub">5개 갭 해소</div></div>
+            </div>
+            <div class="k-pillar p7" data-pillar="7" onclick="filterByPillar(7,'iOS RE Full Funnel','PA 확산, LAT RE 채택, DCA alpha')">
+              <div class="k-pillar-num">7</div>
+              <div><div class="k-pillar-name">iOS RE Full Funnel</div><div class="k-pillar-sub">PA 확산 · LAT RE · DCA</div></div>
+            </div>
+            <div class="k-pillar p8" data-pillar="8" onclick="filterByPillar(8,'Supply 확대','Kakao · Line · Samsung · Naver')">
+              <div class="k-pillar-num">8</div>
+              <div><div class="k-pillar-name">Supply 확대</div><div class="k-pillar-sub">Kakao · Line · Samsung</div></div>
+            </div>
+            <div class="k-pillar p9" data-pillar="9" onclick="filterByPillar(9,'DPA / Consumer','Commerce RE 모델, Finance 버티컬')">
+              <div class="k-pillar-num">9</div>
+              <div><div class="k-pillar-name">DPA / Consumer</div><div class="k-pillar-sub">Commerce RE · Finance</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="korea-section">
+          <div class="korea-section-header bets">3 Strategic Bets — 중장기 성장 베팅</div>
+          <div class="korea-pillars-inner">
+            <div class="k-pillar p10" data-pillar="10" onclick="filterByPillar(10,'Brandformance / Web','TVING, Web CPC, 브랜드 에이전시 1-2개')">
+              <div class="k-pillar-num">10</div>
+              <div><div class="k-pillar-name">Brandformance / Web</div><div class="k-pillar-sub">TVING · Web CPC</div></div>
+            </div>
+            <div class="k-pillar p11" data-pillar="11" onclick="filterByPillar(11,'Enterprise 파트너십','Kakao · Naver 프리미엄 Supply, Samsung Cloud Gaming')">
+              <div class="k-pillar-num">11</div>
+              <div><div class="k-pillar-name">Enterprise 파트너십</div><div class="k-pillar-sub">Kakao · Naver · Samsung</div></div>
+            </div>
+            <div class="k-pillar p12" data-pillar="12" onclick="filterByPillar(12,'Horizon 3 (MA×MCM×MSM)','SSG / McDonald\'s / Olive Young XFN 케이스')">
+              <div class="k-pillar-num">12</div>
+              <div><div class="k-pillar-name">Horizon 3</div><div class="k-pillar-sub">MA × MCM × MSM</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="active-pillar-info" id="pillarInfo"></div>
+      <button class="reset-btn" id="resetBtn" onclick="resetFilter()">↩ 전체 보기</button>
+    </div>
+  </section>
+
+  <div class="layer-arrow">각 개인의 Q2 OKR은 위 코리아 전략에 이렇게 연결됩니다</div>
+
+  <!-- INDIVIDUAL LAYER -->
+  <section class="individual-layer">
+    <div class="layer-wrapper">
+      <div class="layer-label">Layer 3 — 개인 Individual Q2 OKRs (13 Contributors)</div>
+      <p class="hint-text">Korea 전략 Pillar 번호(하단 원형 아이콘)는 각자의 OKR이 어느 방향성에 기여하는지를 나타냅니다. 위 Korea Pillar를 클릭하면 해당 기여자가 강조됩니다.</p>
+      <div class="person-grid" id="personGrid">
+
+        <div class="person-card team-lead" data-pillars="1,2,3,4,5,6,7,8,9,10,11,12">
+          <div class="person-top">
+            <div class="person-avatar"><span>JA</span></div>
+            <div class="person-name-block"><div class="person-name">JaeKyun Ahn</div><div class="person-role">Country Head · KOR+JPN</div></div>
+          </div>
+          <div class="person-revenue">$29.5M</div>
+          <span class="person-revenue-label">Q2 Korea Target</span>
+          <div class="person-mission">"Uncapped Growth & Mindset"</div>
+          <div class="person-tags">
+            <span class="focus-tag tag-navy">전사 전략 총괄</span>
+            <span class="focus-tag tag-navy">Japan 가속화</span>
+            <span class="focus-tag tag-navy">Enterprise</span>
+          </div>
+          <div class="pillar-dots">
+            <div class="pillar-dot pd1"><span>1</span></div><div class="pillar-dot pd2"><span>2</span></div>
+            <div class="pillar-dot pd3"><span>3</span></div><div class="pillar-dot pd4"><span>4</span></div>
+            <div class="pillar-dot pd5"><span>5</span></div><div class="pillar-dot pd8"><span>8</span></div>
+            <div class="pillar-dot pd11"><span>11</span></div><div class="pillar-dot pd12"><span>12</span></div>
+          </div>
+        </div>
+
+        <div class="person-card team-consumer" data-pillars="1,2,9,10,12">
+          <div class="person-top">
+            <div class="person-avatar"><span>SS</span></div>
+            <div class="person-name-block"><div class="person-name">Shala Seo</div><div class="person-role">Korea GM · Team Empowerment</div></div>
+          </div>
+          <div class="person-revenue">$28.15M</div>
+          <span class="person-revenue-label">Q2 Team Attainment</span>
+          <div class="person-mission">"Drive Impact by Team Empowerment"</div>
+          <div class="person-tags">
+            <span class="focus-tag tag-teal">Consumer 전략</span>
+            <span class="focus-tag tag-teal">Gaming CAB</span>
+            <span class="focus-tag tag-teal">Sprout TFT</span>
+          </div>
+          <div class="pillar-dots">
+            <div class="pillar-dot pd1"><span>1</span></div><div class="pillar-dot pd2"><span>2</span></div>
+            <div class="pillar-dot pd9"><span>9</span></div><div class="pillar-dot pd10"><span>10</span></div>
+            <div class="pillar-dot pd12"><span>12</span></div>
+          </div>
+        </div>
+
+        <div class="person-card team-gaming" data-pillars="1,5,6,7,8,11">
+          <div class="person-top">
+            <div class="person-avatar"><span>KC</span></div>
+            <div class="person-name-block"><div class="person-name">Kuyoung Chung</div><div class="person-role">Gaming GM · Scale Focus</div></div>
+          </div>
+          <div class="person-revenue">100%</div>
+          <span class="person-revenue-label">Q2 Attainment Target</span>
+          <div class="person-mission">"Focus on Scale"</div>
+          <div class="person-tags">
+            <span class="focus-tag tag-blue">NEXON RE+CTV</span>
+            <span class="focus-tag tag-blue">NETMARBLE 론칭</span>
+            <span class="focus-tag tag-blue">Samsung Supply</span>
+          </div>
+          <div class="pillar-dots">
+            <div class="pillar-dot pd1"><span>1</span></div><div class="pillar-dot pd5"><span>5</span></div>
+            <div class="pillar-dot pd6"><span>6</span></div><div class="pillar-dot pd7"><span>7</span></div>
+            <div class="pillar-dot pd8"><span>8</span></div><div class="pillar-dot pd11"><span>11</span></div>
+          </div>
+        </div>
+
+        <div class="person-card team-gaming" data-pillars="1,4,5,7,10,12">
+          <div class="person-top">
+            <div class="person-avatar"><span>DS</span></div>
+            <div class="person-name-block"><div class="person-name">Dabin Son</div><div class="person-role">Gaming SGM · Test Bed</div></div>
+          </div>
+          <div class="person-revenue">$14.8M</div>
+          <span class="person-revenue-label">Q2 Target (1st+2nd GM)</span>
+          <div class="person-mission">"Focus on Revenue, Growth, Business"</div>
+          <div class="person-tags">
+            <span class="focus-tag tag-blue">DCA Alpha (111%)</span>
+            <span class="focus-tag tag-blue">IAA Forum</span>
+            <span class="focus-tag tag-blue">AI 스킬 공유</span>
+          </div>
+          <div class="pillar-dots">
+            <div class="pillar-dot pd1"><span>1</span></div><div class="pillar-dot pd4"><span>4</span></div>
+            <div class="pillar-dot pd5"><span>5</span></div><div class="pillar-dot pd7"><span>7</span></div>
+            <div class="pillar-dot pd10"><span>10</span></div><div class="pillar-dot pd12"><span>12</span></div>
+          </div>
+        </div>
+
+        <div class="person-card team-consumer" data-pillars="1,8,9,10,12">
+          <div class="person-top">
+            <div class="person-avatar"><span>SP</span></div>
+            <div class="person-name-block"><div class="person-name">Sangeun Park</div><div class="person-role">Consumer GM · XFN</div></div>
+          </div>
+          <div class="person-revenue">$3.4M</div>
+          <span class="person-revenue-label">Q2 Target</span>
+          <div class="person-mission">"High-Impact Growth via XFN"</div>
+          <div class="person-tags">
+            <span class="focus-tag tag-teal">Naver iOS 30%</span>
+            <span class="focus-tag tag-teal">TVING 케이스</span>
+            <span class="focus-tag tag-teal">MCM Olive Young</span>
+          </div>
+          <div class="pillar-dots">
+            <div class="pillar-dot pd1"><span>1</span></div><div class="pillar-dot pd8"><span>8</span></div>
+            <div class="pillar-dot pd9"><span>9</span></div><div class="pillar-dot pd10"><span>10</span></div>
+            <div class="pillar-dot pd12"><span>12</span></div>
+          </div>
+        </div>
+
+        <div class="person-card team-consumer" data-pillars="1,7,9,10,12">
+          <div class="person-top">
+            <div class="person-avatar"><span>DY</span></div>
+            <div class="person-name-block"><div class="person-name">DongKwon Yoo</div><div class="person-role">Consumer GM · Commerce</div></div>
+          </div>
+          <div class="person-revenue">$3.1M</div>
+          <span class="person-revenue-label">Q2 Baseline (115% Aspirational)</span>
+          <div class="person-mission">"Scalable Growth · Proven Strategies"</div>
+          <div class="person-tags">
+            <span class="focus-tag tag-teal">Coupang iOS RE</span>
+            <span class="focus-tag tag-teal">Finance 20%+ QoQ</span>
+            <span class="focus-tag tag-teal">MCM Offsite</span>
+          </div>
+          <div class="pillar-dots">
+            <div class="pillar-dot pd1"><span>1</span></div><div class="pillar-dot pd7"><span>7</span></div>
+            <div class="pillar-dot pd9"><span>9</span></div><div class="pillar-dot pd10"><span>10</span></div>
+            <div class="pillar-dot pd12"><span>12</span></div>
+          </div>
+        </div>
+
+        <div class="person-card team-mm" data-pillars="2">
+          <div class="person-top">
+            <div class="person-avatar"><span>SK</span></div>
+            <div class="person-name-block"><div class="person-name">Sangin Kim</div><div class="person-role">Mid-Market GM</div></div>
+          </div>
+          <div class="person-revenue">$5.14M</div>
+          <span class="person-revenue-label">Q2 Mid-Market Target</span>
+          <div class="person-mission">"Unlock Scalable Midmarket Growth"</div>
+          <div class="person-tags">
+            <span class="focus-tag tag-cyan">MM 운영체계</span>
+            <span class="focus-tag tag-cyan">Darwin Ops</span>
+            <span class="focus-tag tag-cyan">GameDex/HAEGIN</span>
+          </div>
+          <div class="pillar-dots"><div class="pillar-dot pd2"><span>2</span></div></div>
+        </div>
+
+        <div class="person-card team-agency" data-pillars="3,4,10">
+          <div class="person-top">
+            <div class="person-avatar"><span>JH</span></div>
+            <div class="person-name-block"><div class="person-name">JeongYong Huh</div><div class="person-role">Agency Lead · Gate Program</div></div>
+          </div>
+          <div class="person-revenue">$7.3M+</div>
+          <span class="person-revenue-label">Q2 Agency Rebound</span>
+          <div class="person-mission">"Agency Vanguard 3.0"</div>
+          <div class="person-tags">
+            <span class="focus-tag tag-purple">Portfolio Unlock</span>
+            <span class="focus-tag tag-purple">MVP-NBS Collab</span>
+            <span class="focus-tag tag-purple">Finance Day 4/30</span>
+          </div>
+          <div class="pillar-dots">
+            <div class="pillar-dot pd3"><span>3</span></div>
+            <div class="pillar-dot pd4"><span>4</span></div>
+            <div class="pillar-dot pd10"><span>10</span></div>
+          </div>
+        </div>
+
+        <div class="person-card team-nbs" data-pillars="3,4">
+          <div class="person-top">
+            <div class="person-avatar"><span>SB</span></div>
+            <div class="person-name-block"><div class="person-name">Sangwoo Byeon</div><div class="person-role">AI NBS Infra</div></div>
+          </div>
+          <div class="person-revenue">Infra</div>
+          <span class="person-revenue-label">Agency+NBS 환경 구축</span>
+          <div class="person-mission">"Necessary, Not an Accessory"</div>
+          <div class="person-tags">
+            <span class="focus-tag tag-violet">FAQ Chatbot</span>
+            <span class="focus-tag tag-violet">Market Intel</span>
+            <span class="focus-tag tag-violet">SDR 자동화</span>
+          </div>
+          <div class="pillar-dots">
+            <div class="pillar-dot pd3"><span>3</span></div>
+            <div class="pillar-dot pd4"><span>4</span></div>
+          </div>
+        </div>
+
+        <div class="person-card team-nbs" data-pillars="3,4,5">
+          <div class="person-top">
+            <div class="person-avatar"><span>JK</span></div>
+            <div class="person-name-block"><div class="person-name">Jun Kwon</div><div class="person-role">NBS Lead · AI-Native</div></div>
+          </div>
+          <div class="person-revenue">$1.3M</div>
+          <span class="person-revenue-label">Q2 NBS Target (130% stretch)</span>
+          <div class="person-mission">"AI-Native NBS Architect"</div>
+          <div class="person-tags">
+            <span class="focus-tag tag-violet">NBS Framework v1.0</span>
+            <span class="focus-tag tag-violet">AI-SDR $390K+</span>
+            <span class="focus-tag tag-violet">Finance VIP 세미나</span>
+          </div>
+          <div class="pillar-dots">
+            <div class="pillar-dot pd3"><span>3</span></div>
+            <div class="pillar-dot pd4"><span>4</span></div>
+            <div class="pillar-dot pd5"><span>5</span></div>
+          </div>
+        </div>
+
+        <div class="person-card team-nbs" data-pillars="2,4">
+          <div class="person-top">
+            <div class="person-avatar"><span>YE</span></div>
+            <div class="person-name-block"><div class="person-name">Ye Eun Park</div><div class="person-role">NBS · Pipeline</div></div>
+          </div>
+          <div class="person-revenue">$1.3M</div>
+          <span class="person-revenue-label">Q2 NBS Target</span>
+          <div class="person-mission">"Go Further Together"</div>
+          <div class="person-tags">
+            <span class="focus-tag tag-violet">파이프라인 정제</span>
+            <span class="focus-tag tag-violet">Com2uS · PRND</span>
+            <span class="focus-tag tag-violet">Non-game IAA</span>
+          </div>
+          <div class="pillar-dots">
+            <div class="pillar-dot pd2"><span>2</span></div>
+            <div class="pillar-dot pd4"><span>4</span></div>
+          </div>
+        </div>
+
+        <div class="person-card team-nbs" data-pillars="4,5">
+          <div class="person-top">
+            <div class="person-avatar"><span>HL</span></div>
+            <div class="person-name-block"><div class="person-name">Hankhil Lee</div><div class="person-role">IM/NBS Ops</div></div>
+          </div>
+          <div class="person-revenue">$1.3M</div>
+          <span class="person-revenue-label">Q2 Target (130% stretch)</span>
+          <div class="person-mission">"Step Up"</div>
+          <div class="person-tags">
+            <span class="focus-tag tag-violet">핸드오버 시스템</span>
+            <span class="focus-tag tag-violet">Supercent IAA</span>
+            <span class="focus-tag tag-violet">Pub Demographic</span>
+          </div>
+          <div class="pillar-dots">
+            <div class="pillar-dot pd4"><span>4</span></div>
+            <div class="pillar-dot pd5"><span>5</span></div>
+          </div>
+        </div>
+
+        <div class="person-card team-new" data-pillars="2">
+          <div class="person-top">
+            <div class="person-avatar"><span>HC</span></div>
+            <div class="person-name-block"><div class="person-name">Hanna Choi</div><div class="person-role">New GM · Mid-Market</div></div>
+          </div>
+          <div class="person-revenue">TBD</div>
+          <span class="person-revenue-label">온보딩 중</span>
+          <div class="person-mission">"Learning & Contributing"</div>
+          <div class="person-tags">
+            <span class="focus-tag tag-lavend">GM 온보딩</span>
+            <span class="focus-tag tag-lavend">MM 지원</span>
+          </div>
+          <div class="pillar-dots"><div class="pillar-dot pd2"><span>2</span></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="legend-bar">
+    <span class="legend-title">팀 구분</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--navy)"></span>Country Lead</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--blue2)"></span>Gaming GM</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--teal2)"></span>Consumer GM</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--cyan2)"></span>Mid-Market</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--purple1)"></span>Agency</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--purple3)"></span>NBS/Infra</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--purple2)"></span>New Hire</span>
+    <div style="flex:1"></div>
+    <span style="font-size:10px;color:#aaa;">Korea Pillar 클릭 → 해당 기여자 강조</span>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════
+     TAB 2: 개인 OKR 상세
+═══════════════════════════════════ -->
+<div class="tab-view" id="tab-detail">
+
+  <div style="background:#f7f8ff;border-bottom:1px solid #e0e4f0;padding:12px 24px;">
+    <div style="font-size:12px;color:#666;">이름 탭을 눌러 카테고리별 OKR을 확인하세요. Revenue 제외 — Country Focus / X-Region / People&Culture / Personal 4개 카테고리.</div>
+  </div>
+
+  <div class="detail-nav" id="detailNav">
+    <button class="detail-nb on" onclick="switchDetail('all', this)">전체</button>
+    <button class="detail-nb" onclick="switchDetail('jaekyun', this)">JaeKyun</button>
+    <button class="detail-nb" onclick="switchDetail('shala', this)">Shala</button>
+    <button class="detail-nb" onclick="switchDetail('kuyoung', this)">KuYoung</button>
+    <button class="detail-nb" onclick="switchDetail('dabin', this)">Dabin</button>
+    <button class="detail-nb" onclick="switchDetail('sangeun', this)">Sangeun</button>
+    <button class="detail-nb" onclick="switchDetail('dongkwon', this)">DongKwon</button>
+    <button class="detail-nb" onclick="switchDetail('sangin', this)">Sangin</button>
+    <button class="detail-nb" onclick="switchDetail('jeongyong', this)">JeongYong</button>
+    <button class="detail-nb" onclick="switchDetail('sangwoo', this)">Sangwoo</button>
+    <button class="detail-nb" onclick="switchDetail('jun', this)">Jun</button>
+    <button class="detail-nb" onclick="switchDetail('yeeun', this)">Ye Eun</button>
+    <button class="detail-nb" onclick="switchDetail('hankhil', this)">Hankhil</button>
+  </div>
+
+  <div style="padding:16px 24px 40px;max-width:900px;">
+
+    <div class="member-block" data-member2="jaekyun">
+      <div class="okr-member-header" style="background:#FFF8E1;border-left-color:#F9AB00;">
+        <div class="okr-member-role">🏆 Country Lead</div>
+        <div class="okr-member-name">JaeKyun Ahn</div>
+        <div class="okr-member-mission">"Uncapped Growth & Mindset — Innovation Hub, Dominant Open Internet Player"</div>
+      </div>
+      <div class="okr-cats">
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>4 Sales Drivers: PLTN→Super-PLTN · MM 기회 · Agency 공식 프로그램 · CTV/Web 신규 획득</li><li>5 Product Focuses: IAA · Android 개선 · Supply(Kakao·Line·Samsung) · RE(iOS) · DPA/Consumer</li><li>3 Strategic Bets: Brandperformance · Enterprise · MA×MCM×MSM</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>Japan 2026 전략 재정립 — 시장 규모 재산정 + 투자 제안</li><li>CTV/Tving 퍼포먼스 가속 · KOR MCM 클라이언트 50% Moloco Ads 전환</li><li>Moloco Next PMF 증명 · Samsung Cloud Gaming 플레이북 구축</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>글로벌 컬처 인터뷰 문항 표준화</li><li>Japan · APAC 팀 인재 수준 및 문화 향상 — Rotation · 코칭 · APAC Echoes</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>자체 블로그 개설 + 정기 아티클 / 건강: 러닝·테니스·수영 / 보컬 트레이닝</li></ul></div>
+      </div>
+    </div>
+
+    <div class="member-block" data-member2="shala">
+      <div class="okr-member-header" style="background:#F3E8FD;border-left-color:#9C27B0;">
+        <div class="okr-member-role">🎯 Korea GM</div>
+        <div class="okr-member-name">Shala Seo</div>
+        <div class="okr-member-mission">"Drive Impact by Team Empowerment"</div>
+      </div>
+      <div class="okr-cats">
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>Q2 $28.15M 어태인먼트 달성</li><li>Consumer: 커머스 내러티브 · Finance 피치 · Horizon 3(TVING·MCM)</li><li>Games: Gaming CAB(제주) · Gold 육성(NC·Com2uS·Krafton·Actionfit·Devsisters)</li><li>Project Sprout — MBR/QBR AI 자동화 프로세스 구축</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>MSM — CTV/Tving 업셀 · Coupang CPS Audience API</li><li>GDS — IAA 심층 분석(Supercent·Actionfit·Treeplla) · Android 성능 개선</li><li>MKT — Sprout TFT 웨비나·뉴스레터 확대</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>팀 critical problem 해결 적극 지원 · 심리적 안전감 세션 공동 주최</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>AI 툴 학습 주 2~3시간 / 독서 월 1~2권 / 주 2~3회 운동</li></ul></div>
+      </div>
+    </div>
+
+    <div class="member-block" data-member2="kuyoung">
+      <div class="okr-member-header" style="background:#E8F0FE;border-left-color:#1A73E8;">
+        <div class="okr-member-role">🎮 Gaming GM</div>
+        <div class="okr-member-name">Kuyoung Chung</div>
+        <div class="okr-member-mission">"Focus on Scale — NEXON & NETMARBLE 풀펀넬"</div>
+      </div>
+      <div class="okr-cats">
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>NEXON Maplestory Idle RE + CTV 예산 회복 · NETMARBLE 신규 론칭 극대화</li><li>Dabin에게 위임 → 전략·XFN 어젠다 집중 · NEXON UA Pioneer 포지셔닝</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>CHN: Yoon·Gordon과 파트너십 → CHN 인사이트 ↔ CTV/NEXT 케이스</li><li>JPN: Takashi 정기 1:1 · GDS: 스케일러블 분석 인사이트</li><li>Samsung Cloud Gaming 플레이북 구축 지원</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>Dabin에게 명확한 가이던스로 위임 · 원팀 스피릿 위한 먼저 손 내밀기</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>주 3~4회 운동 / 독서</li></ul></div>
+      </div>
+    </div>
+
+    <div class="member-block" data-member2="dabin">
+      <div class="okr-member-header" style="background:#E8F0FE;border-left-color:#1A73E8;">
+        <div class="okr-member-role">🎮 Gaming SGM</div>
+        <div class="okr-member-name">Dabin Son</div>
+        <div class="okr-member-mission">"Focus on Revenue, Growth, Business"</div>
+      </div>
+      <div class="okr-cats">
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>Top Test Bed — tKPI·DCA·IAA·RE 베타 2개 적용 → 10% 추가 성장</li><li>KOR Office OKR 리더 — tKPI·IAA·RE 전체 25% 기여</li><li>AI 스킬 2개 팀 공유</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>IAA Forum 론칭 · APAC Echoes 성공 케이스 2개 포스팅</li><li>GDS: RE 데이터 인사이트 덱(111PERCENT) · PSO: 5% 매출 기여</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>팀 에너지 레벨 높이기 — casual dinner 공동 주최 · 심리적 안전감 활동</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>일본어 주 1회 / 기타 레슨 주 2회 / 3kg 감량 / 책 6권 / 20km 달리기</li></ul></div>
+      </div>
+    </div>
+
+    <div class="member-block" data-member2="sangeun">
+      <div class="okr-member-header" style="background:#E6F4EA;border-left-color:#0F9D58;">
+        <div class="okr-member-role">🛍 Consumer GM</div>
+        <div class="okr-member-name">Sangeun Park</div>
+        <div class="okr-member-mission">"High-Impact Growth via XFN & X-Regional Collab"</div>
+      </div>
+      <div class="okr-cats">
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>Naver iOS SOW 30% · Rocket Now DRR 회복 · Coupang Eats iOS RE LAT</li><li>TVING + Web CPC 브랜딩 내러티브 · McDonald's 케이스 스터디</li><li>MSM × MA × MCM 협업 제안서(Olive Young) · Sprout QBR AI 자동화</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>Sales Forum 2nd Global 론칭 · APAC Echoes AI 주제 캠페인</li><li>GDS: 계절성 플레이북(여름) + Commerce 포스트백 분석 표준화</li><li>CAS: TVING MCP 세일즈 엑설런스</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>XFN·X-Region 협업 기회 확대 · 심리적 안전감 유지</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>앱 만들기 / 중국어 학습 / 독서 월 2권 / 주 2회 운동</li></ul></div>
+      </div>
+    </div>
+
+    <div class="member-block" data-member2="dongkwon">
+      <div class="okr-member-header" style="background:#E6F4EA;border-left-color:#0F9D58;">
+        <div class="okr-member-role">🛍 Consumer GM</div>
+        <div class="okr-member-name">DongKwon Yoo</div>
+        <div class="okr-member-mission">"Scalable Growth · Operationalizing Proven Strategies"</div>
+      </div>
+      <div class="okr-cats">
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>iOS LAT RE 채택 강화 · Offsite Extension & MCM ML 적용</li><li>Finance Vertical 20%+ QoQ · Coupang Partners iOS 활성화</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>Horizon 3 — MCM/DS/PM/CAS 스테이크홀더 가치 제안 리드</li><li>Finance Day 4/30 NBS·Marketing 협업 · MCM 오프사이트 케이스 개발</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>Non-gaming 광고 내부 Go-To Expert · NEXT/MCM/MSM GTM 협업</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>금연 줄이기 / 독서 늘리기 / 골프 레슨 꾸준히</li></ul></div>
+      </div>
+    </div>
+
+    <div class="member-block" data-member2="sangin">
+      <div class="okr-member-header" style="background:#FEF7E0;border-left-color:#F9AB00;">
+        <div class="okr-member-role">📦 Mid-Market GM</div>
+        <div class="okr-member-name">Sangin Kim</div>
+        <div class="okr-member-mission">"Scalable MM Growth · Repeatable Automated Playbooks"</div>
+      </div>
+      <div class="okr-cats">
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>Tier 기반 MM 관리 시스템 · Darwin Ops 소유권·지원 모델</li><li>High Spenders Silver/Gold 승격 · Mid&Low → Darwin Ops + 플레이북</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>GSS 협업 low-touch MM 활성화 · NBS 핸드오버 프로세스 수립</li><li>Agency 파트너 bulk 컨설팅 모델 · JP MM GM과 정기 싱크</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>신규 MM GM 온보딩 프로그램 설계 · Apple Search Ads 지식 공유</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>영어 비즈니스 역량 향상 / 3kg 감량 / AI 툴 실용 케이스</li></ul></div>
+      </div>
+    </div>
+
+    <div class="member-block" data-member2="jeongyong">
+      <div class="okr-member-header" style="background:#FFF3E0;border-left-color:#E37400;">
+        <div class="okr-member-role">🏪 Agency Lead</div>
+        <div class="okr-member-name">JeongYong Huh</div>
+        <div class="okr-member-mission">"Agency Vanguard 3.0 — Sustain & Operationalize"</div>
+      </div>
+      <div class="okr-cats">
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>Gate Agency 공식 프로그램 5개 게이트 에이전시 스케일</li><li>Echo·Nasmedia·Mezzomedia 파트너십 확대 · SM C&C Full-funnel</li><li>New Partner Day 통합(Agency + NBS) · Finance Day 4/30 주도</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>APAC Echoes Q2 3개 공유 · Commerce Insight Report(Incross·GDS)</li><li>DOOH 퍼포먼스 테스트 · JP Agency Support(Takashi·Yaaha)</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>Jun과 파트너십 강화 · Ye Eun과 4A 에이전시 타겟팅 전략 수립</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>영어 회화 향상 / LinkedIn 팔로워 1K / 2kg 감량</li></ul></div>
+      </div>
+    </div>
+
+    <div class="member-block" data-member2="sangwoo">
+      <div class="okr-member-header" style="background:#E0F7FA;border-left-color:#00BCD4;">
+        <div class="okr-member-role">⚙️ NBS Infra</div>
+        <div class="okr-member-name">Sangwoo Byeon</div>
+        <div class="okr-member-mission">"Necessary, Not an Accessory"</div>
+      </div>
+      <div class="okr-cats">
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>Agency FAQ Page — 6개월 로그 분류 → RAG+LLM 챗봇</li><li>Market Intel — SensorTower 3개 데이터셋 → NBS 리치아웃</li><li>SDR 자동화 — n8n 엔드투엔드, 인력 개입 20% 미만</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>APAC Echoes Q2 케이스 3개 · Global SDR 격주 싱크 리드</li><li>MKT: 지속 가능 리드젠 채널 식별 · GM/GDS/MKT: 세일즈 덱 개선</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>Slack 지식 공유 3개 테마 · 긍정적 에너지 전파</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>꾸준한 저널링 / 바른 자세·스트레칭</li></ul></div>
+      </div>
+    </div>
+
+    <div class="member-block" data-member2="jun">
+      <div class="okr-member-header" style="background:#F3E8FD;border-left-color:#9C27B0;">
+        <div class="okr-member-role">🚀 NBS Lead</div>
+        <div class="okr-member-name">Jun Kwon</div>
+        <div class="okr-member-mission">"AI-Native NBS Architect · New Frontiers"</div>
+      </div>
+      <div class="okr-cats">
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>NBS Consulting Framework v1.0 — 3+ 딜 적용</li><li>Gate/Sub 에이전시 MVP 10개+ · Finance VIP 세미나 4/30</li><li>NBS-GSS 미드마켓 지원 모델 구축</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>Sr.NBS에게 기존 딜 운영 70%+ 핸드오버 · Yuta 멘토링</li><li>SDR 자동화 XFN 프로젝트 · Sangwoo와 Market Intel Tool 구축</li><li>APAC Echoes 케이스 3개+</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>Sr.NBS + backfill 채용 mid-Q2 · Hankhil과 핸드오버북 공동 발간</li><li>Slack 월 3개 지식 공유 · 주간 1:1 유지</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>LinkedIn/Brunch 아티클 3편+ / 운동 95% 준수 sub-80kg / 재정 로드맵</li></ul></div>
+      </div>
+    </div>
+
+    <div class="member-block" data-member2="yeeun">
+      <div class="okr-member-header" style="background:#F3E8FD;border-left-color:#9C27B0;">
+        <div class="okr-member-role">🚀 NBS</div>
+        <div class="okr-member-name">Ye Eun Park</div>
+        <div class="okr-member-mission">"Go Further Together"</div>
+      </div>
+      <div class="okr-cats">
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>파이프라인 정비 — 리드→기회 전환 명확성 · 단계별 드롭오프 감소</li><li>Com2uS · PRND 예산 확보 · Triggers · Delighroom Non-game IAA</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>MKT: 리드 소스별 퍼널 가시성 · GM/Agency: MVP 프로그램 활용</li><li>NEXT/CTV: 신제품 세일즈 기회 내재화</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>팀 내 신뢰할 수 있는 리스너 · 개방성 일상화</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>꾸준한 운동 루틴 재개 / 매일 자기 명상</li></ul></div>
+      </div>
+    </div>
+
+    <div class="member-block" data-member2="hankhil">
+      <div class="okr-member-header" style="background:#E0F7FA;border-left-color:#00BCD4;">
+        <div class="okr-member-role">⚙️ IM/NBS Ops</div>
+        <div class="okr-member-name">Hankhil Lee</div>
+        <div class="okr-member-mission">"Step Up — Individual & Team Operations"</div>
+      </div>
+      <div class="okr-cats">
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>Project Sprout — NBS SMB 효율 관리 · NBS→IM→GM 전환 톤앤매너</li><li>CTV·Web 신규 기회 발굴 · 매출의 최소 10% 신규 커버</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>Pub Demographic Improvements → 타 리전 배포</li><li>Supercent IAA 지속 성장 · KR IAA 비즈니스 데이터 기반 구축</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>긍정적 언어 주로 사용 · 시니어 레벨 영향력 · Buddy(Ben) 지원</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>5kg 감량 / 러닝 재개 월 30km+ / 독서 월 1권</li></ul></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     TAB 3: 도움 요청 액티비티
+═══════════════════════════════════ -->
+<div class="tab-view" id="tab-help">
+  <div class="help-section">
+
+    <div class="help-intro">
+      <h2>🤝 도움 요청 액티비티</h2>
+      <p>서로의 OKR을 들은 후, 아래 문장을 완성해서 말해주세요.<br>리소스를 늘리지 않고 — 팀 안에서 서로 줄 수 있는 것을 찾는 시간입니다.</p>
+    </div>
+
+    <div class="help-template">
+      "이번 분기에 <span class="blank">______</span> 하려 하는데,<br>
+      <span class="blank">______</span> 부분에서 어려움이 있으니<br>
+      <span class="blank">______</span> 를 같이 도와줄 수 있는 사람을 찾습니다."
+    </div>
+
+    <div class="section-label-sm">예시 — 이렇게 말하면 돼요</div>
+
+    <div class="help-cards">
+
+      <div class="help-card">
+        <div class="help-card-top">
+          <div class="help-avatar" style="background:#1A73E8;">DS</div>
+          <div><div class="help-name">Dabin Son</div><div class="help-role">Gaming SGM</div></div>
+        </div>
+        <div class="help-sentence">
+          "이번 분기에 <span class="doing">IAA Forum을 론칭</span>하려 하는데,
+          <span class="stuck">Forum에 담을 MM 계정 IAA 케이스가 부족한 부분</span>에서 어려움이 있으니
+          <span class="needed">IAA 타깃 MM 어카운트 리스트업을 같이 해줄 수 있는 사람</span>을 찾습니다."
+        </div>
+      </div>
+
+      <div class="help-card">
+        <div class="help-card-top">
+          <div class="help-avatar" style="background:#00BCD4;">SB</div>
+          <div><div class="help-name">Sangwoo Byeon</div><div class="help-role">NBS Infra</div></div>
+        </div>
+        <div class="help-sentence">
+          "이번 분기에 <span class="doing">Agency FAQ Chatbot을 구축</span>하려 하는데,
+          <span class="stuck">실제 반복 문의 데이터를 분류하는 부분</span>에서 어려움이 있으니
+          <span class="needed">6개월치 에이전시 이메일 카테고리 분류를 도와줄 수 있는 사람</span>을 찾습니다."
+        </div>
+      </div>
+
+      <div class="help-card">
+        <div class="help-card-top">
+          <div class="help-avatar" style="background:#0F9D58;">SP</div>
+          <div><div class="help-name">Sangeun Park</div><div class="help-role">Consumer GM</div></div>
+        </div>
+        <div class="help-sentence">
+          "이번 분기에 <span class="doing">Horizon 3 케이스 스터디를 완성</span>하려 하는데,
+          <span class="stuck">MSM × MA × MCM 내러티브를 혼자 설계하는 부분</span>에서 어려움이 있으니
+          <span class="needed">MCM 오프사이트 케이스를 같이 만들어줄 수 있는 사람</span>을 찾습니다."
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section-label-sm" style="margin-top:28px;">지금 내 문장을 작성해보세요</div>
+
+    <div class="your-turn">
+      <p>빈칸을 채우면 아래에 내 문장이 완성돼요. 세션에서 소리 내어 말할 거예요.</p>
+
+      <!-- 입력 폼 -->
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:13px;color:#555;white-space:nowrap;">이번 분기에</span>
+          <input type="text" id="f1" placeholder="무엇을 하려 하는가" oninput="buildSentence()"
+            style="flex:1;min-width:160px;border:1.5px solid #c0d0ff;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;color:#111;outline:none;background:#fff;">
+          <span style="font-size:13px;color:#555;white-space:nowrap;">하려 하는데,</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <input type="text" id="f2" placeholder="어떤 부분에서 막히는가" oninput="buildSentence()"
+            style="flex:1;min-width:200px;border:1.5px solid #ffb3b3;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;color:#111;outline:none;background:#fff;">
+          <span style="font-size:13px;color:#555;white-space:nowrap;">부분에서 어려움이 있으니</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <input type="text" id="f3" placeholder="어떤 도움이 필요한가" oninput="buildSentence()"
+            style="flex:1;min-width:200px;border:1.5px solid #b3e6cc;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;color:#111;outline:none;background:#fff;">
+          <span style="font-size:13px;color:#555;white-space:nowrap;">를 같이 도와줄 수 있는 사람을 찾습니다.</span>
+        </div>
+      </div>
+
+      <!-- 완성된 문장 미리보기 -->
+      <div id="sentence-preview" style="display:none;background:#fff;border:2px solid var(--navy);border-radius:10px;padding:14px 16px;font-size:14px;color:#111;line-height:1.9;margin-bottom:12px;">
+      </div>
+
+      <!-- 복사 버튼 -->
+      <button id="copy-btn" onclick="copySentence()" style="display:none;background:var(--navy);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;">
+        📋 문장 복사하기
+      </button>
+      <span id="copy-ok" style="display:none;font-size:12px;color:var(--teal2);font-weight:600;margin-left:8px;">✅ 복사됐어요!</span>
+    </div>
+
+    <div style="background:#f0f4ff;border-radius:12px;padding:16px;margin-top:16px;">
+      <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;">💡 좋은 문장의 기준</div>
+      <div style="font-size:13px;color:#555;line-height:1.8;">
+        ✅ 리소스 추가 없이 실행 가능한 것<br>
+        ✅ 두 사람 이상의 KR에 동시에 기여<br>
+        ✅ 이번 주 안에 첫 스텝 가능<br>
+        ❌ 막연한 "같이 해봐요" 수준<br>
+        ❌ 이미 다른 미팅에서 논의된 것
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+  // ── Help sentence builder ──
+  function buildSentence() {
+    const f1 = document.getElementById('f1').value.trim();
+    const f2 = document.getElementById('f2').value.trim();
+    const f3 = document.getElementById('f3').value.trim();
+    const preview = document.getElementById('sentence-preview');
+    const btn = document.getElementById('copy-btn');
+
+    if (!f1 && !f2 && !f3) { preview.style.display = 'none'; btn.style.display = 'none'; return; }
+
+    const v1 = f1 || '<span style="color:#aaa;">______</span>';
+    const v2 = f2 || '<span style="color:#aaa;">______</span>';
+    const v3 = f3 || '<span style="color:#aaa;">______</span>';
+
+    preview.innerHTML =
+      `"이번 분기에 <strong style="color:var(--blue2);">${v1}</strong> 하려 하는데,<br>` +
+      `<strong style="color:#c0392b;">${v2}</strong> 부분에서 어려움이 있으니<br>` +
+      `<strong style="color:var(--teal2);">${v3}</strong> 를 같이 도와줄 수 있는 사람을 찾습니다."`;
+    preview.style.display = 'block';
+    btn.style.display = (f1 && f2 && f3) ? 'inline-block' : 'none';
+  }
+
+  function copySentence() {
+    const f1 = document.getElementById('f1').value.trim();
+    const f2 = document.getElementById('f2').value.trim();
+    const f3 = document.getElementById('f3').value.trim();
+    const text = `"이번 분기에 ${f1} 하려 하는데, ${f2} 부분에서 어려움이 있으니 ${f3} 를 같이 도와줄 수 있는 사람을 찾습니다."`;
+    navigator.clipboard.writeText(text).then(() => {
+      const ok = document.getElementById('copy-ok');
+      ok.style.display = 'inline';
+      setTimeout(() => { ok.style.display = 'none'; }, 2000);
+    });
+  }
+
+  // ── Tab switching ──
+  function switchTab(id) {
+    document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  // ── Detail member filter ──
+  function switchDetail(id, btn) {
+    document.querySelectorAll('#detailNav .detail-nb').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    document.querySelectorAll('.member-block').forEach(block => {
+      block.style.display = (id === 'all' || block.dataset.member2 === id) ? 'block' : 'none';
+    });
+  }
+
+  // ── Pillar filter (Tab 1) ──
+  let activePillar = null;
+  // 원래 카드 순서 저장
+  let originalOrder = null;
+
+  function filterByPillar(num, name, desc) {
+    activePillar = num;
+    const grid = document.getElementById('personGrid');
+    const cards = Array.from(grid.querySelectorAll('.person-card'));
+
+    // 처음 클릭 시 원래 순서 저장
+    if (!originalOrder) {
+      originalOrder = cards.map(c => c.cloneNode(true));
+    }
+
+    const matched   = cards.filter(c => c.dataset.pillars.split(',').map(Number).includes(num));
+    const unmatched = cards.filter(c => !c.dataset.pillars.split(',').map(Number).includes(num));
+
+    // 그리드 비우고 matched 먼저, unmatched 나중에
+    grid.innerHTML = '';
+
+    matched.forEach(c => {
+      c.classList.add('highlighted');
+      c.classList.remove('faded');
+      c.style.transition = 'opacity .25s, transform .25s';
+      grid.appendChild(c);
+    });
+    unmatched.forEach(c => {
+      c.classList.add('faded');
+      c.classList.remove('highlighted');
+      c.style.transition = 'opacity .25s';
+      grid.appendChild(c);
+    });
+
+    // pillar 활성화
+    document.querySelectorAll('.k-pillar').forEach(p => {
+      p.classList.toggle('active', parseInt(p.dataset.pillar) === num);
+    });
+
+    const info = document.getElementById('pillarInfo');
+    info.textContent = `Pillar ${num}: ${name} — ${desc}`;
+    info.classList.add('visible');
+    document.getElementById('resetBtn').classList.add('visible');
+
+    // 그리드 위치로 부드럽게 스크롤
+    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function resetFilter() {
+    activePillar = null;
+    const grid = document.getElementById('personGrid');
+
+    if (originalOrder) {
+      grid.innerHTML = '';
+      originalOrder.forEach(c => {
+        c.classList.remove('highlighted', 'faded');
+        // 이벤트 핸들러 재연결 불필요 — onclick은 HTML attribute라 cloneNode로 유지됨
+        grid.appendChild(c);
+      });
+      originalOrder = null;
+    } else {
+      document.querySelectorAll('.person-card').forEach(c => c.classList.remove('highlighted', 'faded'));
+    }
+
+    document.querySelectorAll('.k-pillar').forEach(p => p.classList.remove('active'));
+    document.getElementById('pillarInfo').classList.remove('visible');
+    document.getElementById('resetBtn').classList.remove('visible');
+  }
+</script>
+
+</body>
+</html>
