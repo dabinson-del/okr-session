@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Korea Team OKR Session — 참가자</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap');
+
+  :root {
+    --blue: #1A73E8;
+    --blue-light: #E8F0FE;
+    --blue-dark: #1557B0;
+    --green: #1E8E3E;
+    --green-light: #E6F4EA;
+    --yellow: #F9AB00;
+    --yellow-light: #FEF7E0;
+    --red: #D93025;
+    --gray1: #202124;
+    --gray2: #5F6368;
+    --gray3: #9AA0A6;
+    --gray4: #F8F9FA;
+    --gray5: #E8EAED;
+    --white: #FFFFFF;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    background: #F1F3F4;
+    color: var(--gray1);
+    font-size: 15px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* ── TOP NAV ── */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray5);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .top-nav::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    flex-shrink: 0;
+    padding: 14px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray3);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    font-family: inherit;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    transition: color .2s, border-color .2s;
+  }
+  .nav-btn.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+  }
+
+  /* ── VIEWS ── */
+  .view { display: none; padding: 16px 16px 40px; }
+  .view.active { display: block; }
+
+  /* ── HERO CARD ── */
+  .hero {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    margin-bottom: 16px;
+    color: white;
+  }
+  .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; opacity: .7; margin-bottom: 6px; }
+  .hero-title { font-size: 24px; font-weight: 900; line-height: 1.2; margin-bottom: 10px; }
+  .hero-desc { font-size: 13px; opacity: .85; line-height: 1.6; }
+  .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .hero-tag {
+    background: rgba(255,255,255,.18);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--blue);
+    text-transform: uppercase;
+    margin: 20px 0 10px;
+  }
+
+  /* ── CARD BASE ── */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray1);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-body { font-size: 13px; color: var(--gray2); line-height: 1.7; }
+
+  /* ── TIMELINE / AGENDA ── */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .tl-item {
+    display: flex;
+    gap: 14px;
+    position: relative;
+  }
+  .tl-item:not(:last-child) .tl-line {
+    position: absolute;
+    left: 19px;
+    top: 36px;
+    bottom: -4px;
+    width: 2px;
+    background: var(--gray5);
+  }
+  .tl-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+  .tl-dot {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .tl-item.opt .tl-dot { background: var(--green-light); }
+  .tl-content {
+    flex: 1;
+    padding: 8px 0 22px;
+  }
+  .tl-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+  .tl-title { font-size: 15px; font-weight: 700; color: var(--gray1); }
+  .tl-badge {
+    flex-shrink: 0;
+    background: var(--blue);
+    color: #fff;
+    border-radius: 10px;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .tl-item.opt .tl-badge { background: var(--green); }
+  .tl-time { font-size: 12px; color: var(--blue); font-weight: 600; margin-bottom: 4px; }
+  .tl-desc { font-size: 13px; color: var(--gray2); line-height: 1.6; }
+
+  /* ── STEP CARDS (퍼실리테이터) ── */
+  .step-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    overflow: hidden;
+  }
+  .step-header {
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-header-text { flex: 1; }
+  .step-header-title { font-size: 15px; font-weight: 700; }
+  .step-header-meta { font-size: 12px; color: var(--gray3); margin-top: 1px; }
+  .step-chevron { font-size: 18px; color: var(--gray3); transition: transform .25s; flex-shrink: 0; }
+  .step-card.open .step-chevron { transform: rotate(180deg); }
+  .step-body {
+    display: none;
+    padding: 0 16px 16px;
+    border-top: 1px solid var(--gray5);
+  }
+  .step-card.open .step-body { display: block; }
+
+  .script-box {
+    background: var(--yellow-light);
+    border-left: 3px solid var(--yellow);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 12px 14px;
+    margin: 12px 0;
+    font-size: 13px;
+    color: var(--gray1);
+    line-height: 1.7;
+  }
+  .script-box .label-sm { font-size: 10px; font-weight: 700; letter-spacing: 1px; color: var(--yellow); text-transform: uppercase; margin-bottom: 4px; }
+
+  .tip-box {
+    background: var(--blue-light);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--blue-dark);
+    line-height: 1.6;
+    margin-top: 10px;
+  }
+
+  .checklist { list-style: none; margin-top: 10px; }
+  .checklist li {
+    padding: 6px 0 6px 24px;
+    position: relative;
+    font-size: 13px;
+    color: var(--gray2);
+    border-bottom: 1px solid var(--gray5);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '☐';
+    position: absolute;
+    left: 0;
+    color: var(--gray3);
+    font-size: 15px;
+  }
+
+  /* ── OKR CARDS ── */
+  .okr-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--blue);
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .okr-card.gaming  { border-left-color: #1A73E8; }
+  .okr-card.consumer{ border-left-color: #0F9D58; }
+  .okr-card.mm      { border-left-color: #F9AB00; }
+  .okr-card.agency  { border-left-color: #E37400; }
+  .okr-card.nbs     { border-left-color: #9C27B0; }
+  .okr-card.infra   { border-left-color: #00BCD4; }
+
+  .okr-name { font-size: 11px; font-weight: 700; color: var(--gray3); letter-spacing: .5px; margin-bottom: 4px; }
+  .okr-mission { font-size: 14px; font-weight: 700; color: var(--gray1); line-height: 1.4; margin-bottom: 6px; }
+  .okr-target { font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 6px; }
+  .okr-krs { font-size: 12.5px; color: var(--gray2); line-height: 1.7; }
+  .okr-krs li { margin-left: 14px; }
+
+  /* ── SYNERGY THEMES ── */
+  .theme-card {
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .theme-card.t1 { background: var(--blue-light); }
+  .theme-card.t2 { background: #E6F4EA; }
+  .theme-card.t3 { background: var(--yellow-light); }
+  .theme-card.t4 { background: #FCE8E6; }
+  .theme-card.t5 { background: #F3E8FD; }
+  .theme-card.t6 { background: #E0F7FA; }
+  .theme-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .theme-icon { font-size: 22px; }
+  .theme-title { font-size: 15px; font-weight: 700; color: var(--gray1); }
+  .theme-who { font-size: 12px; color: var(--gray2); margin-bottom: 8px; }
+  .theme-qlist { font-size: 13px; color: var(--gray1); line-height: 1.7; }
+  .theme-qlist li { margin-left: 16px; margin-bottom: 2px; }
+
+  /* ── ACTION TEMPLATE ── */
+  .action-form {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  .action-num {
+    display: inline-block;
+    background: var(--blue);
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+  .action-field { margin-bottom: 12px; }
+  .action-label { font-size: 11px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
+  .action-input {
+    width: 100%;
+    border: 1.5px solid var(--gray5);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--gray1);
+    background: var(--gray4);
+    resize: none;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .action-input:focus { border-color: var(--blue); background: white; }
+  .action-input::placeholder { color: var(--gray3); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 20px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    transition: opacity .2s;
+  }
+  .btn:active { opacity: .8; }
+  .btn-primary { background: var(--blue); color: white; }
+  .btn-outline { background: white; color: var(--blue); border: 1.5px solid var(--blue); }
+  .btn-green { background: var(--green); color: white; }
+  .btn-full { width: 100%; justify-content: center; margin-top: 6px; }
+
+  /* ── TIMER ── */
+  .timer-widget {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    margin-bottom: 16px;
+  }
+  .timer-display {
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--gray1);
+    letter-spacing: -2px;
+    margin: 8px 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .timer-display.warning { color: var(--yellow); }
+  .timer-display.danger  { color: var(--red); }
+  .timer-label { font-size: 13px; color: var(--gray3); font-weight: 600; }
+  .timer-presets { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 12px 0; }
+  .preset-btn {
+    padding: 6px 16px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px solid var(--gray5);
+    background: var(--gray4);
+    color: var(--gray2);
+    font-family: inherit;
+  }
+  .preset-btn.active { background: var(--blue-light); border-color: var(--blue); color: var(--blue); }
+  .timer-controls { display: flex; gap: 10px; justify-content: center; margin-top: 12px; }
+
+  /* ── GROUP SPLIT ── */
+  .group-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .group-box {
+    border-radius: var(--radius);
+    padding: 14px;
+    text-align: center;
+  }
+  .group-box.a { background: var(--blue-light); }
+  .group-box.b { background: var(--green-light); }
+  .group-title { font-size: 16px; font-weight: 900; color: var(--gray1); margin-bottom: 8px; }
+  .group-members { font-size: 12px; color: var(--gray2); line-height: 1.8; }
+
+  /* ── NOTION EXPORT ── */
+  .export-box {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    margin-bottom: 10px;
+  }
+  .export-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .export-preview {
+    background: var(--gray4);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    color: var(--gray2);
+    line-height: 1.8;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--gray5);
+    margin: 16px 0;
+  }
+
+  .badge {
+    display: inline-block;
+    border-radius: 10px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .badge-blue   { background: var(--blue-light); color: var(--blue); }
+  .badge-green  { background: var(--green-light); color: var(--green); }
+  .badge-yellow { background: var(--yellow-light); color: #B06000; }
+
+  /* ── Member OKR blocks ── */
+  .member-block { margin-bottom: 20px; }
+
+  .okr-member-header {
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: 14px 16px 12px;
+    border-left: 5px solid transparent;
+  }
+  .okr-member-header.gaming   { background: #E8F0FE; border-left-color: var(--blue); }
+  .okr-member-header.consumer { background: #E6F4EA; border-left-color: #0F9D58; }
+  .okr-member-header.mm       { background: var(--yellow-light); border-left-color: var(--yellow); }
+  .okr-member-header.agency   { background: #FFF3E0; border-left-color: #E37400; }
+  .okr-member-header.nbs      { background: #F3E8FD; border-left-color: #9C27B0; }
+  .okr-member-header.infra    { background: #E0F7FA; border-left-color: #00BCD4; }
+
+  .okr-member-role   { font-size: 11px; font-weight: 700; color: var(--gray3); letter-spacing:.5px; margin-bottom: 2px; }
+  .okr-member-name   { font-size: 18px; font-weight: 900; color: var(--gray1); margin-bottom: 4px; }
+  .okr-member-mission{ font-size: 12px; color: var(--gray2); font-style: italic; line-height: 1.4; }
+
+  .okr-cats { border: 1px solid var(--gray5); border-top: none; border-radius: 0 0 var(--radius) var(--radius); overflow: hidden; }
+
+  .okr-cat-card {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--gray5);
+  }
+  .okr-cat-card:last-child { border-bottom: none; }
+
+  .okr-cat-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    margin-bottom: 7px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 6px;
+    padding: 2px 8px;
+  }
+  .okr-cat-label.rev     { background: #E8F0FE; color: var(--blue); }
+  .okr-cat-label.country { background: #FCE8E6; color: var(--red); }
+  .okr-cat-label.xfn     { background: #E6F4EA; color: var(--green); }
+  .okr-cat-label.people  { background: #FFF3E0; color: #E37400; }
+  .okr-cat-label.personal{ background: #F3E8FD; color: #9C27B0; }
+
+  #memberNav .nav-btn { font-size: 12px; padding: 10px 12px; }
+
+  /* ── Synergy freq bar ── */
+  .freq-row { display:flex; align-items:center; gap:10px; margin-bottom:9px; }
+  .freq-label { font-size:12px; color:var(--gray1); min-width:148px; }
+  .freq-track { flex:1; height:5px; background:var(--gray5); border-radius:3px; overflow:hidden; }
+  .freq-fill { height:100%; border-radius:3px; }
+  .freq-num { font-size:12px; font-weight:700; min-width:28px; text-align:right; }
+
+  /* ── Synergy topic cards ── */
+  .syn-card { background:var(--white); border:1px solid var(--gray5); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; }
+  .syn-header { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+  .syn-rank { font-size:11px; font-weight:700; color:var(--gray3); min-width:22px; }
+  .syn-title { font-size:15px; font-weight:700; color:var(--gray1); flex:1; }
+  .syn-badge { font-size:11px; font-weight:700; padding:2px 9px; border-radius:20px; white-space:nowrap; }
+  .syn-members { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:12px; }
+  .syn-chip { font-size:12px; font-weight:600; padding:3px 10px; border-radius:20px; }
+  .syn-proposal { border-left:2px solid var(--gray5); padding-left:10px; margin-bottom:10px; font-size:13px; color:var(--gray2); line-height:1.65; }
+  .syn-proposal:last-child { margin-bottom:0; }
+  .syn-pair { font-size:12px; font-weight:700; color:var(--gray1); margin-bottom:3px; }
+
+  /* ── Canvas sections ── */
+  .canvas-section { margin-bottom: 12px; }
+  .canvas-label { font-size: 11px; font-weight: 700; letter-spacing: .4px; border-radius: 6px; padding: 3px 10px; display: inline-block; margin-bottom: 6px; }
+  .canvas-hint { font-size: 12px; color: var(--gray2); line-height: 1.5; margin-bottom: 7px; }
+  .canvas-input { width: 100%; border: 1.5px solid var(--gray5); border-radius: var(--radius-sm); padding: 10px 12px; font-size: 14px; font-family: inherit; color: var(--gray1); background: var(--gray4); resize: none; outline: none; display: block; transition: border-color .2s; box-sizing: border-box; }
+  .canvas-input:focus { border-color: var(--blue); background: white; }
+  .canvas-input::placeholder { color: var(--gray3); font-size: 12px; }
+  #groupNav .nav-btn { font-size: 13px; font-weight: 700; padding: 12px 20px; }
+
+  /* saved actions display */
+  #actions-summary { display: none; }
+  .saved-action {
+    background: var(--green-light);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--gray1);
+    line-height: 1.6;
+    border-left: 3px solid var(--green);
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav" id="topNav">
+  <button class="nav-btn active" onclick="switchView('agenda')">📋 진행 순서</button>
+  <button class="nav-btn" onclick="switchView('okrs')">👤 OKR 요약</button>
+  <button class="nav-btn" onclick="switchView('synergy')">🔗 시너지 테마</button>
+  <button class="nav-btn" onclick="switchView('actions')">✅ 액션 기록</button>
+  <button class="nav-btn" onclick="switchView('timer')">⏱ 타이머</button>
+</nav>
+
+<!-- ══════════════════════════════════
+     VIEW 1: AGENDA
+══════════════════════════════════ -->
+<div class="view active" id="view-agenda">
+  <div class="hero">
+    <div class="hero-eyebrow">MOLOCO KOREA · Q2 2026</div>
+    <div class="hero-title">Team OKR<br>Alignment Session</div>
+    <div class="hero-desc">각자의 OKR을 공유하고, 겹치는 목표에서 협업 기회를 찾는 시간.<br>리소스 추가 없이, 대화만으로.</div>
+    <div class="hero-tags">
+      <span class="hero-tag">⏱ 90분</span>
+      <span class="hero-tag">👥 12명 × 2그룹</span>
+      <span class="hero-tag">☀️ 한강 돗자리</span>
+      <span class="hero-tag" style="background:rgba(100,255,150,.25);">👥 참가자용</span>
+    </div>
+  </div>
+
+  <div class="section-label">그룹 구성</div>
+  <div class="group-grid">
+    <div class="group-box a">
+      <div class="group-title">그룹 A 🔵</div>
+      <div class="group-members">JaeKyun<br>KuYoung<br>Dabin<br>DongKwon<br>Sangin<br>Sangwoo</div>
+    </div>
+    <div class="group-box b">
+      <div class="group-title">그룹 B 🟢</div>
+      <div class="group-members">Shala<br>Sangeun<br>JeongYong<br>Jun<br>Ye Eun<br>Hankhil</div>
+    </div>
+  </div>
+  <div class="card" style="background:var(--yellow-light); border:1px solid #F9AB00;">
+    <div class="card-body" style="color:#7A5200; font-size:13px;">
+      💡 그룹은 제안이에요. 세션 당일 팀이 편한 방식으로 조정하면 됩니다. 두 그룹이 같은 순서로 진행하고 마지막에 합치면 좋아요.
+    </div>
+  </div>
+
+  <div class="section-label">전체 흐름 (90분)</div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left"><div class="tl-dot">🎯</div></div>
+      <div class="tl-content">
+        <div class="tl-time">00:00</div>
+        <div class="tl-header">
+          <div class="tl-title">킥오프</div>
+          <div class="tl-badge">5분</div>
+        </div>
+        <div class="tl-desc">오늘 목적 + 그라운드 룰 공유. 두 그룹 동시 시작.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left"><div class="tl-dot">🗣</div></div>
+      <div class="tl-content">
+        <div class="tl-time">00:05</div>
+        <div class="tl-header">
+          <div class="tl-title">OKR 1분 스냅샷</div>
+          <div class="tl-badge">20분</div>
+        </div>
+        <div class="tl-desc">그룹 내 1인당 60초. 미션 + 이번 분기 핵심 KR 2개만.<br>
+          <span class="badge badge-blue" style="margin-top:6px; display:inline-block;">타이머 탭 활용</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left"><div class="tl-dot">🔗</div></div>
+      <div class="tl-content">
+        <div class="tl-time">00:25</div>
+        <div class="tl-header">
+          <div class="tl-title">시너지 토론</div>
+          <div class="tl-badge">35분</div>
+        </div>
+        <div class="tl-desc">겹치는 목표 찾기 → 줄 수 있는 것 / 필요한 것 매칭.<br>시너지 테마 탭 참고. 자유 토론 형식.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left"><div class="tl-dot">✍️</div></div>
+      <div class="tl-content">
+        <div class="tl-time">01:00</div>
+        <div class="tl-header">
+          <div class="tl-title">액션 아이템 정리</div>
+          <div class="tl-badge">20분</div>
+        </div>
+        <div class="tl-desc">두 그룹 합류. 각 그룹에서 나온 액션 2~3개 공유.<br>
+          <span class="badge badge-blue" style="margin-top:6px; display:inline-block;">액션 기록 탭에서 입력</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left"><div class="tl-dot">🎉</div></div>
+      <div class="tl-content">
+        <div class="tl-time">01:20</div>
+        <div class="tl-header">
+          <div class="tl-title">마무리</div>
+          <div class="tl-badge">10분</div>
+        </div>
+        <div class="tl-desc">액션 오너 확정 + 노션/시트 업로드 담당 정하기.</div>
+      </div>
+    </div>
+
+    <div class="tl-item opt">
+      <div class="tl-left"><div class="tl-dot" style="background:#E6F4EA;">🚀</div></div>
+      <div class="tl-content">
+        <div class="tl-time" style="color:var(--green);">01:30+</div>
+        <div class="tl-header">
+          <div class="tl-title">딥다이브 (선택)</div>
+          <div class="tl-badge" style="background:var(--green);">선택</div>
+        </div>
+        <div class="tl-desc">관심있는 사람끼리 남아서 특정 주제 심화 논의.<br>나머지는 자유!</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-label">그라운드 룰</div>
+  <div class="card">
+    <div class="card-body">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div style="font-size:13px;">⏰ 스냅샷은 진짜 60초</div>
+        <div style="font-size:13px;">🙅 리소스 추가 없이</div>
+        <div style="font-size:13px;">💡 아이디어 일단 꺼내기</div>
+        <div style="font-size:13px;">✍️ 액션엔 Owner 필수</div>
+        <div style="font-size:13px;">🤝 문제보다 기회에 집중</div>
+        <div style="font-size:13px;">📱 기록은 이 앱에</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- STEP 1 -->
+  <div class="step-card" onclick="toggleStep(this)">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div class="step-header-text">
+        <div class="step-header-title">킥오프</div>
+        <div class="step-header-meta">5분 · 00:00 시작</div>
+      </div>
+      <div class="step-chevron">›</div>
+    </div>
+    <div class="step-body">
+      <div class="script-box">
+        <div class="label-sm">💬 오프닝 스크립트</div>
+        "우리 팀 OKR 시트, 다들 한 번씩은 봤겠지만 사실 남의 것은 잘 모르잖아요. 오늘은 그걸 바꾸는 게 목적이에요. 각자 지금 뭘 하고 있는지 공유하고, 겹치는 부분에서 협업 아이디어를 같이 찾아보는 90분입니다."
+      </div>
+      <ul class="checklist">
+        <li>오늘 목적 3가지 읽어주기 (화면 공유 없이 말로)</li>
+        <li>그라운드 룰 한 번 쭉 훑기</li>
+        <li>타이머 앱 켜두기 (이 앱 타이머 탭)</li>
+      </ul>
+      <div class="tip-box">💡 "발표" 느낌 빼기. "그냥 지금 뭐 하고 있는지 얘기해 봐요" 톤으로.</div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step-card" onclick="toggleStep(this)">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div class="step-header-text">
+        <div class="step-header-title">OKR 스냅샷 라운드</div>
+        <div class="step-header-meta">20분 · 1인 60초</div>
+      </div>
+      <div class="step-chevron">›</div>
+    </div>
+    <div class="step-body">
+      <div class="script-box">
+        <div class="label-sm">💬 진행 멘트</div>
+        "순서대로 한 명씩, 딱 60초. 세 가지만 말해주세요: ① 이번 분기 내 미션 한 줄, ② 가장 중요한 KR 하나, ③ 지금 가장 고민인 것 하나. 60초 되면 제가 끊을게요, 미리 양해 부탁드려요!"
+      </div>
+      <ul class="checklist">
+        <li>타이머 60초 맞추고 시작 (타이머 탭)</li>
+        <li>60초 되면 부드럽게 "감사합니다, 다음 분!"</li>
+        <li>듣는 사람은 "공통점 있다" 싶으면 메모</li>
+        <li>질문은 나중에 — 지금은 공유만</li>
+      </ul>
+      <div class="tip-box">💡 퍼실리테이터 본인도 먼저 시범 보이면 분위기 풀림. 60초 짧아서 긴장감 생김 — 그게 포인트.</div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step-card" onclick="toggleStep(this)">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div class="step-header-text">
+        <div class="step-header-title">시너지 토론</div>
+        <div class="step-header-meta">35분 · 자유 토론</div>
+      </div>
+      <div class="step-chevron">›</div>
+    </div>
+    <div class="step-body">
+      <div class="script-box">
+        <div class="label-sm">💬 토론 시작 멘트</div>
+        "스냅샷 들으면서 '어, 나도 그거 하는데?' 싶었던 게 있으셨나요? 이제 그 얘기 해봅시다. 시너지 테마 탭 보면 미리 뽑아둔 주제들 있어요. 거기서 골라도 되고, 방금 스냅샷 듣고 떠오른 거 바로 얘기해도 돼요."
+      </div>
+      <div style="margin-top:12px;">
+        <div style="font-size:13px; font-weight:700; color:var(--gray1); margin-bottom:8px;">토론 중 3가지 질문 던지기</div>
+        <div style="font-size:13px; color:var(--gray2); line-height:1.8;">
+          ① "겹치는 KR이 있다면 같이 하면 어떨까요?"<br>
+          ② "내 output이 누군가의 input이 될 수 있을까요?"<br>
+          ③ "리소스 늘리지 않고 지금 당장 시작할 수 있는 게 있나요?"
+        </div>
+      </div>
+      <ul class="checklist" style="margin-top:12px;">
+        <li>10분마다 "지금까지 나온 아이디어 한 번 정리해볼까요?" 멘트</li>
+        <li>한 사람만 계속 말하면 "다른 분 생각은요?" 개입</li>
+        <li>나온 협업 아이디어 → 액션 기록 탭에 바로 입력</li>
+      </ul>
+      <div class="tip-box">💡 "좋은 아이디어" vs "당장 실행 가능한 아이디어" 구분하기. 큰 그림 얘기로 흐르면 "그럼 이번 주에 뭘 할 수 있을까요?"로 당기기.</div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step-card" onclick="toggleStep(this)">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <div class="step-header-text">
+        <div class="step-header-title">전체 합류 + 액션 확정</div>
+        <div class="step-header-meta">20분 · 두 그룹 합쳐서</div>
+      </div>
+      <div class="step-chevron">›</div>
+    </div>
+    <div class="step-body">
+      <div class="script-box">
+        <div class="label-sm">💬 합류 멘트</div>
+        "각 그룹에서 나온 거 2~3개씩 공유해볼게요. A그룹부터, 가장 실행 가능한 아이디어 하나만 먼저요."
+      </div>
+      <ul class="checklist">
+        <li>각 그룹 아이디어 공유 (그룹당 5분)</li>
+        <li>겹치는 아이디어 있으면 합치기</li>
+        <li>각 액션에 Owner 한 명 지정</li>
+        <li>기한 구체적으로 — "이번 주 금요일까지" 수준</li>
+      </ul>
+      <div class="tip-box">💡 Owner 없는 액션은 액션이 아님. "같이 하자"는 누군가 한 명이 드라이브 해야 실행됨.</div>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step-card" onclick="toggleStep(this)">
+    <div class="step-header">
+      <div class="step-num">5</div>
+      <div class="step-header-text">
+        <div class="step-header-title">마무리 + 딥다이브 모집</div>
+        <div class="step-header-meta">10분</div>
+      </div>
+      <div class="step-chevron">›</div>
+    </div>
+    <div class="step-body">
+      <div class="script-box">
+        <div class="label-sm">💬 클로징 멘트</div>
+        "오늘 나온 액션 아이템은 [이름]이 노션에 정리해서 오늘 저녁 안에 Slack에 공유해 줄게요. 그리고 더 파고 싶은 주제 있는 분은 잠깐 더 남아서 얘기해요. 오늘 고생하셨습니다!"
+      </div>
+      <ul class="checklist">
+        <li>노션/시트 기록 담당 한 명 지정</li>
+        <li>딥다이브 원하는 주제 + 인원 확인</li>
+        <li>액션 기록 탭 → 노션 텍스트 복사해서 공유</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════
+     VIEW 3: OKR 요약
+══════════════════════════════════ -->
+<div class="view" id="view-okrs">
+
+  <div class="card" style="background:var(--blue-light); border:none; margin-bottom:4px;">
+    <div class="card-body" style="color:var(--blue-dark); font-size:13px;">
+      이름 탭을 눌러 카테고리별 OKR을 확인하세요.
+    </div>
+  </div>
+
+  <!-- 멤버 탭 필터 -->
+  <div class="top-nav" id="memberNav" style="position:static; margin: 12px -16px 14px; border-top:1px solid var(--gray5);">
+    <button class="nav-btn active" onclick="filterMember('all', this)">전체</button>
+    <button class="nav-btn" onclick="filterMember('kuyoung', this)">KuYoung</button>
+    <button class="nav-btn" onclick="filterMember('dabin', this)">Dabin</button>
+    <button class="nav-btn" onclick="filterMember('sangeun', this)">Sangeun</button>
+    <button class="nav-btn" onclick="filterMember('dongkwon', this)">DongKwon</button>
+    <button class="nav-btn" onclick="filterMember('sangin', this)">Sangin</button>
+    <button class="nav-btn" onclick="filterMember('jeongyong', this)">JeongYong</button>
+    <button class="nav-btn" onclick="filterMember('jun', this)">Jun</button>
+    <button class="nav-btn" onclick="filterMember('yeeun', this)">Ye Eun</button>
+    <button class="nav-btn" onclick="filterMember('sangwoo', this)">Sangwoo</button>
+    <button class="nav-btn" onclick="filterMember('hankhil', this)">Hankhil</button>
+  </div>
+
+  <!-- ─────────────────── KUYOUNG ─────────────────── -->
+  <div class="member-block" data-member="kuyoung">
+    <div class="okr-member-header gaming">
+      <div class="okr-member-role">🎮 Gaming GM</div>
+      <div class="okr-member-name">KuYoung Chung</div>
+      <div class="okr-member-mission">"Focus on Scale — NEXON & NETMARBLE 풀펀넬"</div>
+    </div>
+    <div class="okr-cats">
+      <div class="okr-cat-card">
+        <div class="okr-cat-label country">🇰🇷 Country Focus</div>
+        <ul class="okr-krs"><li>Dabin에게 캠페인 운영 위임 → 본인은 전략·XFN 어젠다 집중</li><li>NEXON을 KOR 게임사 UA 파이오니어로 포지셔닝</li><li>클라이언트와 장기적·올바른 방향으로 딜 (단기 꼼수 X)</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label xfn">🌏 X-Region / X-Function</div>
+        <ul class="okr-krs"><li>CHN: Yoon·Gordon과 1:1 파트너십 → CHN 시장 인사이트 ↔ CTV/NEXT 케이스 공유</li><li>JPN: Takashi 정기 1:1 → NEXON·NETMARBLE JPN 시장 이해 심화</li><li>GDS: 반복 활용 가능한 스케일러블 분석 인사이트 제공</li><li>Samsung Cloud Gaming 플레이북 구축 지원</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label people">🤝 People & Culture</div>
+        <ul class="okr-krs"><li>Dabin에게 명확한 가이던스로 위임 → 성장 지원</li><li>팀원에게 의미 있는 피드백 제공</li><li>원팀 스피릿 위한 다른 멤버에게 먼저 손 내밀기</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label personal">🏃 Personal</div>
+        <ul class="okr-krs"><li>주 3~4회 운동 유지</li><li>독서 (책 몇 권)</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── DABIN ─────────────────── -->
+  <div class="member-block" data-member="dabin">
+    <div class="okr-member-header gaming">
+      <div class="okr-member-role">🎮 Gaming GM (SGM)</div>
+      <div class="okr-member-name">Dabin Son</div>
+      <div class="okr-member-mission">"Focus on Revenue, Growth, Business"</div>
+    </div>
+    <div class="okr-cats">
+      <div class="okr-cat-card">
+        <div class="okr-cat-label country">🇰🇷 Country Focus</div>
+        <ul class="okr-krs"><li>Top Test Bed — tKPI·DCA·IAA·RE 중 베타 2개 적용 → 10% 추가 성장 기여</li><li>KOR Office OKR 리더 — 팀 OKR tKPI·IAA·RE 전체 25% 기여</li><li>AI 팔로워 — AI 스킬·피처 2개 팀 공유</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label xfn">🌏 X-Region / X-Function</div>
+        <ul class="okr-krs"><li>IAA Forum 론칭 (KR1)</li><li>테스트 성공 케이스 2개 APAC Echoes 포스팅</li><li>GDS: RE 데이터 인사이트 덱 (111PERCENT 기반) 제작</li><li>PSO: tKPI·DCA·SDK·RE 기회 최적화로 매출 5% 기여</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label people">🤝 People & Culture</div>
+        <ul class="okr-krs"><li>팀 에너지 레벨 높이기 — casual dinner 공동 주최</li><li>심리적 안전감 활동 공동 주최</li><li>부정적 표현·뉘앙스 자제</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label personal">🏃 Personal</div>
+        <ul class="okr-krs"><li>일본어 교육 영상 주 1회 시청</li><li>기타 레슨 주 2회</li><li>추가 3kg 감량</li><li>책 6권 독파</li><li>20km 달리기</li><li>재정 관리</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── SANGEUN ─────────────────── -->
+  <div class="member-block" data-member="sangeun">
+    <div class="okr-member-header consumer">
+      <div class="okr-member-role">🛍 Consumer GM</div>
+      <div class="okr-member-name">Sangeun Park</div>
+      <div class="okr-member-mission">"High-Impact Growth via XFN & X-Regional Collab"</div>
+    </div>
+    <div class="okr-cats">
+      <div class="okr-cat-card">
+        <div class="okr-cat-label country">🇰🇷 Country Focus</div>
+        <ul class="okr-krs"><li>Branding & Horizon 3 — TVING + Web CPC 브랜딩 내러티브 개발</li><li>브랜딩 에이전시 1~2개 신규 계정 유치 피칭</li><li>McDonald's 캠페인 케이스 스터디 완성 (TVING RTB + Moloco RE)</li><li>MSM × MA × MCM 협업 제안서 (Olive Young)</li><li>Project Sprout — Consumer 앱 클라이언트 QBR/MBR AI 자동화 프로세스 구축</li><li>분기 OKR 논의 세션 론칭 (팀 비즈니스 목표 지원)</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label xfn">🌏 X-Region / X-Function</div>
+        <ul class="okr-krs"><li>Sales Forum 2nd Global 론칭 (지역별 솔루션 공유)</li><li>APAC Echoes — AI 주제 2주 활성화 캠페인</li><li>GDS: 계절성 플레이북 (여름) + Commerce 포스트백·재방문 분석 표준화</li><li>CAS: TVING MCP 세일즈 엑설런스 확보</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label people">🤝 People & Culture</div>
+        <ul class="okr-krs"><li>XFN·X-Region 협업 기회 확대</li><li>지역 간 심리적 안전감·활발한 공유 문화 유지</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label personal">🏃 Personal</div>
+        <ul class="okr-krs"><li>앱 만들기</li><li>중국어 학습</li><li>독서 월 2권 이상</li><li>주 2회 이상 운동</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── DONGKWON ─────────────────── -->
+  <div class="member-block" data-member="dongkwon">
+    <div class="okr-member-header consumer">
+      <div class="okr-member-role">🛍 Consumer GM</div>
+      <div class="okr-member-name">DongKwon Yoo</div>
+      <div class="okr-member-mission">"Scalable Growth · Operationalizing Proven Strategies"</div>
+    </div>
+    <div class="okr-cats">
+      <div class="okr-cat-card">
+        <div class="okr-cat-label country">🇰🇷 Country Focus</div>
+        <ul class="okr-krs"><li>iOS LAT RE 채택 강화 — 데이터 파트너십 레버리지 + 경쟁사 인사이트 활용</li><li>iOS LAT RE를 전략적 업셀 레버로 활용 (iOS 미집행 광고주 전환)</li><li>Offsite Extension & MCM ML 적용 — 브랜드 캠페인 오픈 인터넷 확장</li><li>MCM 상품 선택 모델 Moloco Ads 내 성과 검증·스케일</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label xfn">🌏 X-Region / X-Function</div>
+        <ul class="okr-krs"><li>Horizon 3 — MCM/DS/PM/CAS 주요 스테이크홀더로 가치 제안 정의 리드</li><li>MCM 오프사이트 확장 케이스 개발 (SSG 등) → 초기 케이스 스터디 도출</li><li>Finance Day (4/30) NBS·Marketing과 협업 → Fintech 버티컬 입지 강화</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label people">🤝 People & Culture</div>
+        <ul class="okr-krs"><li>Non-gaming 광고 내부·클라이언트 간 Go-To Expert로 자리매김</li><li>NEXT/MCM/MSM 통합 GTM 내러티브 XFN 협업 지원</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label personal">🏃 Personal</div>
+        <ul class="okr-krs"><li>금연 줄이기 — 더 나은 습관으로 대체 (급하게 X)</li><li>독서 늘리기 — 호기심 유지</li><li>골프 레슨 꾸준히 + 실력 향상 즐기기</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── SANGIN ─────────────────── -->
+  <div class="member-block" data-member="sangin">
+    <div class="okr-member-header mm">
+      <div class="okr-member-role">📦 Mid-Market GM</div>
+      <div class="okr-member-name">Sangin Kim</div>
+      <div class="okr-member-mission">"Scalable MM Growth · Repeatable Automated Playbooks"</div>
+    </div>
+    <div class="okr-cats">
+      <div class="okr-cat-card">
+        <div class="okr-cat-label country">🇰🇷 Country Focus</div>
+        <ul class="okr-krs"><li>Tier 기반 MM 어카운트 관리 시스템 구축 (High/Mid/Low potential 구분)</li><li>Darwin Ops와 명확한 소유권·지원 모델 수립</li><li>High Spenders — Silver/Gold 티어 승격 전용 지원</li><li>Mid&amp;Low Spenders — Darwin Ops 배정 + 시나리오 액션 플레이북 배포</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label xfn">🌏 X-Region / X-Function</div>
+        <ul class="okr-krs"><li>GSS 협업으로 low-touch MM 클라이언트 참여 활성화</li><li>Darwin Ops 교육 세션 + 공유 OKR 정렬</li><li>NBS 팀과 고객 생애주기 전반 seamless 핸드오버 프로세스 수립</li><li>Agency 파트너를 통해 에이전시 관리 MM 계정 대상 bulk 컨설팅 모델 설계</li><li>JP MM 담당 GM과 정기 싱크 — MM 계정 관리 개선 논의</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label people">🤝 People & Culture</div>
+        <ul class="okr-krs"><li>신규 MM GM을 위한 체계적 온보딩 프로그램 설계 (1개월 내 램프업 목표)</li><li>Apple Search Ads 지식 공유 세션 — 상품 개요 + 실제 세일즈 케이스 포함</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label personal">🏃 Personal</div>
+        <ul class="okr-krs"><li>영어 비즈니스 역량 향상</li><li>다이어트·운동 루틴 3kg 감량</li><li>AI 툴 (Claude 등) 실용 케이스 개발 — vibe coding/자동화 학습</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── JEONGYONG ─────────────────── -->
+  <div class="member-block" data-member="jeongyong">
+    <div class="okr-member-header agency">
+      <div class="okr-member-role">🏪 Agency</div>
+      <div class="okr-member-name">JeongYong Huh</div>
+      <div class="okr-member-mission">"Agency Vanguard 3.0 — Sustain & Operationalize"</div>
+    </div>
+    <div class="okr-cats">
+      <div class="okr-cat-card">
+        <div class="okr-cat-label country">🇰🇷 Country Focus</div>
+        <ul class="okr-krs"><li>Gate Agency 공식 프로그램 5개 게이트 에이전시로 스케일</li><li>Echo·Nasmedia·Mezzomedia 전략적 에이전시 파트너십 확대 (Web 기회 포함)</li><li>SM C&amp;C 플래그십 케이스 심화 (Full-funnel DSP+CTV)</li><li>New Partner Day 통합 (Agency + NBS, 기존 Agent Partner Day sunset)</li><li>Echo Marketing (Non-Gate) 2027 Gate 프로그램 진입 탐색</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label xfn">🌏 X-Region / X-Function</div>
+        <ul class="okr-krs"><li>APAC Echoes Q2 3개 케이스 공유 (Market Intel·SDR Bot·FAQ Chatbot) — 글로벌 롤아웃 포지셔닝</li><li>Commerce Insight Report — Incross·GDS 협업, 9월 배포 목표</li><li>DOOH 퍼포먼스 테스트 — 디지털 옥외광고 × 퍼포먼스 마케팅 초기 케이스 발굴</li><li>JP Agency Support — Takashi 일본 에이전시 프로그램 구축·Yaaha 온보딩 지원</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label people">🤝 People & Culture</div>
+        <ul class="okr-krs"><li>NBS 시너지 — Jun과 파트너십 강화로 에이전시 운영 부하 분산</li><li>Ye Eun (에이전시 배경 신규 NBS)와 협업 — 4A 에이전시 타겟팅 전략 수립</li><li>AI 툴 (Claude 등) 활용으로 인턴 없이 고생산성 유지</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label personal">🏃 Personal</div>
+        <ul class="okr-krs"><li>영어 회화 실력 향상</li><li>LinkedIn 꾸준히 게시 → 팔로워 1K 달성</li><li>추가 2kg 감량 (근육 유지)</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── JUN ─────────────────── -->
+  <div class="member-block" data-member="jun">
+    <div class="okr-member-header nbs">
+      <div class="okr-member-role">🚀 NBS</div>
+      <div class="okr-member-name">Jun Kwon</div>
+      <div class="okr-member-mission">"AI-Native NBS Architect · New Frontiers"</div>
+    </div>
+    <div class="okr-cats">
+      <div class="okr-cat-card">
+        <div class="okr-cat-label country">🇰🇷 Country Focus</div>
+        <ul class="okr-krs"><li>NBS Consulting Framework v1.0 완성 — 전팀 교육, 3+ 라이브 딜 적용</li><li>Gate/Sub 에이전시 MVP 10개+ 활성화 → 에이전시 소싱 Fast Win 월 3건+</li><li>Finance VIP 세미나 (4/30) 실행 → Q2 Finance 딜 2건+ 클로징</li><li>NBS-GSS 미드마켓 지원 모델 구축 (OPPTY→Contract→Handover 명확한 소유권)</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label xfn">🌏 X-Region / X-Function</div>
+        <ul class="okr-krs"><li>Sr.NBS에게 기존 Direct·Agency 딜 운영 70%+ 핸드오버 (문서화 플레이북)</li><li>Yuta (NBS) 멘토링·램프업 리드 → 100% 어태인먼트 달성</li><li>SDR 자동화 XFN 프로젝트 1개 완료 (AI 툴, 인력 개입 &lt;20%)</li><li>Sangwoo와 SensorTower 기반 Market Intel Tool 구축·배포</li><li>APAC Echoes 케이스 3개+ 공유 (Market Intel·SDR Bot·FAQ Chatbot)</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label people">🤝 People & Culture</div>
+        <ul class="okr-krs"><li>Sr.NBS + backfill 채용 mid-Q2 완료 → 30-60-90 온보딩 마일스톤 실행</li><li>Sr.IM/Jr.IM 핸드오버북 Hankhil과 공동 발간 → 팀 공유·피드백</li><li>Slack 월 3개 지식 공유 (Thought Leadership)</li><li>직보 전원 주간 1:1 유지</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label personal">🏃 Personal</div>
+        <ul class="okr-krs"><li>LinkedIn/Brunch 세일즈 전략·리더십 아티클 3편+ 발행 (KR·EN)</li><li>운동 루틴 95% 준수 (테니스·헬스·러닝 주 3회) → sub-80kg 목표</li><li>파트너와 45년 재정 로드맵 업데이트 지속</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── YE EUN ─────────────────── -->
+  <div class="member-block" data-member="yeeun">
+    <div class="okr-member-header nbs">
+      <div class="okr-member-role">🚀 NBS</div>
+      <div class="okr-member-name">Ye Eun Park</div>
+      <div class="okr-member-mission">"Go Further Together — Team Mission & Vision 정렬"</div>
+    </div>
+    <div class="okr-cats">
+      <div class="okr-cat-card">
+        <div class="okr-cat-label country">🇰🇷 Country Focus</div>
+        <ul class="okr-krs"><li>파이프라인 정비 — 리드→기회 전환 명확성 제고, 각 단계 드롭오프 감소</li><li>파이프라인 헬스 정기 점검 (기회 자격·단계·진행 상황)</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label xfn">🌏 X-Region / X-Function</div>
+        <ul class="okr-krs"><li>MKT: 리드 소스별 퍼널 전반 가시성 확보 → attribution·최적화 강화</li><li>GM/Agency: MVP 프로그램 활용 신규 리드 발굴·시장 관계 심화</li><li>NEXT/CTV: 신제품·CTV 세일즈 기회 내재화 → 리드 프로파일 확장</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label people">🤝 People & Culture</div>
+        <ul class="okr-krs"><li>팀 내 신뢰할 수 있는 리스너 — 어떤 주제든 다가가기 편한 존재</li><li>개방성이 일상화된 팀 환경 기여</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label personal">🏃 Personal</div>
+        <ul class="okr-krs"><li>꾸준한 운동 루틴 재개</li><li>매일 자기 명상 재확립</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── SANGWOO ─────────────────── -->
+  <div class="member-block" data-member="sangwoo">
+    <div class="okr-member-header infra">
+      <div class="okr-member-role">⚙️ NBS Infra</div>
+      <div class="okr-member-name">Sangwoo Byeon</div>
+      <div class="okr-member-mission">"Necessary, Not an Accessory — Conversion-Ready Value"</div>
+    </div>
+    <div class="okr-cats">
+      <div class="okr-cat-card">
+        <div class="okr-cat-label country">🇰🇷 Country Focus</div>
+        <ul class="okr-krs"><li>Agency FAQ Page — 6개월 에이전시 이메일 로그 분류 → 상위 질문 카테고리 정의 → RAG+LLM 정확도 목표치까지 정교화 → 챗봇 레이어 인프라 구축</li><li>NBS Market Intel — SensorTower 3개 데이터셋 활용 전체 시장 센싱 → 우선순위 룰셋 → NBS팀(Ye Eun·Jun)과 리치아웃 실행</li><li>SDR 자동화 — 인바운드/아웃바운드 로직 재구축 → n8n 엔드투엔드 자동화 → 인력 개입 20% 미만</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label xfn">🌏 X-Region / X-Function</div>
+        <ul class="okr-krs"><li>APAC Echoes Q2 케이스 3개 공유 (Market Intel·SDR Bot·FAQ Chatbot) — 한국 인프라 글로벌 롤아웃 포지셔닝</li><li>MKT: 리드 제너레이션 지속 가능 고전환 채널 식별 데이터 추적 루프 구현</li><li>GM/GDS/MKT: 데이터 기반 검증된 Best Practice로 세일즈 덱 개선</li><li>Global SDR: APAC 격주 싱크 리드 → 각 지역 아웃리치 전략 패키징·EMEA SDR 팀 공유</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label people">🤝 People & Culture</div>
+        <ul class="okr-krs"><li>Slack 지식 공유 3개 테마 (최신 AI 뉴스 / AI 더 잘 쓰는 법 / 퀄리티 유지하며 자동화)</li><li>긍정적 에너지 팀에 전파</li><li>동료 기여에 명확하고 적절한 칭찬</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label personal">🏃 Personal</div>
+        <ul class="okr-krs"><li>꾸준한 저널링 습관 구축 (성찰·성장)</li><li>바른 자세·정기적 스트레칭으로 신체 컨디션 유지</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────── HANKHIL ─────────────────── -->
+  <div class="member-block" data-member="hankhil">
+    <div class="okr-member-header infra">
+      <div class="okr-member-role">⚙️ IM / NBS Ops</div>
+      <div class="okr-member-name">Hankhil Lee</div>
+      <div class="okr-member-mission">"Step Up — Individual & Team Operations"</div>
+    </div>
+    <div class="okr-cats">
+      <div class="okr-cat-card">
+        <div class="okr-cat-label country">🇰🇷 Country Focus</div>
+        <ul class="okr-krs"><li>Project Sprout — NBS SMB 어카운트 효율 관리 계획 수립 + NBS→IM→GM 전환 시 불편함 없는 톤앤매너 확립</li><li>CTV·Web 플랫폼·대기업 협업 신규 기회 발굴</li><li>신규 기회를 통해 매출의 최소 10% 커버</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label xfn">🌏 X-Region / X-Function</div>
+        <ul class="okr-krs"><li>Pub Demographic Improvements — 사용성 개선 → 실제 Best Practice 사례 확보 → 타 리전 배포</li><li>IAA 강화 — Supercent 지속 성장 (퍼포먼스·인사이트·파트너십)</li><li>KR IAA 비즈니스를 관련 데이터 기반으로 구축</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label people">🤝 People & Culture</div>
+        <ul class="okr-krs"><li>긍정적 언어 주로 사용</li><li>동료 기여에 명확하고 적절한 칭찬</li><li>시니어 레벨 역량으로 영향력 발휘 — 객관적 피드백·명확한 방향 제시</li><li>Buddy (Ben) 지원 — 업무·비업무 전반 조언으로 잠재력 실현 지원</li></ul>
+      </div>
+      <div class="okr-cat-card">
+        <div class="okr-cat-label personal">🏃 Personal</div>
+        <ul class="okr-krs"><li>5kg 감량</li><li>러닝 재개 (월 30km 이상)</li><li>독서 (월 1권)</li></ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════
+     VIEW 4: SYNERGY THEMES
+══════════════════════════════════ -->
+<div class="view" id="view-synergy">
+
+  <div class="card" style="background:var(--blue-light); border:none; margin-bottom:4px;">
+    <div class="card-body" style="color:var(--blue-dark); font-size:13px;">
+      전체 OKR 분석 기반 — 주제 등장 빈도 순으로 정렬했습니다. 겹치는 사람이 많을수록 리소스 없이 시너지 낼 수 있는 영역이에요.
+    </div>
+  </div>
+
+  <!-- 빈도 바 차트 -->
+  <div class="section-label" style="margin-top:20px;">주제 등장 빈도 (전체 OKR 기준)</div>
+  <div class="card" style="padding:16px 16px 12px;">
+    <div class="freq-row"><span class="freq-label">🤖 AI / 자동화</span><div class="freq-track"><div class="freq-fill" style="width:100%;background:#1A73E8;"></div></div><span class="freq-num" style="color:#1557B0;">8명</span></div>
+    <div class="freq-row"><span class="freq-label">🎮 IAA / RE 확장</span><div class="freq-track"><div class="freq-fill" style="width:87%;background:#1A73E8;"></div></div><span class="freq-num" style="color:#1557B0;">7명</span></div>
+    <div class="freq-row"><span class="freq-label">📺 CTV / Horizon 3</span><div class="freq-track"><div class="freq-fill" style="width:75%;background:#1E8E3E;"></div></div><span class="freq-num" style="color:#1E8E3E;">6명</span></div>
+    <div class="freq-row"><span class="freq-label">📣 APAC Echoes</span><div class="freq-track"><div class="freq-fill" style="width:75%;background:#1E8E3E;"></div></div><span class="freq-num" style="color:#1E8E3E;">6명</span></div>
+    <div class="freq-row"><span class="freq-label">💳 Finance / Consumer</span><div class="freq-track"><div class="freq-fill" style="width:62%;background:#F9AB00;"></div></div><span class="freq-num" style="color:#B06000;">5명</span></div>
+    <div class="freq-row"><span class="freq-label">📦 MM Ops / 핸드오버</span><div class="freq-track"><div class="freq-fill" style="width:62%;background:#F9AB00;"></div></div><span class="freq-num" style="color:#B06000;">5명</span></div>
+    <div class="freq-row"><span class="freq-label">🏪 Agency Program</span><div class="freq-track"><div class="freq-fill" style="width:50%;background:#D93025;"></div></div><span class="freq-num" style="color:#D93025;">4명</span></div>
+    <div class="freq-row" style="margin-bottom:0;"><span class="freq-label">🔬 GDS 테스트·분석</span><div class="freq-track"><div class="freq-fill" style="width:50%;background:#D93025;"></div></div><span class="freq-num" style="color:#D93025;">4명</span></div>
+  </div>
+
+  <!-- 주제별 그룹 카드 -->
+  <div class="section-label" style="margin-top:24px;">주제별 그룹 & 협업 제안</div>
+
+  <!-- #1 AI -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#1</div>
+      <div class="syn-title">AI / 자동화</div>
+      <div class="syn-badge" style="background:#E8F0FE;color:#1557B0;">8명</div>
+    </div>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Sangwoo</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Jun</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Dabin</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Hankhil</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">JeongYong</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Sangin</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Sangeun</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Ye Eun</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Sangwoo + Jun</div>
+      SDR Bot 완성 시점에 Jun 아웃바운드 워크플로우에 바로 붙이는 거 같이 설계해보면 어때요? Sangwoo가 만들고 Jun이 실전 피드백 주는 구조.
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Dabin + Sangwoo + 팀 전체</div>
+      Dabin OKR에 "AI 스킬 2개 팀 공유"가 있고 Sangwoo도 Slack 지식 공유 KR 있어요. 두 사람 데모를 묶어서 한 번의 팀 세션으로 하면 KR 동시 달성.
+    </div>
+  </div>
+
+  <!-- #2 IAA/RE -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#2</div>
+      <div class="syn-title">IAA / RE 캠페인 확장</div>
+      <div class="syn-badge" style="background:#E8F0FE;color:#1557B0;">7명</div>
+    </div>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Dabin</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">KuYoung</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Sangin</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Ye Eun</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Hankhil</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Jun</span>
+      <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">DongKwon</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Dabin + Sangin</div>
+      IAA Forum 론칭이 Dabin OKR인데, 111PERCENT DCA alpha 이후 MM 계정 중 IAA 확장 타깃 리스트업을 Sangin이 같이 해주면 Forum 콘텐츠도 풍부해지고 Sangin 계정 성장에도 직결돼요.
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Dabin + Hankhil</div>
+      Dabin RE 케이스 APAC Echo 포스팅할 때 Hankhil의 Pub Demographic 개선 내용 같이 담으면 두 사람 KR 한 번에 처리 가능.
+    </div>
+  </div>
+
+  <!-- #3 CTV -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#3</div>
+      <div class="syn-title">CTV / Horizon 3</div>
+      <div class="syn-badge" style="background:#E6F4EA;color:#1E8E3E;">6명</div>
+    </div>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">KuYoung</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Sangeun</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">DongKwon</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Jun</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Dabin</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">JeongYong</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Sangeun + DongKwon</div>
+      Sangeun은 McDonald's TVING 케이스, DongKwon은 MCM 오프사이트 케이스 각자 만들고 있는데, MSM × MA × MCM 내러티브로 묶어서 하나의 Horizon 3 케이스 스터디로 완성해보면 어떨까요?
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Jun + KuYoung</div>
+      Jun의 CTV Big Bet 딜과 KuYoung의 Gaming CTV 케이스(NEXON), 클라이언트 피칭 전 인사이트 미리 공유하면 서로 딜 클로징에 도움 돼요.
+    </div>
+  </div>
+
+  <!-- #4 APAC -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#4</div>
+      <div class="syn-title">APAC Echoes 공유</div>
+      <div class="syn-badge" style="background:#E6F4EA;color:#1E8E3E;">6명</div>
+    </div>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Sangwoo</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Dabin</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Jun</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">JeongYong</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">Sangeun</span>
+      <span class="syn-chip" style="background:#E6F4EA;color:#1E8E3E;">KuYoung</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Sangwoo + Jun + JeongYong</div>
+      3명 모두 APAC Echoes 케이스 3개 공유가 OKR에 있어요. 각자 따로 올리는 것보다 코리아 인프라 패키지 (SDR Bot + Market Intel + FAQ Chatbot)로 묶어서 시리즈로 올리면 임팩트가 훨씬 커요.
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Dabin + Sangeun</div>
+      두 분 모두 APAC Echoes 포스팅 KR 있는데 주제 미리 조율해서 겹치지 않게 하면 좋을 것 같아요.
+    </div>
+  </div>
+
+  <!-- #5 Finance -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#5</div>
+      <div class="syn-title">Finance / Consumer Vertical</div>
+      <div class="syn-badge" style="background:#FEF7E0;color:#B06000;">5명</div>
+    </div>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">DongKwon</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">JeongYong</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Jun</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Sangeun</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Ye Eun</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">DongKwon + JeongYong + Jun</div>
+      Finance Day (4/30) 3명 모두 OKR에 있어요. 역할 분담 미리 해두면 중복 없이 각자 KR 달성 가능. DongKwon은 퍼포먼스 케이스, Jun은 컨설팅 피치, JeongYong은 에이전시 네트워크 — 이렇게 나눠보면 어떨까요?
+    </div>
+  </div>
+
+  <!-- #6 MM Ops -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#6</div>
+      <div class="syn-title">MM Ops / NBS→GM 핸드오버</div>
+      <div class="syn-badge" style="background:#FEF7E0;color:#B06000;">5명</div>
+    </div>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Sangin</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Hankhil</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Jun</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">JeongYong</span>
+      <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Sangwoo</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Sangin + Hankhil</div>
+      Sangin은 MM Tier 시스템, Hankhil은 NBS→IM→GM 핸드오버 문서화를 각자 만들고 있는데 사실 같은 문서예요. 같이 만들면 절반의 시간에 두 배의 완성도.
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Jun + Hankhil</div>
+      Jun OKR에 Sr.IM/Jr.IM 핸드오버북 Hankhil과 공동 발간이 이미 명시돼 있어요. 세션에서 킥오프 타임라인만 정하면 됩니다.
+    </div>
+  </div>
+
+  <!-- #7 Agency -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#7</div>
+      <div class="syn-title">Agency Program 스케일</div>
+      <div class="syn-badge" style="background:#FCE8E6;color:#A50E0E;">4명</div>
+    </div>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">JeongYong</span>
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Sangwoo</span>
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Jun</span>
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Ye Eun</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">JeongYong + Sangwoo</div>
+      Agency FAQ Chatbot이 Sangwoo OKR인데, 실제 반복 문의 데이터는 JeongYong이 다 갖고 있어요. JeongYong이 카테고리 정리, Sangwoo가 RAG 구조 구축 — 분업하면 둘 다 KR 달성.
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Jun + Ye Eun + JeongYong</div>
+      New Partner Day 통합이 JeongYong OKR인데, Jun·Ye Eun도 에이전시 소싱 KR 있어요. 파트너 데이 설계 단계부터 NBS 관점 함께 넣으면 좋을 것 같아요.
+    </div>
+  </div>
+
+  <!-- #8 GDS -->
+  <div class="syn-card">
+    <div class="syn-header">
+      <div class="syn-rank">#8</div>
+      <div class="syn-title">GDS 테스트 & 분석 공유</div>
+      <div class="syn-badge" style="background:#FCE8E6;color:#A50E0E;">4명</div>
+    </div>
+    <div class="syn-members">
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Dabin</span>
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">KuYoung</span>
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Sangeun</span>
+      <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">DongKwon</span>
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">Dabin + Sangeun</div>
+      Dabin은 게임(RE), Sangeun은 Consumer(Commerce 분석) GDS 협업 KR 각각 있어요. GDS팀에 요청할 때 같이 묶어서 넣으면 우선순위 높이는 데 유리해요.
+    </div>
+    <div class="syn-proposal">
+      <div class="syn-pair">KuYoung + DongKwon</div>
+      KuYoung은 Gaming 인크리멘탈리티, DongKwon은 iOS RE LAT 테스트 각각 진행 중. 결과 나오면 서로 공유하는 간단한 양방향 업데이트 채널 만들어두면 좋을 것 같아요.
+    </div>
+  </div>
+
+  <div class="card" style="background:var(--yellow-light); margin-top:8px;">
+    <div class="card-title" style="font-size:13px;">💡 토론 중 막힐 때</div>
+    <div class="card-body" style="font-size:13px; color:#7A5200; line-height:1.8;">
+      "내 output이 누군가의 input이 될 수 있나요?"<br>
+      "리소스 없이 이번 주에 시작할 수 있는 게 있을까요?"<br>
+      "같이 하면 혼자 할 때보다 빠른 게 뭔가요?"
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════
+     VIEW 5: 협업 캔버스 기록
+══════════════════════════════════ -->
+<div class="view" id="view-actions">
+
+  <div class="card" style="background:var(--green-light); border:none; margin-bottom:4px;">
+    <div class="card-body" style="color:#1A5E2A; font-size:13px;">
+      그룹별로 캔버스를 채우고, 마지막에 노션/Slack용 텍스트로 복사하세요.<br>
+      <span style="font-weight:700;">📄 인쇄용 활동지(PDF)는 별도 파일로 제공됩니다.</span>
+    </div>
+  </div>
+
+  <!-- 그룹 탭 -->
+  <div class="top-nav" id="groupNav" style="position:static; margin: 12px -16px 14px; border-top:1px solid var(--gray5);">
+    <button class="nav-btn active" onclick="switchGroup('a', this)">그룹 A 🔵</button>
+    <button class="nav-btn" onclick="switchGroup('b', this)">그룹 B 🟢</button>
+  </div>
+
+  <!-- ── GROUP A ── -->
+  <div class="group-canvas" id="canvas-a">
+
+    <div class="canvas-section">
+      <div class="canvas-label" style="background:#E8F0FE; color:#1557B0;">🔍 겹치는 OKR / 공통 주제</div>
+      <div class="canvas-hint">각자 스냅샷을 들으며 "어, 나도 그거!" 싶었던 것들을 적어주세요.</div>
+      <textarea class="canvas-input" rows="3" id="a-overlap" placeholder="예: AI 자동화 — Sangwoo, Jun, Dabin / IAA 확장 — Dabin, Sangin..."></textarea>
+    </div>
+
+    <div class="canvas-section">
+      <div class="canvas-label" style="background:#E8F0FE; color:#1557B0;">💡 가장 임팩트 큰 협업 아이디어 1개</div>
+      <div class="canvas-hint">리소스 추가 없이, 두 사람 이상의 KR을 동시에 달성할 수 있는 것 1개만 고르세요.</div>
+      <textarea class="canvas-input" rows="3" id="a-idea" placeholder="예: Sangwoo의 SDR Bot → Jun 아웃바운드에 연결. Sangwoo가 만들고 Jun이 실전 피드백."></textarea>
+    </div>
+
+    <div class="canvas-section" style="background:var(--green-light); border-radius:var(--radius); padding:14px;">
+      <div class="canvas-label" style="background:#C6E8D0; color:#1E8E3E; margin-bottom:8px;">✅ Commitment — 이번 주 첫 번째 스텝</div>
+      <div class="canvas-hint" style="color:#1A5E2A; margin-bottom:10px;">"나 [이름]는, [이번 주 언제], [누구와], [무엇을] 한다." — 구체적일수록 실행률 3배 ↑</div>
+      <input type="text" class="canvas-input" id="a-c1" placeholder="1번 Commitment: 나 ___는, ___ 때, ___와 ___를 한다.">
+      <input type="text" class="canvas-input" style="margin-top:6px;" id="a-c2" placeholder="2번 Commitment: 나 ___는, ___ 때, ___와 ___를 한다.">
+      <input type="text" class="canvas-input" style="margin-top:6px;" id="a-c3" placeholder="3번 Commitment: 나 ___는, ___ 때, ___와 ___를 한다.">
+    </div>
+
+    <div class="canvas-section">
+      <div class="canvas-label" style="background:#FEF7E0; color:#B06000;">🎯 예상 결과물 / 팀에 줄 수 있는 것</div>
+      <div class="canvas-hint">"[무엇을] 만들어서 [누구에게] 공유한다" 형식으로 한 줄 적어주세요.</div>
+      <textarea class="canvas-input" rows="2" id="a-output" placeholder="예: SDR Bot 연동 가이드를 만들어서 팀 전체에 공유한다."></textarea>
+    </div>
+
+  </div>
+
+  <!-- ── GROUP B ── -->
+  <div class="group-canvas" id="canvas-b" style="display:none;">
+
+    <div class="canvas-section">
+      <div class="canvas-label" style="background:#E6F4EA; color:#1E8E3E;">🔍 겹치는 OKR / 공통 주제</div>
+      <div class="canvas-hint">각자 스냅샷을 들으며 "어, 나도 그거!" 싶었던 것들을 적어주세요.</div>
+      <textarea class="canvas-input" rows="3" id="b-overlap" placeholder="예: CTV Horizon 3 — KuYoung, Sangeun, DongKwon / APAC Echoes — Sangwoo, Jun..."></textarea>
+    </div>
+
+    <div class="canvas-section">
+      <div class="canvas-label" style="background:#E6F4EA; color:#1E8E3E;">💡 가장 임팩트 큰 협업 아이디어 1개</div>
+      <div class="canvas-hint">리소스 추가 없이, 두 사람 이상의 KR을 동시에 달성할 수 있는 것 1개만 고르세요.</div>
+      <textarea class="canvas-input" rows="3" id="b-idea" placeholder="예: Sangeun + DongKwon → TVING + MCM 케이스 합쳐서 Horizon 3 케이스 스터디 완성."></textarea>
+    </div>
+
+    <div class="canvas-section" style="background:var(--green-light); border-radius:var(--radius); padding:14px;">
+      <div class="canvas-label" style="background:#C6E8D0; color:#1E8E3E; margin-bottom:8px;">✅ Commitment — 이번 주 첫 번째 스텝</div>
+      <div class="canvas-hint" style="color:#1A5E2A; margin-bottom:10px;">"나 [이름]는, [이번 주 언제], [누구와], [무엇을] 한다." — 구체적일수록 실행률 3배 ↑</div>
+      <input type="text" class="canvas-input" id="b-c1" placeholder="1번 Commitment: 나 ___는, ___ 때, ___와 ___를 한다.">
+      <input type="text" class="canvas-input" style="margin-top:6px;" id="b-c2" placeholder="2번 Commitment: 나 ___는, ___ 때, ___와 ___를 한다.">
+      <input type="text" class="canvas-input" style="margin-top:6px;" id="b-c3" placeholder="3번 Commitment: 나 ___는, ___ 때, ___와 ___를 한다.">
+    </div>
+
+    <div class="canvas-section">
+      <div class="canvas-label" style="background:#FEF7E0; color:#B06000;">🎯 예상 결과물 / 팀에 줄 수 있는 것</div>
+      <div class="canvas-hint">"[무엇을] 만들어서 [누구에게] 공유한다" 형식으로 한 줄 적어주세요.</div>
+      <textarea class="canvas-input" rows="2" id="b-output" placeholder="예: Horizon 3 케이스 스터디를 GDS팀과 공유한다."></textarea>
+    </div>
+
+  </div>
+
+  <button class="btn btn-green btn-full" style="margin-top:12px;" onclick="generateCanvasExport()">📋 노션/Slack 텍스트 생성</button>
+
+  <div id="export-result" style="display:none; margin-top:16px;">
+    <div class="export-box">
+      <div class="export-title">📤 복사해서 노션/Slack에 붙여넣기</div>
+      <div class="export-preview" id="export-text"></div>
+      <button class="btn btn-outline btn-full" onclick="copyExport()">📋 복사하기</button>
+      <div id="copy-confirm" style="display:none; text-align:center; margin-top:8px; font-size:13px; color:var(--green); font-weight:600;">✅ 복사됐습니다!</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════
+     VIEW 6: TIMER
+══════════════════════════════════ -->
+<div class="view" id="view-timer">
+  <div class="timer-widget">
+    <div class="timer-label" id="timer-label">1인 스냅샷 타이머</div>
+    <div class="timer-display" id="timer-display">01:00</div>
+    <div class="timer-presets">
+      <button class="preset-btn active" onclick="setTimer(60, this)">1분</button>
+      <button class="preset-btn" onclick="setTimer(300, this)">5분</button>
+      <button class="preset-btn" onclick="setTimer(600, this)">10분</button>
+      <button class="preset-btn" onclick="setTimer(1200, this)">20분</button>
+      <button class="preset-btn" onclick="setTimer(2100, this)">35분</button>
+    </div>
+    <div class="timer-controls">
+      <button class="btn btn-primary" id="startBtn" onclick="startTimer()">▶ 시작</button>
+      <button class="btn btn-outline" onclick="pauseTimer()">⏸ 일시정지</button>
+      <button class="btn btn-outline" onclick="resetTimer()">↺ 리셋</button>
+    </div>
+  </div>
+
+  <div class="section-label">단계별 권장 시간</div>
+  <div style="display:flex; flex-direction:column; gap:8px;">
+    <div class="card" style="padding:12px 16px; display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="quickSet(60)">
+      <div style="font-size:14px; font-weight:600;">🗣 개인 스냅샷</div>
+      <div class="badge badge-blue">1분</div>
+    </div>
+    <div class="card" style="padding:12px 16px; display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="quickSet(600)">
+      <div style="font-size:14px; font-weight:600;">🔗 시너지 토론 (테마당)</div>
+      <div class="badge badge-blue">10분</div>
+    </div>
+    <div class="card" style="padding:12px 16px; display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="quickSet(1200)">
+      <div style="font-size:14px; font-weight:600;">✍️ 액션 정리</div>
+      <div class="badge badge-blue">20분</div>
+    </div>
+    <div class="card" style="padding:12px 16px; display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="quickSet(2100)">
+      <div style="font-size:14px; font-weight:600;">🔗 시너지 자유 토론</div>
+      <div class="badge badge-blue">35분</div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+// ── Member filter ──
+function filterMember(id, btn) {
+  document.querySelectorAll('#memberNav .nav-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.member-block').forEach(block => {
+    block.style.display = (id === 'all' || block.dataset.member === id) ? 'block' : 'none';
+  });
+}
+
+// ── View switching ──
+function switchView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('view-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ── Step accordion ──
+function toggleStep(el) {
+  el.classList.toggle('open');
+  const chevron = el.querySelector('.step-chevron');
+  chevron.style.transform = el.classList.contains('open') ? 'rotate(90deg)' : '';
+}
+
+// ── Timer ──
+let timerInterval = null;
+let timerSeconds = 60;
+let timerRunning = false;
+let totalSeconds = 60;
+
+function setTimer(seconds, btn) {
+  resetTimer();
+  timerSeconds = seconds;
+  totalSeconds = seconds;
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  updateDisplay();
+}
+
+function quickSet(seconds) {
+  switchViewDirect('timer');
+  setTimer(seconds, null);
+}
+
+function switchViewDirect(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('view-' + id).classList.add('active');
+  const btns = document.querySelectorAll('.nav-btn');
+  const labels = ['agenda','facilitator','okrs','synergy','actions','timer'];
+  const idx = labels.indexOf(id);
+  if(idx >= 0) btns[idx].classList.add('active');
+}
+
+function startTimer() {
+  if (timerRunning) return;
+  timerRunning = true;
+  document.getElementById('startBtn').textContent = '▶ 실행 중';
+  timerInterval = setInterval(() => {
+    timerSeconds--;
+    updateDisplay();
+    if (timerSeconds <= 0) {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      document.getElementById('startBtn').textContent = '▶ 시작';
+      document.getElementById('timer-display').classList.add('danger');
+      // vibrate if supported
+      if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+    }
+  }, 1000);
+}
+
+function pauseTimer() {
+  clearInterval(timerInterval);
+  timerRunning = false;
+  document.getElementById('startBtn').textContent = '▶ 시작';
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  timerRunning = false;
+  timerSeconds = totalSeconds;
+  document.getElementById('startBtn').textContent = '▶ 시작';
+  const display = document.getElementById('timer-display');
+  display.classList.remove('warning', 'danger');
+  updateDisplay();
+}
+
+function updateDisplay() {
+  const m = Math.floor(timerSeconds / 60);
+  const s = timerSeconds % 60;
+  const display = document.getElementById('timer-display');
+  display.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  display.classList.remove('warning','danger');
+  const ratio = timerSeconds / totalSeconds;
+  if (ratio <= 0.2) display.classList.add('danger');
+  else if (ratio <= 0.4) display.classList.add('warning');
+}
+
+// ── Group canvas switch ──
+function switchGroup(id, btn) {
+  document.querySelectorAll('#groupNav .nav-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.group-canvas').forEach(g => g.style.display = 'none');
+  document.getElementById('canvas-' + id).style.display = 'block';
+}
+
+// ── Canvas export ──
+function generateCanvasExport() {
+  const today = new Date();
+  const dateStr = `${today.getFullYear()}.${String(today.getMonth()+1).padStart(2,'0')}.${String(today.getDate()).padStart(2,'0')}`;
+
+  function val(id) { const el = document.getElementById(id); return el ? el.value.trim() : ''; }
+
+  let text = `📌 Korea Team OKR Alignment Session — ${dateStr}\n`;
+  text += `${'─'.repeat(36)}\n\n`;
+
+  const groups = [
+    { label: '그룹 A 🔵', prefix: 'a' },
+    { label: '그룹 B 🟢', prefix: 'b' },
+  ];
+
+  groups.forEach(g => {
+    const overlap = val(g.prefix + '-overlap');
+    const idea    = val(g.prefix + '-idea');
+    const c1      = val(g.prefix + '-c1');
+    const c2      = val(g.prefix + '-c2');
+    const c3      = val(g.prefix + '-c3');
+    const output  = val(g.prefix + '-output');
+
+    const hasData = overlap || idea || c1 || c2 || c3 || output;
+    if (!hasData) return;
+
+    text += `**[ ${g.label} ]**\n\n`;
+    if (overlap) text += `🔍 겹치는 OKR / 공통 주제\n${overlap}\n\n`;
+    if (idea)    text += `💡 협업 아이디어\n${idea}\n\n`;
+    if (c1 || c2 || c3) {
+      text += `✅ Commitment\n`;
+      if (c1) text += `  · ${c1}\n`;
+      if (c2) text += `  · ${c2}\n`;
+      if (c3) text += `  · ${c3}\n`;
+      text += '\n';
+    }
+    if (output)  text += `🎯 예상 결과물\n${output}\n\n`;
+    text += `${'─'.repeat(36)}\n\n`;
+  });
+
+  if (text.length < 100) { alert('그룹 A 또는 B에 내용을 입력해주세요.'); return; }
+
+  document.getElementById('export-text').textContent = text;
+  document.getElementById('export-result').style.display = 'block';
+  document.getElementById('export-result').scrollIntoView({ behavior: 'smooth' });
+}
+
+function copyExport() {
+  const text = document.getElementById('export-text').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    document.getElementById('copy-confirm').style.display = 'block';
+    setTimeout(() => { document.getElementById('copy-confirm').style.display = 'none'; }, 2500);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    document.getElementById('copy-confirm').style.display = 'block';
+    setTimeout(() => { document.getElementById('copy-confirm').style.display = 'none'; }, 2500);
+  });
+}
+</script>
+
+</body>
+</html>
