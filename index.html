@@ -31,7 +31,7 @@
   }
 
   body {
-    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+    font-family: 'Noto Sans KR', 'Montserrat', sans-serif;
     background: #fff;
     color: #111;
     min-height: 100vh;
@@ -212,7 +212,7 @@
   /* ── INDIVIDUAL LAYER ── */
   .individual-layer { padding: 14px 36px 36px; }
   .individual-layer .layer-label { color: #777; }
-  .hint-text { font-size: 11px; color: #999; margin-bottom: 14px; line-height: 1.5; }
+  .hint-text { font-size: 13px; color: #666; margin-bottom: 14px; line-height: 1.5; font-weight: 500; }
   .person-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -241,15 +241,15 @@
     opacity: .85;
   }
   .person-avatar span { color: #fff; }
-  .person-name { font-size: 13px; font-weight: 700; color: #111; }
-  .person-role { font-size: 10px; opacity: .85; margin-top: 1px; line-height: 1.3; color: #333; }
-  .person-revenue { font-size: 18px; font-weight: 800; line-height: 1; margin-top: 2px; }
-  .person-revenue-label { font-size: 9px; opacity: .8; letter-spacing: .03em; color: #555; }
-  .person-mission { font-size: 10px; font-style: italic; opacity: .9; line-height: 1.4; color: #444; }
+  .person-name { font-size: 15px; font-weight: 800; color: #111; letter-spacing: -0.3px; }
+  .person-role { font-size: 12px; font-weight: 500; opacity: 1; margin-top: 2px; line-height: 1.3; color: #444; }
+  .person-revenue { font-size: 22px; font-weight: 900; line-height: 1; margin-top: 4px; }
+  .person-revenue-label { font-size: 11px; font-weight: 600; opacity: 1; color: #555; }
+  .person-mission { font-size: 12px; font-style: italic; font-weight: 500; opacity: 1; line-height: 1.4; color: #333; }
   .person-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
   .focus-tag {
-    font-size: 10px; font-weight: 700; padding: 2px 7px;
-    border-radius: 10px; border: 1.5px solid currentColor; opacity: 1;
+    font-size: 12px; font-weight: 700; padding: 4px 9px;
+    border-radius: 10px; border: 2px solid currentColor; opacity: 1;
   }
   .tag-navy    { color: var(--navy); }
   .tag-blue    { color: var(--blue2); }
@@ -428,7 +428,7 @@
     .person-revenue-label { font-size: 10px; }
     .person-mission { font-size: 11px; }
     .person-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
-    .focus-tag { font-size: 11px; padding: 3px 8px; opacity: 1; font-weight: 700; }
+    .focus-tag { font-size: 12px; padding: 4px 9px; opacity: 1; font-weight: 700; }
 
     /* Legend */
     .legend-bar { padding: 8px 14px; gap: 8px; }
