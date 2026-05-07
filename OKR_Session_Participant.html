@@ -215,12 +215,12 @@
   .hint-text { font-size: 16px; color: #666; margin-bottom: 14px; line-height: 1.5; font-weight: 500; }
   .person-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
     gap: 12px; max-width: 1480px; margin: 0 auto;
   }
   .person-card {
     border: 1.5px solid; border-radius: 12px;
-    padding: 14px; display: flex; flex-direction: column; gap: 6px;
+    padding: 11px; display: flex; flex-direction: column; gap: 4px;
     transition: all .2s; position: relative;
   }
   .person-card.faded { opacity: 0.2; filter: grayscale(0.5); }
@@ -241,15 +241,15 @@
     opacity: .85;
   }
   .person-avatar span { color: #fff; }
-  .person-name { font-size: 18px; font-weight: 800; color: #111; letter-spacing: -0.3px; }
-  .person-role { font-size: 15px; font-weight: 500; opacity: 1; margin-top: 2px; line-height: 1.3; color: #444; }
-  .person-revenue { font-size: 25px; font-weight: 900; line-height: 1; margin-top: 4px; }
-  .person-revenue-label { font-size: 14px; font-weight: 600; opacity: 1; color: #555; }
-  .person-mission { font-size: 15px; font-style: italic; font-weight: 500; opacity: 1; line-height: 1.4; color: #333; }
+  .person-name { font-size: 14px; font-weight: 800; color: #111; letter-spacing: -0.3px; }
+  .person-role { font-size: 11px; font-weight: 500; opacity: 1; margin-top: 1px; line-height: 1.3; color: #444; }
+  .person-revenue { font-size: 20px; font-weight: 900; line-height: 1; margin-top: 2px; }
+  .person-revenue-label { font-size: 9px; font-weight: 600; opacity: 1; color: #555; }
+  .person-mission { font-size: 11px; font-style: italic; font-weight: 500; opacity: 1; line-height: 1.4; color: #333; }
   .person-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
   .focus-tag {
-    font-size: 15px; font-weight: 700; padding: 4px 9px;
-    border-radius: 10px; border: 2px solid currentColor; opacity: 1;
+    font-size: 10px; font-weight: 700; padding: 2px 6px;
+    border-radius: 10px; border: 1.5px solid currentColor; opacity: 1;
   }
   .tag-navy    { color: var(--navy); }
   .tag-blue    { color: var(--blue2); }
@@ -260,9 +260,9 @@
   .tag-lavend  { color: var(--purple4); }
   .pillar-dots { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
   .pillar-dot {
-    width: 20px; height: 20px; border-radius: 50%;
+    width: 17px; height: 17px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 700; background: currentColor; cursor: default;
+    font-size: 9px; font-weight: 700; background: currentColor; cursor: default;
   }
   .pillar-dot span { color: #fff; }
 
@@ -959,7 +959,7 @@
     <button class="detail-nb" onclick="switchDetail('hankhil', this)">Hankhil</button>
   </div>
 
-  <div style="padding:16px 24px 40px;max-width:900px;">
+  <div style="padding:16px 24px 40px;max-width:1400px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;">
 
     <div class="member-block" data-member2="jaekyun">
       <div class="okr-member-header" style="background:#FFF8E1;border-left-color:#F9AB00;">
@@ -1316,19 +1316,19 @@
 
   .init-hd { padding:17px 22px 15px; color:#fff; }
   .init-num { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; opacity:.72; text-transform:uppercase; margin-bottom:3px; }
-  .init-ttl { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:800; line-height:1.3; }
-  .init-ttl-kr { font-size:12.5px; font-weight:500; opacity:.82; margin-top:2px; }
+  .init-ttl { font-family:'Montserrat',sans-serif; font-size:17px; font-weight:800; line-height:1.3; }
+  .init-ttl-kr { font-size:14px; font-weight:500; opacity:.82; margin-top:2px; }
   .init-goal { margin-top:7px; font-size:11.5px; opacity:.85; background:rgba(255,255,255,.18); padding:5px 10px; border-radius:7px; }
   .init-bd { padding:16px 22px 18px; }
   .m-list { display:flex; flex-direction:column; gap:7px; margin-bottom:14px; }
   .m-list-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 28px; margin-bottom:14px; }
   .m-row { display:flex; align-items:flex-start; gap:9px; }
-  .m-badge { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; padding:3px 8px; border-radius:20px; white-space:nowrap; flex-shrink:0; margin-top:1px; }
+  .m-badge { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:700; padding:4px 10px; border-radius:20px; white-space:nowrap; flex-shrink:0; margin-top:1px; }
   .m-badge.badge-me { outline:2.5px solid currentColor !important; outline-offset:2px; box-shadow:0 0 0 4px rgba(4,0,120,.07); }
-  .m-desc { font-size:12px; color:#444; line-height:1.55; }
+  .m-desc { font-size:13px; color:#333; line-height:1.6; }
   .init-watch-new { border-top:1px dashed #e8e8f0; padding-top:11px; margin-top:2px; }
   .init-watch-lbl { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:4px; }
-  .init-watch-txt { font-size:12px; color:#555; line-height:1.55; }
+  .init-watch-txt { font-size:13px; color:#444; line-height:1.6; }
 
   /* COLOUR THEMES */
   .n-blue   { border-color:#b3d8fd; }
@@ -1416,8 +1416,8 @@
   .obs-grid-new { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
   .obs-card-new { border-radius:14px; padding:20px 20px 18px; border:1.5px solid #e8e8f5; }
   .obs-card-new .obs-ico { font-size:20px; margin-bottom:8px; }
-  .obs-card-new h4 { font-family:'Montserrat',sans-serif; font-size:12.5px; font-weight:700; color:#040078; margin-bottom:7px; }
-  .obs-card-new p { font-size:12px; color:#555; line-height:1.6; }
+  .obs-card-new h4 { font-family:'Montserrat',sans-serif; font-size:14px; font-weight:700; color:#040078; margin-bottom:7px; }
+  .obs-card-new p { font-size:13px; color:#444; line-height:1.65; }
 </style>
 
 <div class="syn-new-wrap">
