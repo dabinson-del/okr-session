@@ -225,13 +225,13 @@
   }
   .person-card.faded { opacity: 0.2; filter: grayscale(0.5); }
   .person-card.highlighted { box-shadow: 0 0 0 2.5px currentColor, 0 4px 16px rgba(0,0,0,0.12); transform: translateY(-2px); }
-  .team-lead    { color: var(--navy);    border-color: rgba(4,0,120,0.3);    background: rgba(4,0,120,0.03); }
-  .team-gaming  { color: var(--blue2);   border-color: rgba(2,102,200,0.3);  background: rgba(2,128,251,0.04); }
-  .team-consumer{ color: var(--teal2);   border-color: rgba(77,181,146,0.35);background: rgba(96,226,183,0.05); }
-  .team-mm      { color: var(--cyan2);   border-color: rgba(18,168,204,0.35);background: rgba(22,210,255,0.05); }
-  .team-agency  { color: var(--purple1); border-color: rgba(195,104,249,0.3);background: rgba(195,104,249,0.04); }
-  .team-nbs     { color: var(--purple3); border-color: rgba(135,106,255,0.3);background: rgba(135,106,255,0.04); }
-  .team-new     { color: var(--purple4); border-color: rgba(108,85,204,0.3); background: rgba(183,166,255,0.07); }
+  .team-lead    { color: #040078;    border-color: rgba(4,0,120,0.5);  border-width:2px; background: rgba(4,0,120,0.07); }
+  .team-gaming  { color: #0055AA;   border-color: rgba(2,102,200,0.55); border-width:2px; background: rgba(2,128,251,0.09); }
+  .team-consumer{ color: #2E8B6A;   border-color: rgba(77,181,146,0.6); border-width:2px; background: rgba(96,226,183,0.10); }
+  .team-mm      { color: #0090B0;   border-color: rgba(18,168,204,0.6); border-width:2px; background: rgba(22,210,255,0.10); }
+  .team-agency  { color: #9B2BDE;   border-color: rgba(195,104,249,0.6); border-width:2px; background: rgba(195,104,249,0.09); }
+  .team-nbs     { color: #5B3FCC;   border-color: rgba(135,106,255,0.6); border-width:2px; background: rgba(135,106,255,0.09); }
+  .team-new     { color: #4A2FAA;   border-color: rgba(108,85,204,0.55); border-width:2px; background: rgba(183,166,255,0.13); }
   .person-top { display: flex; align-items: center; gap: 8px; }
   .person-avatar {
     width: 34px; height: 34px; border-radius: 50%;
@@ -241,15 +241,15 @@
     opacity: .85;
   }
   .person-avatar span { color: #fff; }
-  .person-name { font-size: 13px; font-weight: 700; }
-  .person-role { font-size: 10px; opacity: .65; margin-top: 1px; line-height: 1.3; }
+  .person-name { font-size: 13px; font-weight: 700; color: #111; }
+  .person-role { font-size: 10px; opacity: .85; margin-top: 1px; line-height: 1.3; color: #333; }
   .person-revenue { font-size: 18px; font-weight: 800; line-height: 1; margin-top: 2px; }
-  .person-revenue-label { font-size: 9px; opacity: .6; letter-spacing: .03em; }
-  .person-mission { font-size: 10px; font-style: italic; opacity: .75; line-height: 1.4; }
+  .person-revenue-label { font-size: 9px; opacity: .8; letter-spacing: .03em; color: #555; }
+  .person-mission { font-size: 10px; font-style: italic; opacity: .9; line-height: 1.4; color: #444; }
   .person-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
   .focus-tag {
-    font-size: 10px; font-weight: 600; padding: 2px 7px;
-    border-radius: 10px; border: 1px solid currentColor; opacity: .8;
+    font-size: 10px; font-weight: 700; padding: 2px 7px;
+    border-radius: 10px; border: 1.5px solid currentColor; opacity: 1;
   }
   .tag-navy    { color: var(--navy); }
   .tag-blue    { color: var(--blue2); }
@@ -468,17 +468,17 @@
 
   /* ── SYNERGY TAB ── */
   .syn-wrap { padding: 16px; max-width: 860px; margin: 0 auto; }
-  .syn-intro { background: var(--navy); color: #fff; border-radius: 12px; padding: 16px 18px; margin-bottom: 16px; font-size: 13px; line-height: 1.6; opacity: .9; }
+  .syn-intro { background: var(--navy); color: #fff; border-radius: 12px; padding: 16px 18px; margin-bottom: 16px; font-size: 13px; line-height: 1.6; }
 
   .freq-section { margin-bottom: 20px; }
   .freq-title { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #999; margin-bottom: 10px; }
   .freq-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
-  .freq-label { font-size: 12px; color: #333; width: 170px; flex-shrink: 0; }
+  .freq-label { font-size: 12px; color: #111; font-weight: 600; width: 170px; flex-shrink: 0; }
   .freq-track { flex: 1; height: 6px; background: #eee; border-radius: 3px; overflow: hidden; }
   .freq-fill { height: 100%; border-radius: 3px; }
   .freq-num { font-size: 11px; font-weight: 700; width: 28px; text-align: right; flex-shrink: 0; }
 
-  .syn-card { background: #fff; border: 1.5px solid #e8e8f0; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+  .syn-card { background: #fff; border: 2px solid #c0c0d8; border-radius: 12px; margin-bottom: 12px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,.07); }
   .syn-head { display: flex; align-items: center; gap: 10px; padding: 13px 14px; border-bottom: 1px solid #f0f0f8; }
   .syn-rank { font-size: 11px; font-weight: 800; color: #bbb; width: 22px; flex-shrink: 0; }
   .syn-title { font-size: 14px; font-weight: 700; color: #111; flex: 1; }
@@ -488,8 +488,8 @@
   .syn-chip { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; }
   .syn-proposal { margin-bottom: 8px; }
   .syn-proposal:last-child { margin-bottom: 0; }
-  .syn-pair { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
-  .syn-desc { font-size: 12px; color: #555; line-height: 1.65; }
+  .syn-pair { font-size: 12px; font-weight: 700; color: #040078; margin-bottom: 3px; }
+  .syn-desc { font-size: 12px; color: #222; line-height: 1.65; }
 
   .syn-tip { background: #fffff0; border: 1.5px solid #e8d84a; border-radius: 10px; padding: 12px 14px; margin-top: 12px; font-size: 12px; color: #7a6000; line-height: 1.7; }
 
@@ -795,7 +795,7 @@
           <span class="person-revenue-label">Q2 Mid-Market Target</span>
           <div class="person-mission">"Unlock Scalable Midmarket Growth"</div>
           <div class="person-tags">
-            <span class="focus-tag tag-cyan">MM 운영체계</span>
+            <span class="focus-tag tag-cyan">Mid-Market 운영체계</span>
             <span class="focus-tag tag-cyan">Darwin Ops</span>
             <span class="focus-tag tag-cyan">GameDex/HAEGIN</span>
           </div>
@@ -909,7 +909,7 @@
           <div class="person-mission">"Learning & Contributing"</div>
           <div class="person-tags">
             <span class="focus-tag tag-lavend">GM 온보딩</span>
-            <span class="focus-tag tag-lavend">MM 지원</span>
+            <span class="focus-tag tag-lavend">Mid-Market 지원</span>
           </div>
           <div class="pillar-dots"><div class="pillar-dot pd2"><span>2</span></div></div>
         </div>
@@ -968,7 +968,7 @@
         <div class="okr-member-mission">"Uncapped Growth & Mindset — Innovation Hub, Dominant Open Internet Player"</div>
       </div>
       <div class="okr-cats">
-        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>4 Sales Drivers: PLTN→Super-PLTN · MM 기회 · Agency 공식 프로그램 · CTV/Web 신규 획득</li><li>5 Product Focuses: IAA · Android 개선 · Supply(Kakao·Line·Samsung) · RE(iOS) · DPA/Consumer</li><li>3 Strategic Bets: Brandperformance · Enterprise · MA×MCM×MSM</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>4 Sales Drivers: PLTN→Super-PLTN · Mid-Market 기회 · Agency 공식 프로그램 · CTV/Web 신규 획득</li><li>5 Product Focuses: IAA · Android 개선 · Supply(Kakao·Line·Samsung) · RE(iOS) · DPA/Consumer</li><li>3 Strategic Bets: Brandperformance · Enterprise · MA×MCM×MSM</li></ul></div>
         <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>Japan 2026 전략 재정립 — 시장 규모 재산정 + 투자 제안</li><li>CTV/Tving 퍼포먼스 가속 · KOR MCM 클라이언트 50% Moloco Ads 전환</li><li>Moloco Next PMF 증명 · Samsung Cloud Gaming 플레이북 구축</li></ul></div>
         <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>글로벌 컬처 인터뷰 문항 표준화</li><li>Japan · APAC 팀 인재 수준 및 문화 향상 — Rotation · 코칭 · APAC Echoes</li></ul></div>
         <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>자체 블로그 개설 + 정기 아티클 / 건강: 러닝·테니스·수영 / 보컬 트레이닝</li></ul></div>
@@ -1049,12 +1049,12 @@
       <div class="okr-member-header" style="background:#FEF7E0;border-left-color:#F9AB00;">
         <div class="okr-member-role">📦 Mid-Market GM</div>
         <div class="okr-member-name">Sangin Kim</div>
-        <div class="okr-member-mission">"Scalable MM Growth · Repeatable Automated Playbooks"</div>
+        <div class="okr-member-mission">"Scalable Mid-Market Growth · Repeatable Automated Playbooks"</div>
       </div>
       <div class="okr-cats">
-        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>Tier 기반 MM 관리 시스템 · Darwin Ops 소유권·지원 모델</li><li>High Spenders Silver/Gold 승격 · Mid&Low → Darwin Ops + 플레이북</li></ul></div>
-        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>GSS 협업 low-touch MM 활성화 · NBS 핸드오버 프로세스 수립</li><li>Agency 파트너 bulk 컨설팅 모델 · JP MM GM과 정기 싱크</li></ul></div>
-        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>신규 MM GM 온보딩 프로그램 설계 · Apple Search Ads 지식 공유</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-country">🇰🇷 Country Focus</div><ul class="okr-krs"><li>Tier 기반 Mid-Market 관리 시스템 · Darwin Ops 소유권·지원 모델</li><li>High Spenders Silver/Gold 승격 · Mid&Low → Darwin Ops + 플레이북</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-xfn">🌏 X-Region / X-Function</div><ul class="okr-krs"><li>GSS 협업 low-touch Mid-Market 활성화 · NBS 핸드오버 프로세스 수립</li><li>Agency 파트너 bulk 컨설팅 모델 · JP Mid-Market GM과 정기 싱크</li></ul></div>
+        <div class="okr-cat-card"><div class="okr-cat-label cat-people">🤝 People & Culture</div><ul class="okr-krs"><li>신규 Mid-Market GM 온보딩 프로그램 설계 · Apple Search Ads 지식 공유</li></ul></div>
         <div class="okr-cat-card"><div class="okr-cat-label cat-personal">🏃 Personal</div><ul class="okr-krs"><li>영어 비즈니스 역량 향상 / 3kg 감량 / AI 툴 실용 케이스</li></ul></div>
       </div>
     </div>
