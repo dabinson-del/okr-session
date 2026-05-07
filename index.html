@@ -456,6 +456,38 @@
     .tab-btn { padding: 11px 11px; font-size: 10px; }
   }
 
+  /* ── SYNERGY TAB ── */
+  .syn-wrap { padding: 16px; max-width: 860px; margin: 0 auto; }
+  .syn-intro { background: var(--navy); color: #fff; border-radius: 12px; padding: 16px 18px; margin-bottom: 16px; font-size: 13px; line-height: 1.6; opacity: .9; }
+
+  .freq-section { margin-bottom: 20px; }
+  .freq-title { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #999; margin-bottom: 10px; }
+  .freq-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+  .freq-label { font-size: 12px; color: #333; width: 170px; flex-shrink: 0; }
+  .freq-track { flex: 1; height: 6px; background: #eee; border-radius: 3px; overflow: hidden; }
+  .freq-fill { height: 100%; border-radius: 3px; }
+  .freq-num { font-size: 11px; font-weight: 700; width: 28px; text-align: right; flex-shrink: 0; }
+
+  .syn-card { background: #fff; border: 1.5px solid #e8e8f0; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+  .syn-head { display: flex; align-items: center; gap: 10px; padding: 13px 14px; border-bottom: 1px solid #f0f0f8; }
+  .syn-rank { font-size: 11px; font-weight: 800; color: #bbb; width: 22px; flex-shrink: 0; }
+  .syn-title { font-size: 14px; font-weight: 700; color: #111; flex: 1; }
+  .syn-badge { font-size: 11px; font-weight: 700; border-radius: 10px; padding: 2px 9px; flex-shrink: 0; }
+  .syn-body { padding: 12px 14px; }
+  .syn-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .syn-chip { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; }
+  .syn-proposal { margin-bottom: 8px; }
+  .syn-proposal:last-child { margin-bottom: 0; }
+  .syn-pair { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .syn-desc { font-size: 12px; color: #555; line-height: 1.65; }
+
+  .syn-tip { background: #fffff0; border: 1.5px solid #e8d84a; border-radius: 10px; padding: 12px 14px; margin-top: 12px; font-size: 12px; color: #7a6000; line-height: 1.7; }
+
+  @media (max-width: 480px) {
+    .freq-label { width: 130px; font-size: 11px; }
+    .syn-title { font-size: 13px; }
+  }
+
 </style>
 </head>
 <body>
@@ -463,8 +495,10 @@
 <!-- TOP TAB NAV -->
 <nav class="top-tab-nav">
   <button class="tab-btn active" onclick="switchTab('overview')">📊 OKR 구조 전체보기</button>
-  <button class="tab-btn" onclick="switchTab('detail')">👤 개인 OKR 상세</button>
+  <button class="tab-btn" onclick="switchTab('synergy')">🔗 시너지 테마</button>
   <button class="tab-btn" onclick="switchTab('help')">🤝 도움 요청 액티비티</button>
+  <button class="tab-btn" onclick="switchTab('detail')">👤 개인 OKR 상세</button>
+  <button class="tab-btn" onclick="switchTab('discussion')">🔒 토의 질문</button>
 </nav>
 
 <!-- ═══════════════════════════════════
@@ -1093,146 +1127,521 @@
      TAB 3: 도움 요청 액티비티
 ═══════════════════════════════════ -->
 <div class="tab-view" id="tab-help">
-  <div class="help-section">
+<div style="padding:16px 16px 56px;max-width:680px;margin:0 auto;">
 
-    <div class="help-intro">
-      <h2>🤝 도움 요청 액티비티</h2>
-      <p>서로의 OKR을 들은 후, 아래 문장을 완성해서 말해주세요.<br>리소스를 늘리지 않고 — 팀 안에서 서로 줄 수 있는 것을 찾는 시간입니다.</p>
+  <div style="background:#040078;color:#fff;border-radius:14px;padding:20px;margin-bottom:20px;">
+    <div style="font-size:17px;font-weight:700;margin-bottom:6px;">🤝 도움 요청 액티비티</div>
+    <div style="font-size:13px;opacity:.8;line-height:1.6;">OKR 스냅샷을 들은 후, 리소스 없이 팀 안에서 서로 줄 수 있는 것을 찾아요.<br>아래에서 나와 OKR이 겹치는 그룹을 확인하고 도움을 요청해보세요.</div>
+  </div>
+
+  <!-- 시너지 그룹 목록 -->
+  <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#999;margin-bottom:10px;">OKR 겹치는 그룹 (많이 겹칠수록 상단)</div>
+  
+    <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#1</span>
+        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">전략·실행 연결</span>
+        <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#FFF8E1;color:#E65100;">10명</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">JaeKyun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">KuYoung</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Dabin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Sangeun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">DongKwon</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">JeongYong</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Sangin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Sangwoo</span></div>
+    </div>
+    <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#2</span>
+        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">AI / 자동화</span>
+        <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#E8F0FE;color:#1557B0;">9명</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Sangwoo</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Dabin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Hankhil</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">JeongYong</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Sangin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Sangeun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Ye Eun</span></div>
+    </div>
+    <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#3</span>
+        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">CTV / Horizon 3</span>
+        <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#E6F4EA;color:#0F9D58;">8명</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">JaeKyun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">KuYoung</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">Sangeun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">DongKwon</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">Dabin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">JeongYong</span></div>
+    </div>
+    <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#4</span>
+        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">IAA / RE 확장</span>
+        <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#EBF8FF;color:#1557B0;">7명</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Dabin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">KuYoung</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Sangin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Ye Eun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Hankhil</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Jun</span></div>
+    </div>
+    <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#5</span>
+        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">APAC Echoes</span>
+        <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#F0FFF4;color:#0F9D58;">7명</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">JaeKyun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">Sangwoo</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">Dabin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">JeongYong</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">Sangeun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">KuYoung</span></div>
+    </div>
+    <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#6</span>
+        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">Finance / Consumer</span>
+        <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#FEF7E0;color:#B06000;">6명</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">DongKwon</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">JeongYong</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">Sangeun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">Ye Eun</span></div>
+    </div>
+    <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#7</span>
+        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">Mid-Market Ops / 핸드오버</span>
+        <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#FFFAF0;color:#B06000;">5명</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Sangin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Hankhil</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Sangwoo</span></div>
+    </div>
+    <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#8</span>
+        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">Agency Program</span>
+        <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#FFF5F5;color:#A50E0E;">5명</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">JaeKyun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">JeongYong</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Sangwoo</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Ye Eun</span></div>
+    </div>
+    <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#9</span>
+        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">GDS 테스트·분석</span>
+        <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#FFF5F5;color:#A50E0E;">5명</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">KuYoung</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Dabin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Sangeun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">DongKwon</span></div>
     </div>
 
-    <div class="help-template">
-      "이번 분기에 <span class="blank">______</span> 하려 하는데,<br>
-      <span class="blank">______</span> 부분에서 어려움이 있으니<br>
-      <span class="blank">______</span> 를 같이 도와줄 수 있는 사람을 찾습니다."
-    </div>
+  <!-- 도움 요청 문장 작성 -->
+  <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#999;margin:20px 0 10px;">내 도움 요청 문장 작성</div>
+  <div style="font-size:13px;color:#555;margin-bottom:14px;line-height:1.6;">위 그룹에서 나와 겹치는 사람 1~2명을 찾아 아래 문장을 완성하세요.</div>
 
-    <div class="section-label-sm">예시 — 이렇게 말하면 돼요</div>
-
-    <div class="help-cards">
-
-      <div class="help-card">
-        <div class="help-card-top">
-          <div class="help-avatar" style="background:#1A73E8;">DS</div>
-          <div><div class="help-name">Dabin Son</div><div class="help-role">Gaming SGM</div></div>
-        </div>
-        <div class="help-sentence">
-          "이번 분기에 <span class="doing">IAA Forum을 론칭</span>하려 하는데,
-          <span class="stuck">Forum에 담을 MM 계정 IAA 케이스가 부족한 부분</span>에서 어려움이 있으니
-          <span class="needed">IAA 타깃 MM 어카운트 리스트업을 같이 해줄 수 있는 사람</span>을 찾습니다."
-        </div>
+  <!-- 문장 1 -->
+  <div style="background:#f0f4ff;border:2px dashed #aac4ff;border-radius:12px;padding:16px;margin-bottom:12px;">
+    <div style="font-size:11px;font-weight:700;color:#2B6CB0;margin-bottom:10px;letter-spacing:.5px;">문장 1</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <span style="font-size:13px;color:#555;white-space:nowrap;">나는</span>
+        <input id="h1a" type="text" placeholder="무엇을 하려 하는가" oninput="buildHelp()" style="flex:1;min-width:140px;border:1.5px solid #c0d0ff;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;outline:none;background:#fff;">
+        <span style="font-size:13px;color:#555;white-space:nowrap;">를 하려 하는데</span>
       </div>
-
-      <div class="help-card">
-        <div class="help-card-top">
-          <div class="help-avatar" style="background:#00BCD4;">SB</div>
-          <div><div class="help-name">Sangwoo Byeon</div><div class="help-role">NBS Infra</div></div>
-        </div>
-        <div class="help-sentence">
-          "이번 분기에 <span class="doing">Agency FAQ Chatbot을 구축</span>하려 하는데,
-          <span class="stuck">실제 반복 문의 데이터를 분류하는 부분</span>에서 어려움이 있으니
-          <span class="needed">6개월치 에이전시 이메일 카테고리 분류를 도와줄 수 있는 사람</span>을 찾습니다."
-        </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <input id="h1b" type="text" placeholder="어떤 도움이 필요한가" oninput="buildHelp()" style="flex:1;min-width:140px;border:1.5px solid #b3e6cc;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;outline:none;background:#fff;">
+        <span style="font-size:13px;color:#555;white-space:nowrap;">도움이 필요합니다.</span>
       </div>
-
-      <div class="help-card">
-        <div class="help-card-top">
-          <div class="help-avatar" style="background:#0F9D58;">SP</div>
-          <div><div class="help-name">Sangeun Park</div><div class="help-role">Consumer GM</div></div>
-        </div>
-        <div class="help-sentence">
-          "이번 분기에 <span class="doing">Horizon 3 케이스 스터디를 완성</span>하려 하는데,
-          <span class="stuck">MSM × MA × MCM 내러티브를 혼자 설계하는 부분</span>에서 어려움이 있으니
-          <span class="needed">MCM 오프사이트 케이스를 같이 만들어줄 수 있는 사람</span>을 찾습니다."
-        </div>
-      </div>
-
-    </div>
-
-    <div class="section-label-sm" style="margin-top:28px;">지금 내 문장을 작성해보세요</div>
-
-    <div class="your-turn">
-      <p>빈칸을 채우면 아래에 내 문장이 완성돼요. 세션에서 소리 내어 말할 거예요.</p>
-
-      <!-- 입력 폼 -->
-      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
-        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-          <span style="font-size:13px;color:#555;white-space:nowrap;">이번 분기에</span>
-          <input type="text" id="f1" placeholder="무엇을 하려 하는가" oninput="buildSentence()"
-            style="flex:1;min-width:160px;border:1.5px solid #c0d0ff;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;color:#111;outline:none;background:#fff;">
-          <span style="font-size:13px;color:#555;white-space:nowrap;">하려 하는데,</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-          <input type="text" id="f2" placeholder="어떤 부분에서 막히는가" oninput="buildSentence()"
-            style="flex:1;min-width:200px;border:1.5px solid #ffb3b3;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;color:#111;outline:none;background:#fff;">
-          <span style="font-size:13px;color:#555;white-space:nowrap;">부분에서 어려움이 있으니</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-          <input type="text" id="f3" placeholder="어떤 도움이 필요한가" oninput="buildSentence()"
-            style="flex:1;min-width:200px;border:1.5px solid #b3e6cc;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;color:#111;outline:none;background:#fff;">
-          <span style="font-size:13px;color:#555;white-space:nowrap;">를 같이 도와줄 수 있는 사람을 찾습니다.</span>
-        </div>
-      </div>
-
-      <!-- 완성된 문장 미리보기 -->
-      <div id="sentence-preview" style="display:none;background:#fff;border:2px solid var(--navy);border-radius:10px;padding:14px 16px;font-size:14px;color:#111;line-height:1.9;margin-bottom:12px;">
-      </div>
-
-      <!-- 복사 버튼 -->
-      <button id="copy-btn" onclick="copySentence()" style="display:none;background:var(--navy);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;">
-        📋 문장 복사하기
-      </button>
-      <span id="copy-ok" style="display:none;font-size:12px;color:var(--teal2);font-weight:600;margin-left:8px;">✅ 복사됐어요!</span>
-    </div>
-
-    <div style="background:#f0f4ff;border-radius:12px;padding:16px;margin-top:16px;">
-      <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;">💡 좋은 문장의 기준</div>
-      <div style="font-size:13px;color:#555;line-height:1.8;">
-        ✅ 리소스 추가 없이 실행 가능한 것<br>
-        ✅ 두 사람 이상의 KR에 동시에 기여<br>
-        ✅ 이번 주 안에 첫 스텝 가능<br>
-        ❌ 막연한 "같이 해봐요" 수준<br>
-        ❌ 이미 다른 미팅에서 논의된 것
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <span style="font-size:13px;color:#555;white-space:nowrap;">→ 찾는 사람:</span>
+        <input id="h1c" type="text" placeholder="이름 (1~2명)" oninput="buildHelp()" style="flex:1;min-width:120px;border:1.5px solid #e0e4f0;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;outline:none;background:#fff;">
       </div>
     </div>
+    <div id="preview1" style="display:none;margin-top:12px;background:#fff;border:1.5px solid #040078;border-radius:8px;padding:12px 14px;font-size:13px;color:#111;line-height:1.8;"></div>
+  </div>
 
+  <!-- 문장 2 -->
+  <div style="background:#f0fff4;border:2px dashed #9AE6B4;border-radius:12px;padding:16px;margin-bottom:16px;">
+    <div style="font-size:11px;font-weight:700;color:#276749;margin-bottom:10px;letter-spacing:.5px;">문장 2</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <span style="font-size:13px;color:#555;white-space:nowrap;">나는</span>
+        <input id="h2a" type="text" placeholder="무엇을 하려 하는가" oninput="buildHelp()" style="flex:1;min-width:140px;border:1.5px solid #9AE6B4;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;outline:none;background:#fff;">
+        <span style="font-size:13px;color:#555;white-space:nowrap;">를 하려 하는데</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <input id="h2b" type="text" placeholder="어떤 도움이 필요한가" oninput="buildHelp()" style="flex:1;min-width:140px;border:1.5px solid #9AE6B4;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;outline:none;background:#fff;">
+        <span style="font-size:13px;color:#555;white-space:nowrap;">도움이 필요합니다.</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <span style="font-size:13px;color:#555;white-space:nowrap;">→ 찾는 사람:</span>
+        <input id="h2c" type="text" placeholder="이름 (1~2명)" oninput="buildHelp()" style="flex:1;min-width:120px;border:1.5px solid #e0e4f0;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;outline:none;background:#fff;">
+      </div>
+    </div>
+    <div id="preview2" style="display:none;margin-top:12px;background:#fff;border:1.5px solid #276749;border-radius:8px;padding:12px 14px;font-size:13px;color:#111;line-height:1.8;"></div>
+  </div>
+
+  <!-- 이름 입력 -->
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+    <span style="font-size:13px;color:#555;white-space:nowrap;">내 이름:</span>
+    <input id="my-name" type="text" placeholder="이름 입력" style="flex:1;max-width:200px;border:1.5px solid #e0e4f0;border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;outline:none;background:#fff;">
+  </div>
+
+  <!-- 전송 버튼 -->
+  <button onclick="submitHelp()" style="width:100%;padding:14px;background:#040078;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;">
+    📤 구글 시트에 저장하기
+  </button>
+  <div id="submit-ok" style="display:none;text-align:center;font-size:13px;color:#276749;font-weight:600;margin-top:10px;">✅ 저장됐어요!</div>
+  <div id="submit-err" style="display:none;text-align:center;font-size:13px;color:#E53E3E;font-weight:600;margin-top:10px;">⚠️ 구글 시트 URL을 설정해주세요.</div>
+
+  <!-- 복사 버튼 (대안) -->
+  <button onclick="copyHelp()" style="width:100%;padding:12px;background:#f5f5f8;border:1.5px solid #e0e4f0;border-radius:12px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;margin-top:8px;color:#555;">
+    📋 클립보드 복사
+  </button>
+  <span id="copy-help-ok" style="display:none;font-size:12px;color:#276749;font-weight:600;margin-left:8px;">✅ 복사됐어요!</span>
+
+</div>
+</div>
+
+<div class="tab-view" id="tab-synergy">
+<div class="syn-wrap">
+
+  <div class="syn-intro">
+    전체 OKR 분석 기반 — 주제 등장 빈도 순으로 정렬했어요.<br>
+    겹치는 사람이 많을수록 리소스 추가 없이 시너지 낼 수 있는 영역이에요.
+  </div>
+
+  <!-- 빈도 바 차트 -->
+  <div class="freq-section">
+    <div class="freq-title">주제 등장 빈도 (전체 OKR 기준)</div>
+    <div class="freq-row"><span class="freq-label">📊 전략·실행 연결</span><div class="freq-track"><div class="freq-fill" style="width:100%;background:#1A73E8;"></div></div><span class="freq-num" style="color:#1557B0;">10명</span></div>
+    <div class="freq-row"><span class="freq-label">🤖 AI / 자동화</span><div class="freq-track"><div class="freq-fill" style="width:90%;background:#1A73E8;"></div></div><span class="freq-num" style="color:#1557B0;">9명</span></div>
+    <div class="freq-row"><span class="freq-label">📺 CTV / Horizon 3</span><div class="freq-track"><div class="freq-fill" style="width:80%;background:#0F9D58;"></div></div><span class="freq-num" style="color:#0F9D58;">8명</span></div>
+    <div class="freq-row"><span class="freq-label">🎮 IAA / RE 확장</span><div class="freq-track"><div class="freq-fill" style="width:70%;background:#0F9D58;"></div></div><span class="freq-num" style="color:#0F9D58;">7명</span></div>
+    <div class="freq-row"><span class="freq-label">📣 APAC Echoes</span><div class="freq-track"><div class="freq-fill" style="width:70%;background:#0F9D58;"></div></div><span class="freq-num" style="color:#0F9D58;">7명</span></div>
+    <div class="freq-row"><span class="freq-label">💳 Finance / Consumer</span><div class="freq-track"><div class="freq-fill" style="width:60%;background:#F9AB00;"></div></div><span class="freq-num" style="color:#B06000;">6명</span></div>
+    <div class="freq-row"><span class="freq-label">📦 Mid-Market Ops / 핸드오버</span><div class="freq-track"><div class="freq-fill" style="width:50%;background:#F9AB00;"></div></div><span class="freq-num" style="color:#B06000;">5명</span></div>
+    <div class="freq-row"><span class="freq-label">🏪 Agency Program</span><div class="freq-track"><div class="freq-fill" style="width:50%;background:#D93025;"></div></div><span class="freq-num" style="color:#D93025;">5명</span></div>
+    <div class="freq-row"><span class="freq-label">🔬 GDS 테스트·분석</span><div class="freq-track"><div class="freq-fill" style="width:40%;background:#D93025;"></div></div><span class="freq-num" style="color:#D93025;">5명</span></div>
+  </div>
+
+  <!-- #1 전략·실행 연결 -->
+  <div class="syn-card">
+    <div class="syn-head">
+      <div class="syn-rank">#1</div>
+      <div class="syn-title">전략·실행 연결 (글로벌→로컬)</div>
+      <div class="syn-badge" style="background:#FFF8E1;color:#E65100;">10명</div>
+    </div>
+    <div class="syn-body">
+      <div class="syn-chips">
+        <span class="syn-chip" style="background:#FFF8E1;color:#E65100;">JaeKyun</span>
+        <span class="syn-chip" style="background:#FFF8E1;color:#E65100;">Shala</span>
+        <span class="syn-chip" style="background:#FFF8E1;color:#E65100;">KuYoung</span>
+        <span class="syn-chip" style="background:#FFF8E1;color:#E65100;">Dabin</span>
+        <span class="syn-chip" style="background:#FFF8E1;color:#E65100;">Sangeun</span>
+        <span class="syn-chip" style="background:#FFF8E1;color:#E65100;">DongKwon</span>
+        <span class="syn-chip" style="background:#FFF8E1;color:#E65100;">JeongYong</span>
+        <span class="syn-chip" style="background:#FFF8E1;color:#E65100;">Jun</span>
+        <span class="syn-chip" style="background:#FFF8E1;color:#E65100;">Sangin</span>
+        <span class="syn-chip" style="background:#FFF8E1;color:#E65100;">Sangwoo</span>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">JaeKyun + Shala → 팀 전체</div>
+        <div class="syn-desc">글로벌 전략을 로컬에서 지속 가능하게 실행하는 것이 JaeKyun OKR의 핵심이에요. 팀 모두가 각자 KR이 글로벌 전략 어디에 연결되는지 아는지 오늘 세션에서 확인해보세요.</div>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">Shala + Dabin</div>
+        <div class="syn-desc">Shala는 팀 전체 전략 이해를 책임지고, Dabin은 KOR Office OKR 리더로 팀 기여 25%를 담당해요. 두 역할이 함께 움직이면 실행 연결고리가 가장 빠르게 만들어져요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #2 AI / 자동화 -->
+  <div class="syn-card">
+    <div class="syn-head">
+      <div class="syn-rank">#2</div>
+      <div class="syn-title">AI / 자동화</div>
+      <div class="syn-badge" style="background:#E8F0FE;color:#1557B0;">9명</div>
+    </div>
+    <div class="syn-body">
+      <div class="syn-chips">
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Shala</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Sangwoo</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Jun</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Dabin</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Hankhil</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">JeongYong</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Sangin</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Sangeun</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Ye Eun</span>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">Shala + Sangwoo + Dabin</div>
+        <div class="syn-desc">Shala는 Project Sprout AI 자동화, Sangwoo는 SDR Bot·FAQ Chatbot, Dabin은 AI 스킬 2개 팀 공유 KR이 있어요. 셋이 각자 만드는 걸 묶어서 팀 AI 세션 하나로 KR 동시 달성 가능해요.</div>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">Sangwoo + Jun</div>
+        <div class="syn-desc">SDR Bot 완성 시점에 Jun 아웃바운드 워크플로우에 바로 붙이는 구조를 같이 설계해봐요. Sangwoo가 만들고 Jun이 실전 피드백 주는 방식이에요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #3 CTV / Horizon 3 -->
+  <div class="syn-card">
+    <div class="syn-head">
+      <div class="syn-rank">#3</div>
+      <div class="syn-title">CTV / Horizon 3</div>
+      <div class="syn-badge" style="background:#E6F4EA;color:#0F9D58;">8명</div>
+    </div>
+    <div class="syn-body">
+      <div class="syn-chips">
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">JaeKyun</span>
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">Shala</span>
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">KuYoung</span>
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">Sangeun</span>
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">DongKwon</span>
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">Jun</span>
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">Dabin</span>
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">JeongYong</span>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">JaeKyun + Shala → 전체 정렬</div>
+        <div class="syn-desc">JaeKyun OKR에 "CTV/Tving 퍼포먼스 가속, MCM 클라이언트 50% Moloco Ads 전환"이 있고 Shala도 Horizon 3(TVING+MCM)이 Country Focus에 있어요. 두 분이 Horizon 3 방향을 먼저 정렬해야 나머지 팀이 KR을 맞출 수 있어요.</div>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">Sangeun + DongKwon</div>
+        <div class="syn-desc">Sangeun은 McDonald's TVING 케이스, DongKwon은 MCM 오프사이트 케이스를 각자 만들고 있어요. MSM × MA × MCM 내러티브로 묶어서 하나의 Horizon 3 케이스 스터디로 완성해보면 어떨까요?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #4 IAA / RE 확장 -->
+  <div class="syn-card">
+    <div class="syn-head">
+      <div class="syn-rank">#4</div>
+      <div class="syn-title">IAA / RE 캠페인 확장</div>
+      <div class="syn-badge" style="background:#E8F0FE;color:#1557B0;">7명</div>
+    </div>
+    <div class="syn-body">
+      <div class="syn-chips">
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Shala</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Dabin</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">KuYoung</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Sangin</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Ye Eun</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Hankhil</span>
+        <span class="syn-chip" style="background:#E8F0FE;color:#1557B0;">Jun</span>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">Shala + Dabin + Sangin</div>
+        <div class="syn-desc">Shala OKR에 "IAA 가속(Supercent·Actionfit·Treeplla)" GDS 협업이 있어요. Dabin IAA Forum 론칭 + Sangin Mid-Market IAA 타깃 리스트업을 묶으면 세 사람 KR이 동시에 맞물려요.</div>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">Dabin + Hankhil</div>
+        <div class="syn-desc">Dabin RE 케이스 APAC Echoes 포스팅할 때 Hankhil의 Pub Demographic 개선 내용을 같이 담으면 두 사람 KR 한 번에 처리 가능해요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #5 APAC Echoes -->
+  <div class="syn-card">
+    <div class="syn-head">
+      <div class="syn-rank">#5</div>
+      <div class="syn-title">APAC Echoes 공유</div>
+      <div class="syn-badge" style="background:#E6F4EA;color:#0F9D58;">7명</div>
+    </div>
+    <div class="syn-body">
+      <div class="syn-chips">
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">JaeKyun</span>
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">Sangwoo</span>
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">Dabin</span>
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">Jun</span>
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">JeongYong</span>
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">Sangeun</span>
+        <span class="syn-chip" style="background:#E6F4EA;color:#0F9D58;">KuYoung</span>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">JaeKyun + Sangwoo + Jun + JeongYong</div>
+        <div class="syn-desc">JaeKyun OKR에 APAC 팀 역량·문화 향상이 있어요. Sangwoo·Jun·JeongYong 3명의 코리아 인프라 패키지(SDR Bot + Market Intel + FAQ Chatbot)를 JaeKyun이 APAC 맥락으로 포지셔닝하면 글로벌 임팩트가 훨씬 커져요.</div>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">Dabin + Sangeun</div>
+        <div class="syn-desc">두 분 모두 APAC Echoes 포스팅 KR이 있어요. 주제 미리 조율해서 겹치지 않게 하면 좋을 것 같아요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #6 Finance / Consumer -->
+  <div class="syn-card">
+    <div class="syn-head">
+      <div class="syn-rank">#6</div>
+      <div class="syn-title">Finance / Consumer Vertical</div>
+      <div class="syn-badge" style="background:#FEF7E0;color:#B06000;">6명</div>
+    </div>
+    <div class="syn-body">
+      <div class="syn-chips">
+        <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Shala</span>
+        <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">DongKwon</span>
+        <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">JeongYong</span>
+        <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Jun</span>
+        <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Sangeun</span>
+        <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Ye Eun</span>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">Shala + DongKwon + JeongYong + Jun</div>
+        <div class="syn-desc">Shala OKR에 "Finance 피치 강화"가 있고, Finance Day(4/30)는 DongKwon·JeongYong·Jun 3명 OKR에도 있어요. 역할 분담하면 중복 없이 각자 KR 달성 가능해요 — DongKwon은 퍼포먼스 케이스, Jun은 컨설팅 피치, JeongYong은 에이전시 네트워크.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #7 Mid-Market Ops -->
+  <div class="syn-card">
+    <div class="syn-head">
+      <div class="syn-rank">#7</div>
+      <div class="syn-title">Mid-Market Ops / NBS→GM 핸드오버</div>
+      <div class="syn-badge" style="background:#FEF7E0;color:#B06000;">5명</div>
+    </div>
+    <div class="syn-body">
+      <div class="syn-chips">
+        <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Shala</span>
+        <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Sangin</span>
+        <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Hankhil</span>
+        <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Jun</span>
+        <span class="syn-chip" style="background:#FEF7E0;color:#B06000;">Sangwoo</span>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">Shala + Sangin + Hankhil</div>
+        <div class="syn-desc">Shala OKR에 "NBS·GSS 협업 워크스트림 설계"가 있어요. Sangin Mid-Market Tier 시스템 + Hankhil 핸드오버 문서화를 Shala가 구조 설계 측면에서 연결해주면 셋이 각자 만들던 게 하나의 시스템으로 완성돼요.</div>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">Jun + Hankhil</div>
+        <div class="syn-desc">Jun OKR에 Sr.IM/Jr.IM 핸드오버북 Hankhil과 공동 발간이 이미 명시돼 있어요. 오늘 세션에서 킥오프 타임라인만 정하면 돼요.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #8 Agency Program -->
+  <div class="syn-card">
+    <div class="syn-head">
+      <div class="syn-rank">#8</div>
+      <div class="syn-title">Agency Program 스케일</div>
+      <div class="syn-badge" style="background:#FCE8E6;color:#A50E0E;">5명</div>
+    </div>
+    <div class="syn-body">
+      <div class="syn-chips">
+        <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">JaeKyun</span>
+        <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">JeongYong</span>
+        <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Sangwoo</span>
+        <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Jun</span>
+        <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Ye Eun</span>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">JaeKyun + JeongYong</div>
+        <div class="syn-desc">JaeKyun OKR에 "Agency 공식 프로그램을 4 Sales Drivers 중 하나"로 명시돼 있어요. JeongYong이 실행하는 Gate Agency 프로그램 방향성을 JaeKyun이 전략 레벨에서 정렬해줄 수 있어요.</div>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">JeongYong + Sangwoo</div>
+        <div class="syn-desc">Agency FAQ Chatbot이 Sangwoo OKR인데, 실제 반복 문의 데이터는 JeongYong이 갖고 있어요. JeongYong이 카테고리 정리, Sangwoo가 RAG 구조 구축 — 분업하면 둘 다 KR 달성.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #9 GDS 테스트·분석 -->
+  <div class="syn-card">
+    <div class="syn-head">
+      <div class="syn-rank">#9</div>
+      <div class="syn-title">GDS 테스트 & 분석 공유</div>
+      <div class="syn-badge" style="background:#FCE8E6;color:#A50E0E;">5명</div>
+    </div>
+    <div class="syn-body">
+      <div class="syn-chips">
+        <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">KuYoung</span>
+        <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Dabin</span>
+        <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Shala</span>
+        <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">Sangeun</span>
+        <span class="syn-chip" style="background:#FCE8E6;color:#A50E0E;">DongKwon</span>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">Shala + Dabin + Sangeun</div>
+        <div class="syn-desc">Shala OKR에 "GDS IAA 심층 분석 + Android 성능 개선"이 있고, Dabin은 RE 인사이트 덱, Sangeun은 Commerce 분석 표준화 KR이 있어요. GDS팀에 요청할 때 셋이 묶어서 넣으면 우선순위가 훨씬 높아져요.</div>
+      </div>
+      <div class="syn-proposal">
+        <div class="syn-pair">KuYoung + DongKwon</div>
+        <div class="syn-desc">KuYoung은 Gaming 인크리멘탈리티, DongKwon은 iOS RE LAT 테스트 각각 진행 중이에요. 결과 나오면 서로 공유하는 간단한 양방향 채널 만들어두면 좋을 것 같아요.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="syn-tip">
+    💡 토론 중 막힐 때 —<br>
+    "내 output이 누군가의 input이 될 수 있나요?"<br>
+    "리소스 없이 이번 주에 시작할 수 있는 게 있을까요?"<br>
+    "같이 하면 혼자 할 때보다 빠른 게 뭔가요?"
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════
+     TAB 5: 토의 질문 (비밀번호 잠금)
+═══════════════════════════════════ -->
+<div class="tab-view" id="tab-discussion">
+<div id="lock-screen-p" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:75vh;padding:24px;">
+  <div style="font-size:52px;margin-bottom:16px;">🔒</div>
+  <div style="font-size:18px;font-weight:700;color:#1A1A2E;margin-bottom:6px;font-family:'Montserrat',sans-serif;">진행자 전용</div>
+  <div style="font-size:13px;color:#888;margin-bottom:32px;text-align:center;line-height:1.7;">세션 당일 진행자만 접근할 수 있어요.</div>
+  <div style="width:100%;max-width:280px;display:flex;flex-direction:column;gap:10px;">
+    <input type="password" id="pw-p" placeholder="비밀번호" onkeydown="if(event.key==='Enter')checkPwP()"
+      style="width:100%;padding:14px 16px;font-size:18px;letter-spacing:6px;text-align:center;border:2px solid #e0e4f0;border-radius:12px;font-family:inherit;outline:none;color:#111;">
+    <button onclick="checkPwP()" style="width:100%;padding:14px;background:#040078;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;">입력</button>
+    <div id="pw-err-p" style="display:none;color:#E53E3E;font-size:12px;text-align:center;font-weight:600;">비밀번호가 맞지 않아요.</div>
   </div>
 </div>
 
+<div id="discussion-content-p" style="display:none;padding:16px 16px 60px;max-width:680px;margin:0 auto;">
+  <div style="background:linear-gradient(135deg,#040078,#1a1a6e);border-radius:14px;padding:22px;margin-bottom:20px;color:#fff;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:2px;opacity:.5;margin-bottom:6px;text-transform:uppercase;">Team Health · 토의 질문</div>
+    <div style="font-size:22px;font-weight:900;line-height:1.2;margin-bottom:6px;">팀 토의 3라운드</div>
+    <div style="font-size:12px;opacity:.65;line-height:1.7;">00:40 ~ 01:15 · 총 35분<br>Q1 (10분) → Q2 (10분) → Q3 (10분) → 비·우산 분류 (15분)</div>
+  </div>
+
+  <!-- Q1 -->
+  <div style="background:#fff;border-radius:14px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);">
+    <div style="background:#E53E3E;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+      <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0;">Q1</div>
+      <div><div style="font-size:15px;font-weight:700;color:#fff;">Moloco의 미래</div><div style="font-size:11px;color:rgba(255,255,255,.7);margin-top:1px;">10분</div></div>
+    </div>
+    <div style="padding:16px;">
+      <div style="background:#FFF5F5;border-left:4px solid #E53E3E;border-radius:0 10px 10px 0;padding:14px 16px;font-size:18px;font-weight:700;color:#1A1A2E;line-height:1.6;">"나는 <span style="color:#E53E3E;">___</span> 때문에<br>Moloco의 미래가 걱정된다"</div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div style="background:#fff;border-radius:14px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);">
+    <div style="background:#C53030;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+      <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0;">Q2</div>
+      <div><div style="font-size:15px;font-weight:700;color:#fff;">나의 미래</div><div style="font-size:11px;color:rgba(255,255,255,.7);margin-top:1px;">10분</div></div>
+    </div>
+    <div style="padding:16px;">
+      <div style="background:#FFF5F5;border-left:4px solid #C53030;border-radius:0 10px 10px 0;padding:14px 16px;font-size:18px;font-weight:700;color:#1A1A2E;line-height:1.6;">"3년 뒤에도 내가 여기 있을지<br>모르겠다는 생각이 드는 순간은 <span style="color:#C53030;">___</span>"</div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div style="background:#fff;border-radius:14px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);">
+    <div style="background:#553C9A;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+      <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0;">Q3</div>
+      <div><div style="font-size:15px;font-weight:700;color:#fff;">만족도 레버</div><div style="font-size:11px;color:rgba(255,255,255,.7);margin-top:1px;">10분</div></div>
+    </div>
+    <div style="padding:16px;">
+      <div style="background:#FAF5FF;border-left:4px solid #553C9A;border-radius:0 10px 10px 0;padding:14px 16px;font-size:18px;font-weight:700;color:#1A1A2E;line-height:1.6;">"<span style="color:#553C9A;">___</span>가 개선되면<br>나의 만족도 지수가 10% 올라갈 것 같다"</div>
+    </div>
+  </div>
+
+  <!-- 비우산 직접 작성 -->
+  <div style="background:#fff;border-radius:14px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);">
+    <div style="background:#DD6B20;padding:14px 16px;display:flex;align-items:center;gap:12px;">
+      <div style="font-size:22px;">⚡</div>
+      <div><div style="font-size:15px;font-weight:700;color:#fff;">비·우산 분류 + 액션 도출</div><div style="font-size:11px;color:rgba(255,255,255,.7);margin-top:1px;">01:10 · 15분</div></div>
+    </div>
+    <div style="padding:16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#2B6CB0;margin-bottom:6px;">🌧 비 (통제 불가)</div>
+          <textarea id="rain-input" placeholder="나온 이야기들 적기&#10;예: 글로벌 투자 우선순위&#10;예: 피플매니저 구조" style="width:100%;min-height:100px;border:1.5px solid #90CDF4;border-radius:8px;padding:10px;font-size:12px;font-family:inherit;color:#111;background:#EBF8FF;resize:none;outline:none;line-height:1.7;"></textarea>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#276749;margin-bottom:6px;">☂️ 우산 (우리가 할 수 있는 것)</div>
+          <textarea id="umbrella-input" placeholder="나온 이야기들 적기&#10;예: Career 대화 정례화&#10;예: 화력 집중 방향" style="width:100%;min-height:100px;border:1.5px solid #9AE6B4;border-radius:8px;padding:10px;font-size:12px;font-family:inherit;color:#111;background:#F0FFF4;resize:none;outline:none;line-height:1.7;"></textarea>
+        </div>
+      </div>
+      <button onclick="copyRainUmbrella()" style="width:100%;padding:12px;background:#040078;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;">📋 Slack 복사</button>
+      <span id="rain-copy-ok" style="display:none;font-size:12px;color:#276749;font-weight:600;margin-left:8px;">✅ 복사됐어요!</span>
+    </div>
+  </div>
+
+  <button onclick="lockP()" style="width:100%;padding:12px;background:#f5f5f8;border:1.5px solid #e0e4f0;border-radius:12px;font-size:13px;font-weight:600;color:#999;font-family:inherit;cursor:pointer;margin-top:4px;">🔒 다시 잠그기</button>
+</div>
+</div>
 
 <script>
-  // ── Help sentence builder ──
-  function buildSentence() {
-    const f1 = document.getElementById('f1').value.trim();
-    const f2 = document.getElementById('f2').value.trim();
-    const f3 = document.getElementById('f3').value.trim();
-    const preview = document.getElementById('sentence-preview');
-    const btn = document.getElementById('copy-btn');
-
-    if (!f1 && !f2 && !f3) { preview.style.display = 'none'; btn.style.display = 'none'; return; }
-
-    const v1 = f1 || '<span style="color:#aaa;">______</span>';
-    const v2 = f2 || '<span style="color:#aaa;">______</span>';
-    const v3 = f3 || '<span style="color:#aaa;">______</span>';
-
-    preview.innerHTML =
-      `"이번 분기에 <strong style="color:var(--blue2);">${v1}</strong> 하려 하는데,<br>` +
-      `<strong style="color:#c0392b;">${v2}</strong> 부분에서 어려움이 있으니<br>` +
-      `<strong style="color:var(--teal2);">${v3}</strong> 를 같이 도와줄 수 있는 사람을 찾습니다."`;
-    preview.style.display = 'block';
-    btn.style.display = (f1 && f2 && f3) ? 'inline-block' : 'none';
-  }
-
-  function copySentence() {
-    const f1 = document.getElementById('f1').value.trim();
-    const f2 = document.getElementById('f2').value.trim();
-    const f3 = document.getElementById('f3').value.trim();
-    const text = `"이번 분기에 ${f1} 하려 하는데, ${f2} 부분에서 어려움이 있으니 ${f3} 를 같이 도와줄 수 있는 사람을 찾습니다."`;
-    navigator.clipboard.writeText(text).then(() => {
-      const ok = document.getElementById('copy-ok');
-      ok.style.display = 'inline';
-      setTimeout(() => { ok.style.display = 'none'; }, 2000);
-    });
-  }
+  // ── GOOGLE SHEET URL (Apps Script Web App URL 입력) ──
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbw0CQB0VL_lWTpfOjv0ldgGuFoEc7ZoqJzYvUG3LmWqhj3ahdwZhK78hGKxe_wugJj4/exec';
 
   // ── Tab switching ──
   function switchTab(id) {
@@ -1252,73 +1661,127 @@
     });
   }
 
-  // ── Pillar filter (Tab 1) ──
+  // ── Pillar filter ──
   let activePillar = null;
-  // 원래 카드 순서 저장
   let originalOrder = null;
-
   function filterByPillar(num, name, desc) {
     activePillar = num;
     const grid = document.getElementById('personGrid');
     const cards = Array.from(grid.querySelectorAll('.person-card'));
-
-    // 처음 클릭 시 원래 순서 저장
-    if (!originalOrder) {
-      originalOrder = cards.map(c => c.cloneNode(true));
-    }
-
+    if (!originalOrder) originalOrder = cards.map(c => c.cloneNode(true));
     const matched   = cards.filter(c => c.dataset.pillars.split(',').map(Number).includes(num));
     const unmatched = cards.filter(c => !c.dataset.pillars.split(',').map(Number).includes(num));
-
-    // 그리드 비우고 matched 먼저, unmatched 나중에
     grid.innerHTML = '';
-
-    matched.forEach(c => {
-      c.classList.add('highlighted');
-      c.classList.remove('faded');
-      c.style.transition = 'opacity .25s, transform .25s';
-      grid.appendChild(c);
-    });
-    unmatched.forEach(c => {
-      c.classList.add('faded');
-      c.classList.remove('highlighted');
-      c.style.transition = 'opacity .25s';
-      grid.appendChild(c);
-    });
-
-    // pillar 활성화
-    document.querySelectorAll('.k-pillar').forEach(p => {
-      p.classList.toggle('active', parseInt(p.dataset.pillar) === num);
-    });
-
+    matched.forEach(c => { c.classList.add('highlighted'); c.classList.remove('faded'); grid.appendChild(c); });
+    unmatched.forEach(c => { c.classList.add('faded'); c.classList.remove('highlighted'); grid.appendChild(c); });
+    document.querySelectorAll('.k-pillar').forEach(p => p.classList.toggle('active', parseInt(p.dataset.pillar) === num));
     const info = document.getElementById('pillarInfo');
     info.textContent = `Pillar ${num}: ${name} — ${desc}`;
     info.classList.add('visible');
     document.getElementById('resetBtn').classList.add('visible');
-
-    // 그리드 위치로 부드럽게 스크롤
-    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    grid.scrollIntoView({ behavior:'smooth', block:'start' });
   }
-
   function resetFilter() {
     activePillar = null;
     const grid = document.getElementById('personGrid');
-
     if (originalOrder) {
       grid.innerHTML = '';
-      originalOrder.forEach(c => {
-        c.classList.remove('highlighted', 'faded');
-        // 이벤트 핸들러 재연결 불필요 — onclick은 HTML attribute라 cloneNode로 유지됨
-        grid.appendChild(c);
-      });
+      originalOrder.forEach(c => { c.classList.remove('highlighted','faded'); grid.appendChild(c); });
       originalOrder = null;
     } else {
-      document.querySelectorAll('.person-card').forEach(c => c.classList.remove('highlighted', 'faded'));
+      document.querySelectorAll('.person-card').forEach(c => c.classList.remove('highlighted','faded'));
     }
-
     document.querySelectorAll('.k-pillar').forEach(p => p.classList.remove('active'));
     document.getElementById('pillarInfo').classList.remove('visible');
     document.getElementById('resetBtn').classList.remove('visible');
+  }
+
+  // ── Help sentence builder ──
+  function buildHelp() {
+    ['1','2'].forEach(n => {
+      const a = document.getElementById('h'+n+'a').value.trim();
+      const b = document.getElementById('h'+n+'b').value.trim();
+      const c = document.getElementById('h'+n+'c').value.trim();
+      const el = document.getElementById('preview'+n);
+      if (!a && !b) { el.style.display='none'; return; }
+      el.innerHTML = `"나는 <strong style="color:#040078;">${a||'___'}</strong> 를 하려 하는데 <strong style="color:#276749;">${b||'___'}</strong> 도움이 필요합니다.${c ? ' → <strong>'+c+'</strong>' : ''}"`;
+      el.style.display = 'block';
+    });
+  }
+  function submitHelp() {
+    const name = document.getElementById('my-name').value.trim() || '(이름 없음)';
+    const a1 = document.getElementById('h1a').value.trim();
+    const b1 = document.getElementById('h1b').value.trim();
+    const c1 = document.getElementById('h1c').value.trim();
+    const a2 = document.getElementById('h2a').value.trim();
+    const b2 = document.getElementById('h2b').value.trim();
+    const c2 = document.getElementById('h2c').value.trim();
+    if (!SHEET_URL || SHEET_URL === 'YOUR_APPS_SCRIPT_URL') {
+      document.getElementById('submit-err').style.display = 'block';
+      setTimeout(() => { document.getElementById('submit-err').style.display='none'; }, 3000);
+      return;
+    }
+    const params = new URLSearchParams({
+      name, s1a: a1, s1b: b1, s1c: c1, s2a: a2, s2b: b2, s2c: c2
+    });
+    fetch(SHEET_URL + '?' + params, { method: 'GET', mode: 'no-cors' })
+      .then(() => {
+        document.getElementById('submit-ok').style.display = 'block';
+        setTimeout(() => { document.getElementById('submit-ok').style.display='none'; }, 3000);
+      })
+      .catch(() => {
+        document.getElementById('submit-err').style.display = 'block';
+        setTimeout(() => { document.getElementById('submit-err').style.display='none'; }, 3000);
+      });
+  }
+  function copyHelp() {
+    const name = document.getElementById('my-name').value.trim() || '(이름 없음)';
+    const lines = [`👤 ${name}`];
+    const a1 = document.getElementById('h1a').value.trim();
+    const b1 = document.getElementById('h1b').value.trim();
+    const c1 = document.getElementById('h1c').value.trim();
+    if (a1||b1) lines.push(`1. "${a1||'___'} 를 하려 하는데 ${b1||'___'} 도움이 필요합니다."${c1?' → '+c1:''}`);
+    const a2 = document.getElementById('h2a').value.trim();
+    const b2 = document.getElementById('h2b').value.trim();
+    const c2 = document.getElementById('h2c').value.trim();
+    if (a2||b2) lines.push(`2. "${a2||'___'} 를 하려 하는데 ${b2||'___'} 도움이 필요합니다."${c2?' → '+c2:''}`);
+    navigator.clipboard.writeText(lines.join('\n')).then(() => {
+      const ok = document.getElementById('copy-help-ok');
+      ok.style.display = 'inline';
+      setTimeout(() => { ok.style.display='none'; }, 2000);
+    });
+  }
+
+  // ── Discussion (participant) ──
+  function checkPwP() {
+    const val = document.getElementById('pw-p').value;
+    const inp = document.getElementById('pw-p');
+    if (val === 'qlalfdlqslek') {
+      document.getElementById('lock-screen-p').style.display = 'none';
+      document.getElementById('discussion-content-p').style.display = 'block';
+      document.getElementById('pw-err-p').style.display = 'none';
+    } else {
+      document.getElementById('pw-err-p').style.display = 'block';
+      inp.value = '';
+      inp.style.borderColor = '#E53E3E';
+      inp.focus();
+      setTimeout(() => { inp.style.borderColor = '#e0e4f0'; }, 1200);
+    }
+  }
+  function lockP() {
+    document.getElementById('lock-screen-p').style.display = 'flex';
+    document.getElementById('discussion-content-p').style.display = 'none';
+    document.getElementById('pw-p').value = '';
+  }
+  function copyRainUmbrella() {
+    const rain = document.getElementById('rain-input').value.trim();
+    const umbrella = document.getElementById('umbrella-input').value.trim();
+    const text = `🌧 비 (통제 불가)\n${rain||'(없음)'}\n\n☂️ 우산 (우리가 할 수 있는 것)\n${umbrella||'(없음)'}`;
+    navigator.clipboard.writeText(text).then(() => {
+      const ok = document.getElementById('rain-copy-ok');
+      ok.style.display = 'inline';
+      setTimeout(() => { ok.style.display='none'; }, 2000);
+    });
   }
 </script>
 
