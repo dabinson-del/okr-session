@@ -420,10 +420,15 @@
 
     /* Individual layer */
     .individual-layer { padding: 12px 14px 24px; }
-    .person-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-    .person-revenue { font-size: 15px; }
-    .person-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px; }
-    .focus-tag { font-size: 9px; padding: 1px 5px; }
+    .person-grid { grid-template-columns: 1fr; gap: 10px; }
+    .person-card { padding: 16px; }
+    .person-name { font-size: 15px; }
+    .person-role { font-size: 11px; opacity: .8; }
+    .person-revenue { font-size: 22px; }
+    .person-revenue-label { font-size: 10px; }
+    .person-mission { font-size: 11px; }
+    .person-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+    .focus-tag { font-size: 11px; padding: 3px 8px; opacity: 1; font-weight: 700; }
 
     /* Legend */
     .legend-bar { padding: 8px 14px; gap: 8px; }
@@ -450,11 +455,15 @@
   }
 
   @media (max-width: 480px) {
-    .person-grid { grid-template-columns: 1fr; }
     .global-grid { grid-template-columns: 1fr; }
-    .person-name { font-size: 12px; }
-    .pillar-dots { display: none; }
-    .tab-btn { padding: 11px 11px; font-size: 10px; }
+    .person-name { font-size: 15px; }
+    .pillar-dots { display: flex; }
+    .tab-btn { padding: 11px 10px; font-size: 10px; }
+    .syn-title { font-size: 14px; }
+    .freq-label { width: 120px; font-size: 11px; }
+    .syn-chip { font-size: 12px; padding: 4px 10px; }
+    .syn-desc { font-size: 13px; }
+    .syn-pair { font-size: 13px; }
   }
 
   /* ── SYNERGY TAB ── */
@@ -1141,74 +1150,74 @@
     <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
         <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#1</span>
-        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">전략·실행 연결</span>
+        <span style="font-size:14px;font-weight:700;color:#111;flex:1;">전략·실행 연결</span>
         <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#FFF8E1;color:#E65100;">10명</span>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">JaeKyun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">KuYoung</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Dabin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Sangeun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">DongKwon</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">JeongYong</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Sangin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Sangwoo</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">JaeKyun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Shala</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">KuYoung</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Dabin</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Sangeun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">DongKwon</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">JeongYong</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Jun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Sangin</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF8E1;color:#E65100;margin:2px;">Sangwoo</span></div>
     </div>
     <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
         <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#2</span>
-        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">AI / 자동화</span>
+        <span style="font-size:14px;font-weight:700;color:#111;flex:1;">AI / 자동화</span>
         <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#E8F0FE;color:#1557B0;">9명</span>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Sangwoo</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Dabin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Hankhil</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">JeongYong</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Sangin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Sangeun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Ye Eun</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Shala</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Sangwoo</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Jun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Dabin</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Hankhil</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">JeongYong</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Sangin</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Sangeun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E8F0FE;color:#1557B0;margin:2px;">Ye Eun</span></div>
     </div>
     <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
         <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#3</span>
-        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">CTV / Horizon 3</span>
+        <span style="font-size:14px;font-weight:700;color:#111;flex:1;">CTV / Horizon 3</span>
         <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#E6F4EA;color:#0F9D58;">8명</span>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">JaeKyun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">KuYoung</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">Sangeun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">DongKwon</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">Dabin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">JeongYong</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">JaeKyun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">Shala</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">KuYoung</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">Sangeun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">DongKwon</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">Jun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">Dabin</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#E6F4EA;color:#0F9D58;margin:2px;">JeongYong</span></div>
     </div>
     <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
         <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#4</span>
-        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">IAA / RE 확장</span>
+        <span style="font-size:14px;font-weight:700;color:#111;flex:1;">IAA / RE 확장</span>
         <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#EBF8FF;color:#1557B0;">7명</span>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Dabin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">KuYoung</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Sangin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Ye Eun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Hankhil</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Jun</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Shala</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Dabin</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">KuYoung</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Sangin</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Ye Eun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Hankhil</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#EBF8FF;color:#1557B0;margin:2px;">Jun</span></div>
     </div>
     <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
         <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#5</span>
-        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">APAC Echoes</span>
+        <span style="font-size:14px;font-weight:700;color:#111;flex:1;">APAC Echoes</span>
         <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#F0FFF4;color:#0F9D58;">7명</span>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">JaeKyun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">Sangwoo</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">Dabin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">JeongYong</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">Sangeun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">KuYoung</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">JaeKyun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">Sangwoo</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">Dabin</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">Jun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">JeongYong</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">Sangeun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#F0FFF4;color:#0F9D58;margin:2px;">KuYoung</span></div>
     </div>
     <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
         <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#6</span>
-        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">Finance / Consumer</span>
+        <span style="font-size:14px;font-weight:700;color:#111;flex:1;">Finance / Consumer</span>
         <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#FEF7E0;color:#B06000;">6명</span>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">DongKwon</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">JeongYong</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">Sangeun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">Ye Eun</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">Shala</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">DongKwon</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">JeongYong</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">Jun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">Sangeun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FEF7E0;color:#B06000;margin:2px;">Ye Eun</span></div>
     </div>
     <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
         <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#7</span>
-        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">Mid-Market Ops / 핸드오버</span>
+        <span style="font-size:14px;font-weight:700;color:#111;flex:1;">Mid-Market Ops / 핸드오버</span>
         <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#FFFAF0;color:#B06000;">5명</span>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Sangin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Hankhil</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Sangwoo</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Shala</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Sangin</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Hankhil</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Jun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFFAF0;color:#B06000;margin:2px;">Sangwoo</span></div>
     </div>
     <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
         <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#8</span>
-        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">Agency Program</span>
+        <span style="font-size:14px;font-weight:700;color:#111;flex:1;">Agency Program</span>
         <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#FFF5F5;color:#A50E0E;">5명</span>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">JaeKyun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">JeongYong</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Sangwoo</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Jun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Ye Eun</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">JaeKyun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">JeongYong</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Sangwoo</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Jun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Ye Eun</span></div>
     </div>
     <div style="background:#fff;border:1.5px solid #e8e8f0;border-radius:10px;padding:12px 14px;margin-bottom:8px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
         <span style="font-size:11px;font-weight:800;color:#bbb;width:20px;">#9</span>
-        <span style="font-size:13px;font-weight:700;color:#111;flex:1;">GDS 테스트·분석</span>
+        <span style="font-size:14px;font-weight:700;color:#111;flex:1;">GDS 테스트·분석</span>
         <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#FFF5F5;color:#A50E0E;">5명</span>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">KuYoung</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Dabin</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Shala</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Sangeun</span><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">DongKwon</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;"><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">KuYoung</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Dabin</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Shala</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">Sangeun</span><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:#FFF5F5;color:#A50E0E;margin:2px;">DongKwon</span></div>
     </div>
 
   <!-- 도움 요청 문장 작성 -->
